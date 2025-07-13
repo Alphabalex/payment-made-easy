@@ -1,8 +1,8 @@
 <?php
 
 // Using the facade
-use Kudos\PaymentMadeEasy\PaymentManager;
-use Kudos\PaymentMadeEasy\Facades\Payment;
+use NexusPay\PaymentMadeEasy\PaymentManager;
+use NexusPay\PaymentMadeEasy\Facades\Payment;
 
 // Initialize payment with default driver (from config)
 $response = Payment::initializePayment([
@@ -48,7 +48,7 @@ class PaymentController extends Controller
     public function initializePayment(Request $request)
     {
         $driver = $this->paymentManager->driver($request->gateway);
-        
+
         return $driver->initializePayment([
             'email' => $request->email,
             'amount' => $request->amount,

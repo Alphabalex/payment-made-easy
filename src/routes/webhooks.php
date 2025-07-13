@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Kudos\PaymentMadeEasy\Http\Controllers\WebhookController;
+use NexusPay\PaymentMadeEasy\Http\Controllers\WebhookController;
 
 Route::prefix('webhooks/payment-gateways')
     ->name('payment-gateways.webhooks.')

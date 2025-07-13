@@ -1,11 +1,11 @@
 <?php
 
-namespace Kudos\PaymentMadeEasy\Drivers;
+namespace NexusPay\PaymentMadeEasy\Drivers;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
-use Kudos\PaymentMadeEasy\Contracts\PaymentDriverInterface;
-use Kudos\PaymentMadeEasy\Exceptions\PaymentException;
+use NexusPay\PaymentMadeEasy\Contracts\PaymentDriverInterface;
+use NexusPay\PaymentMadeEasy\Exceptions\PaymentException;
 
 abstract class AbstractPaymentDriver implements PaymentDriverInterface
 {
@@ -35,12 +35,12 @@ abstract class AbstractPaymentDriver implements PaymentDriverInterface
         try {
             $response = $this->client->request($method, $url, $options);
             $body = $response->getBody()->getContents();
-            
+
             return json_decode($body, true) ?? [];
         } catch (RequestException $e) {
             $response = $e->getResponse();
             $body = $response ? $response->getBody()->getContents() : $e->getMessage();
-            
+
             throw new PaymentException("Payment request failed: " . $body, $e->getCode(), $e);
         }
     }

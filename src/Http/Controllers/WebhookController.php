@@ -1,13 +1,13 @@
 <?php
 
-namespace Kudos\PaymentMadeEasy\Http\Controllers;
+namespace NexusPay\PaymentMadeEasy\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Log;
-use Kudos\PaymentMadeEasy\WebhookManager;
-use Kudos\PaymentMadeEasy\Exceptions\WebhookException;
+use NexusPay\PaymentMadeEasy\WebhookManager;
+use NexusPay\PaymentMadeEasy\Exceptions\WebhookException;
 
 class WebhookController extends Controller
 {
@@ -26,7 +26,7 @@ class WebhookController extends Controller
 
         try {
             $this->webhookManager->handle($gateway, $request);
-            
+
             return response('Webhook handled successfully', 200);
         } catch (WebhookException $e) {
             Log::error('Webhook handling failed', [

@@ -1,10 +1,10 @@
 <?php
 
-namespace Kudos\PaymentMadeEasy\Events;
+namespace NexusPay\PaymentMadeEasy\Events;
 
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
-use Kudos\PaymentMadeEasy\Contracts\WebhookEventInterface;
+use NexusPay\PaymentMadeEasy\Contracts\WebhookEventInterface;
 
 class RefundProcessed
 {

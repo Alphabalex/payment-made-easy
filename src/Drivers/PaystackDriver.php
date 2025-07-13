@@ -1,6 +1,6 @@
 <?php
 
-namespace Kudos\PaymentMadeEasy\Drivers;
+namespace NexusPay\PaymentMadeEasy\Drivers;
 
 class PaystackDriver extends AbstractPaymentDriver
 {
@@ -48,7 +48,7 @@ class PaystackDriver extends AbstractPaymentDriver
     public function refundPayment(string $reference, ?float $amount = null): array
     {
         $payload = ['transaction' => $reference];
-        
+
         if ($amount) {
             $payload['amount'] = $this->convertAmount($amount);
         }

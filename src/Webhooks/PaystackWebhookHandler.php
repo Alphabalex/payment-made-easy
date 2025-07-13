@@ -1,11 +1,11 @@
 <?php
 
-namespace Kudos\PaymentMadeEasy\Webhooks;
+namespace NexusPay\PaymentMadeEasy\Webhooks;
 
 use Illuminate\Http\Request;
-use Kudos\PaymentMadeEasy\Contracts\WebhookEventInterface;
-use Kudos\PaymentMadeEasy\Events\BaseWebhookEvent;
-use Kudos\PaymentMadeEasy\Exceptions\WebhookException;
+use NexusPay\PaymentMadeEasy\Contracts\WebhookEventInterface;
+use NexusPay\PaymentMadeEasy\Events\BaseWebhookEvent;
+use NexusPay\PaymentMadeEasy\Exceptions\WebhookException;
 
 class PaystackWebhookHandler extends AbstractWebhookHandler
 {

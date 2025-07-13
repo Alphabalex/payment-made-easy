@@ -1,9 +1,9 @@
 <?php
 
 // In your EventServiceProvider.php
-use Kudos\PaymentMadeEasy\Events\PaymentSuccessful;
-use Kudos\PaymentMadeEasy\Events\PaymentFailed;
-use Kudos\PaymentMadeEasy\Events\RefundProcessed;
+use NexusPay\PaymentMadeEasy\Events\PaymentSuccessful;
+use NexusPay\PaymentMadeEasy\Events\PaymentFailed;
+use NexusPay\PaymentMadeEasy\Events\RefundProcessed;
 
 protected $listen = [
     PaymentSuccessful::class => [

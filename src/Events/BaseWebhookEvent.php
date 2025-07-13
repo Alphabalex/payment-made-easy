@@ -1,8 +1,8 @@
 <?php
 
-namespace Kudos\PaymentMadeEasy\Events;
+namespace NexusPay\PaymentMadeEasy\Events;
 
-use Kudos\PaymentMadeEasy\Contracts\WebhookEventInterface;
+use NexusPay\PaymentMadeEasy\Contracts\WebhookEventInterface;
 
 class BaseWebhookEvent implements WebhookEventInterface
 {

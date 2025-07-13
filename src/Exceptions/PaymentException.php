@@ -1,6 +1,6 @@
 <?php
 
-namespace Kudos\PaymentMadeEasy\Exceptions;
+namespace NexusPay\PaymentMadeEasy\Exceptions;
 
 use Exception;
 

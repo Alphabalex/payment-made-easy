@@ -1,6 +1,6 @@
 <?php
 
-namespace Kudos\PaymentMadeEasy\Jobs;
+namespace NexusPay\PaymentMadeEasy\Jobs;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -8,8 +8,8 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Log;
-use Kudos\PaymentMadeEasy\WebhookManager;
-use Kudos\PaymentMadeEasy\Exceptions\WebhookException;
+use NexusPay\PaymentMadeEasy\WebhookManager;
+use NexusPay\PaymentMadeEasy\Exceptions\WebhookException;
 
 class ProcessWebhookJob implements ShouldQueue
 {
@@ -24,7 +24,7 @@ class ProcessWebhookJob implements ShouldQueue
         $this->gateway = $gateway;
         $this->payload = $payload;
         $this->headers = $headers;
-        
+
         $this->onConnection(config('payment-gateways.webhooks.queue_connection', 'default'));
         $this->onQueue(config('payment-gateways.webhooks.queue_name', 'payment-webhooks'));
     }
@@ -35,7 +35,7 @@ class ProcessWebhookJob implements ShouldQueue
             // Create a mock request from the stored data
             $request = new \Illuminate\Http\Request();
             $request->replace($this->payload);
-            
+
             foreach ($this->headers as $key => $value) {
                 $request->headers->set($key, $value);
             }

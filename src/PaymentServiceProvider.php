@@ -1,9 +1,9 @@
 <?php
 
-namespace Kudos\PaymentMadeEasy;
+namespace NexusPay\PaymentMadeEasy;
 
 use Illuminate\Support\ServiceProvider;
-use Kudos\PaymentMadeEasy\Drivers\PaystackDriver;
+use NexusPay\PaymentMadeEasy\Drivers\PaystackDriver;
 
 class PaymentServiceProvider extends ServiceProvider
 {

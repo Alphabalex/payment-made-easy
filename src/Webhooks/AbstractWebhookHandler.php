@@ -1,17 +1,17 @@
 <?php
 
-namespace Kudos\PaymentMadeEasy\Webhooks;
+namespace NexusPay\PaymentMadeEasy\Webhooks;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Event;
-use Kudos\PaymentMadeEasy\Contracts\WebhookHandlerInterface;
-use Kudos\PaymentMadeEasy\Contracts\WebhookEventInterface;
-use Kudos\PaymentMadeEasy\Events\BaseWebhookEvent;
-use Kudos\PaymentMadeEasy\Events\PaymentSuccessful;
-use Kudos\PaymentMadeEasy\Events\PaymentFailed;
-use Kudos\PaymentMadeEasy\Events\RefundProcessed;
-use Kudos\PaymentMadeEasy\Exceptions\WebhookException;
+use NexusPay\PaymentMadeEasy\Contracts\WebhookHandlerInterface;
+use NexusPay\PaymentMadeEasy\Contracts\WebhookEventInterface;
+use NexusPay\PaymentMadeEasy\Events\BaseWebhookEvent;
+use NexusPay\PaymentMadeEasy\Events\PaymentSuccessful;
+use NexusPay\PaymentMadeEasy\Events\PaymentFailed;
+use NexusPay\PaymentMadeEasy\Events\RefundProcessed;
+use NexusPay\PaymentMadeEasy\Exceptions\WebhookException;
 
 abstract class AbstractWebhookHandler implements WebhookHandlerInterface
 {
@@ -44,21 +44,21 @@ abstract class AbstractWebhookHandler implements WebhookHandlerInterface
     protected function dispatchEvent(WebhookEventInterface $event): void
     {
         $eventType = $this->mapEventType($event->getEventType());
-        
+
         switch ($eventType) {
             case 'payment.successful':
                 Event::dispatch(new PaymentSuccessful($event, $event->getData()));
                 break;
-                
+
             case 'payment.failed':
                 $reason = $this->extractFailureReason($event->getData());
                 Event::dispatch(new PaymentFailed($event, $event->getData(), $reason));
                 break;
-                
+
             case 'refund.processed':
                 Event::dispatch(new RefundProcessed($event, $event->getData()));
                 break;
-                
+
             default:
                 // Dispatch a generic webhook event
                 Event::dispatch('payment.webhook.' . $eventType, [$event]);
@@ -69,7 +69,7 @@ abstract class AbstractWebhookHandler implements WebhookHandlerInterface
     protected function mapEventType(string $originalEventType): string
     {
         $mapping = config("payment-gateways.webhooks.event_mapping.{$this->gateway}", []);
-        
+
         return $mapping[$originalEventType] ?? $originalEventType;
     }
 

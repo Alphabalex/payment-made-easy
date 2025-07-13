@@ -1,6 +1,6 @@
 <?php
 
-namespace Kudos\PaymentMadeEasy;
+namespace NexusPay\PaymentMadeEasy;
 
 use Illuminate\Support\Manager;
 use InvalidArgumentException;

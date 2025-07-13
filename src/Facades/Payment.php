@@ -1,6 +1,6 @@
 <?php
 
-namespace Kudos\PaymentMadeEasy\Facades;
+namespace NexusPay\PaymentMadeEasy\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

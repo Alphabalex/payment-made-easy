@@ -11,13 +11,13 @@ A comprehensive Laravel package for integrating multiple payment gateways with w
 ## 1. Install via Composer
 
 ```bash
-composer require kudos/payment-made-easy
+composer require nexuspay/payment-made-easy
 ```
 
 ## 2. Publish Configuration
 
 ```bash
-php artisan vendor:publish --provider="Kudos\PaymentMadeEasy\PaymentServiceProvider"
+php artisan vendor:publish --provider="NexusPay\PaymentMadeEasy\PaymentServiceProvider"
 ```
 
 ## 3. Environment Variables
@@ -42,7 +42,7 @@ The package is now ready to use! See the usage examples for implementation detai
 ## Basic Usage
 
 ```php
-use Kudos\PaymentMadeEasy\Facades\Payment;
+use NexusPay\PaymentMadeEasy\Facades\Payment;
 
 // Initialize payment
 $response = Payment::driver('paystack')->initializePayment([

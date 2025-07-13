@@ -1,5 +1,5 @@
 {
-    "name": "kudos/payment-made-easy",
+    "name": "nexuspay/payment-made-easy",
     "description": "A Laravel package for handling payments with multiple gateways (Paystack, Flutterwave, Stripe, Seerbit, etc.)",
     "type": "library",
     "require": {
@@ -14,21 +14,21 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Kudos\\PaymentMadeEasy\\": "src/"
+            "NexusPay\\PaymentMadeEasy\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Kudos\\PaymentMadeEasy\\Tests\\": "tests/"
+            "NexusPay\\PaymentMadeEasy\\Tests\\": "tests/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Kudos\\PaymentMadeEasy\\PaymentServiceProvider"
+                "NexusPay\\PaymentMadeEasy\\PaymentServiceProvider"
             ],
             "aliases": {
-                "Payment": "Kudos\\PaymentMadeEasy\\Facades\\Payment"
+                "Payment": "NexusPay\\PaymentMadeEasy\\Facades\\Payment"
             }
         }
     },

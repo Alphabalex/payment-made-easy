@@ -1,6 +1,6 @@
 <?php
 
-namespace Kudos\PaymentMadeEasy\Contracts;
+namespace NexusPay\PaymentMadeEasy\Contracts;
 
 use Illuminate\Http\Request;
 
