@@ -10,49 +10,46 @@ A comprehensive Laravel package for integrating multiple payment gateways with w
 
 ## 1. Install via Composer
 
-\`\`\`bash
+```bash
 composer require kudos/payment-made-easy
-\`\`\`
+```
 
 ## 2. Publish Configuration
 
-\`\`\`bash
+```bash
 php artisan vendor:publish --provider="Kudos\PaymentMadeEasy\PaymentServiceProvider"
-\`\`\`
+```
 
 ## 3. Environment Variables
 
 Add the following to your .env file:
 
-\`\`\`env
-
+```env
 # Default Gateway
-
 PAYMENT_GATEWAY=paystack
 PAYMENT_CURRENCY=NGN
 
 # Paystack
-
 PAYSTACK_PUBLIC_KEY=your_paystack_public_key
 PAYSTACK_SECRET_KEY=your_paystack_secret_key
 PAYSTACK_CALLBACK_URL=https://yoursite.com/payment/callback
+```
 
 ## 4. Usage
 
 The package is now ready to use! See the usage examples for implementation details.
-\`\`\`
 
 ## Basic Usage
 
-\`\`\`php
+```php
 use Kudos\PaymentMadeEasy\Facades\Payment;
 
 // Initialize payment
 $response = Payment::driver('paystack')->initializePayment([
-'email' => 'customer@example.com',
-'amount' => 1000, // Amount in kobo/cents
-'reference' => 'ORDER_123',
-'callback_url' => 'https://yoursite.com/payment/callback',
+    'email' => 'customer@example.com',
+    'amount' => 1000, // Amount in kobo/cents
+    'reference' => 'ORDER_123',
+    'callback_url' => 'https://yoursite.com/payment/callback',
 ]);
 
 // Verify payment
@@ -60,18 +57,18 @@ $verification = Payment::driver('paystack')->verifyPayment('ORDER_123');
 
 // Process refund
 $refund = Payment::driver('paystack')->refundPayment('ORDER_123', 500);
-\`\`\`
+```
 
 ## Webhook Support
 
 The package includes comprehensive webhook support for all gateways:
 
-\`\`\`php
+```php
 // Webhook URLs are automatically registered:
 // POST /webhooks/payment-gateways/{gateway}
 
 // Example: https://yoursite.com/webhooks/payment-gateways/paystack
-\`\`\`
+```
 
 ## Advanced Features
 
@@ -84,9 +81,9 @@ The package includes comprehensive webhook support for all gateways:
 
 ## Testing
 
-\`\`\`bash
+```bash
 composer test
-\`\`\`
+```
 
 ## Contributing
 
