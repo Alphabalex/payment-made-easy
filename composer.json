@@ -1,0 +1,43 @@
+{
+    "name": "kudos/payment-made-easy",
+    "description": "A Laravel package for handling payments with multiple gateways (Paystack, Flutterwave, Stripe, Seerbit, etc.)",
+    "type": "library",
+    "require": {
+        "php": "^8.1",
+        "illuminate/support": "^9.0|^10.0|^11.0",
+        "guzzlehttp/guzzle": "^7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0|^10.0",
+        "orchestra/testbench": "^7.0|^8.0|^9.0"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Kudos\\PaymentMadeEasy\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Kudos\\PaymentMadeEasy\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Kudos\\PaymentMadeEasy\\PaymentServiceProvider"
+            ],
+            "aliases": {
+                "Payment": "Kudos\\PaymentMadeEasy\\Facades\\Payment"
+            }
+        }
+    },
+    "authors": [
+        {
+            "name": "Balogun Abdulquddus",
+            "email": "babusunnah@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

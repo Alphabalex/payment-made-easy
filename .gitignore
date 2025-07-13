@@ -1,0 +1,28 @@
+# Dependencies
+/vendor/
+
+# Composer lock file
+composer.lock
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Laravel specific (if testing)
+.env
+.env.backup
+.env.production
+
+# Testing
+/coverage/
+.phpunit.result.cache
+
+# Build artifacts
+/build/
+/dist/
