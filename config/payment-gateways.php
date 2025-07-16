@@ -30,7 +30,17 @@ return [
             'base_url' => env('PAYSTACK_BASE_URL', 'https://api.paystack.co'),
             'callback_url' => env('PAYSTACK_CALLBACK_URL'),
             'webhook_secret' => env('PAYSTACK_WEBHOOK_SECRET'),
-        ]
+        ],
+
+        'flutterwave' => [
+            'driver' => 'flutterwave',
+            'public_key' => env('FLUTTERWAVE_PUBLIC_KEY'),
+            'secret_key' => env('FLUTTERWAVE_SECRET_KEY'),
+            'encryption_key' => env('FLUTTERWAVE_ENCRYPTION_KEY'),
+            'base_url' => env('FLUTTERWAVE_BASE_URL', 'https://api.flutterwave.com/v3'),
+            'callback_url' => env('FLUTTERWAVE_CALLBACK_URL'),
+            'webhook_secret' => env('FLUTTERWAVE_WEBHOOK_SECRET'),
+        ],
     ],
 
     /*
@@ -45,7 +55,7 @@ return [
         'queue_events' => env('PAYMENT_WEBHOOK_QUEUE_EVENTS', false),
         'queue_connection' => env('PAYMENT_WEBHOOK_QUEUE_CONNECTION', 'default'),
         'queue_name' => env('PAYMENT_WEBHOOK_QUEUE_NAME', 'payment-webhooks'),
-        
+
         // Event mapping for different gateways
         'event_mapping' => [
             'paystack' => [
@@ -54,7 +64,13 @@ return [
                 'transfer.success' => 'transfer.successful',
                 'transfer.failed' => 'transfer.failed',
                 'refund.processed' => 'refund.processed',
-            ]
+            ],
+            'flutterwave' => [
+                'charge.completed' => 'payment.successful',
+                'charge.failed' => 'payment.failed',
+                'transfer.completed' => 'transfer.successful',
+                'transfer.failed' => 'transfer.failed',
+            ],
         ],
     ],
     /*

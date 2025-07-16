@@ -39,7 +39,7 @@ class HandleSuccessfulPayment
 }
 
 // Manual webhook handling
-use YourVendor\LaravelPaymentGateways\WebhookManager;
+use NexusPay\PaymentMadeEasy\WebhookManager;
 
 class CustomWebhookController extends Controller
 {
@@ -62,4 +62,5 @@ PAYMENT_WEBHOOK_LOG_EVENTS=true
 PAYMENT_WEBHOOK_QUEUE_EVENTS=false
 
 PAYSTACK_WEBHOOK_SECRET=your_paystack_webhook_secret
+FLUTTERWAVE_WEBHOOK_SECRET=your_flutterwave_webhook_secret
 */

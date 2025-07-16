@@ -3,9 +3,10 @@
 namespace NexusPay\PaymentMadeEasy;
 
 use Illuminate\Http\Request;
-use NexusPay\PaymentMadeEasy\Contracts\WebhookHandlerInterface;
-use NexusPay\PaymentMadeEasy\Webhooks\PaystackWebhookHandler;
 use NexusPay\PaymentMadeEasy\Exceptions\WebhookException;
+use NexusPay\PaymentMadeEasy\Webhooks\PaystackWebhookHandler;
+use NexusPay\PaymentMadeEasy\Contracts\WebhookHandlerInterface;
+use NexusPay\PaymentMadeEasy\Webhooks\FlutterwaveWebhookHandler;
 
 class WebhookManager
 {
@@ -50,6 +51,7 @@ class WebhookManager
     {
         return match ($gateway) {
             'paystack' => new PaystackWebhookHandler($config, $gateway),
+            'flutterwave' => new FlutterwaveWebhookHandler($config, $gateway),
             default => throw new WebhookException("Unsupported gateway: {$gateway}"),
         };
     }

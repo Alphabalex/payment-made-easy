@@ -33,6 +33,12 @@ PAYMENT_CURRENCY=NGN
 PAYSTACK_PUBLIC_KEY=your_paystack_public_key
 PAYSTACK_SECRET_KEY=your_paystack_secret_key
 PAYSTACK_CALLBACK_URL=https://yoursite.com/payment/callback
+
+# Flutterwave
+FLUTTERWAVE_PUBLIC_KEY=your_flutterwave_public_key
+FLUTTERWAVE_SECRET_KEY=your_flutterwave_secret_key
+FLUTTERWAVE_ENCRYPTION_KEY=your_flutterwave_encryption_key
+FLUTTERWAVE_CALLBACK_URL=https://yoursite.com/payment/callback
 ```
 
 ## 4. Usage

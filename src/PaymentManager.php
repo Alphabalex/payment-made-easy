@@ -17,6 +17,11 @@ class PaymentManager extends Manager
         $config = $this->config->get('payment-gateways.gateways.paystack');
         return $this->buildProvider(Drivers\PaystackDriver::class, $config);
     }
+    public function createFlutterwaveDriver()
+    {
+        $config = $this->config->get('payment-gateways.gateways.flutterwave');
+        return $this->buildProvider(Drivers\FlutterwaveDriver::class, $config);
+    }
 
     protected function buildProvider($provider, $config)
     {

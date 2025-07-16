@@ -22,6 +22,13 @@ $paystackResponse = Payment::driver('paystack')->initializePayment([
     'amount' => 1000.00,
 ]);
 
+$flutterwaveResponse = Payment::driver('flutterwave')->initializePayment([
+    'email' => 'customer@example.com',
+    'amount' => 1000.00,
+    'name' => 'John Doe',
+    'phone' => '+2348123456789',
+]);
+
 // Verify payment
 $verification = Payment::verifyPayment('payment_reference');
 
