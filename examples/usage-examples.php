@@ -29,6 +29,12 @@ $flutterwaveResponse = Payment::driver('flutterwave')->initializePayment([
     'phone' => '+2348123456789',
 ]);
 
+$stripeResponse = Payment::driver('stripe')->initializePayment([
+    'email' => 'customer@example.com',
+    'amount' => 1000.00,
+    'currency' => 'usd',
+]);
+
 // Verify payment
 $verification = Payment::verifyPayment('payment_reference');
 

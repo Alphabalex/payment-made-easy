@@ -39,6 +39,12 @@ FLUTTERWAVE_PUBLIC_KEY=your_flutterwave_public_key
 FLUTTERWAVE_SECRET_KEY=your_flutterwave_secret_key
 FLUTTERWAVE_ENCRYPTION_KEY=your_flutterwave_encryption_key
 FLUTTERWAVE_CALLBACK_URL=https://yoursite.com/payment/callback
+
+# Stripe
+STRIPE_PUBLIC_KEY=your_stripe_public_key
+STRIPE_SECRET_KEY=your_stripe_secret_key
+STRIPE_WEBHOOK_SECRET=your_stripe_webhook_secret
+STRIPE_CALLBACK_URL=https://yoursite.com/payment/callback
 ```
 
 ## 4. Usage

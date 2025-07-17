@@ -41,6 +41,14 @@ return [
             'callback_url' => env('FLUTTERWAVE_CALLBACK_URL'),
             'webhook_secret' => env('FLUTTERWAVE_WEBHOOK_SECRET'),
         ],
+
+        'stripe' => [
+            'driver' => 'stripe',
+            'public_key' => env('STRIPE_PUBLIC_KEY'),
+            'secret_key' => env('STRIPE_SECRET_KEY'),
+            'webhook_secret' => env('STRIPE_WEBHOOK_SECRET'),
+            'callback_url' => env('STRIPE_CALLBACK_URL'),
+        ],
     ],
 
     /*
@@ -70,6 +78,13 @@ return [
                 'charge.failed' => 'payment.failed',
                 'transfer.completed' => 'transfer.successful',
                 'transfer.failed' => 'transfer.failed',
+            ],
+            'stripe' => [
+                'payment_intent.succeeded' => 'payment.successful',
+                'payment_intent.payment_failed' => 'payment.failed',
+                'charge.dispute.created' => 'dispute.created',
+                'invoice.payment_succeeded' => 'invoice.paid',
+                'customer.subscription.created' => 'subscription.created',
             ],
         ],
     ],

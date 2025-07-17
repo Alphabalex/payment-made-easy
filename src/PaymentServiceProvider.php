@@ -3,6 +3,7 @@
 namespace NexusPay\PaymentMadeEasy;
 
 use Illuminate\Support\ServiceProvider;
+use NexusPay\PaymentMadeEasy\Drivers\StripeDriver;
 use NexusPay\PaymentMadeEasy\Drivers\PaystackDriver;
 use NexusPay\PaymentMadeEasy\Drivers\FlutterwaveDriver;
 
@@ -45,6 +46,9 @@ class PaymentServiceProvider extends ServiceProvider
         });
         $manager->extend('flutterwave', function ($app, $config) {
             return new FlutterwaveDriver($config);
+        });
+        $manager->extend('stripe', function ($app, $config) {
+            return new StripeDriver($config);
         });
     }
 }

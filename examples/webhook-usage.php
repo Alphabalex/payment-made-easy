@@ -63,4 +63,5 @@ PAYMENT_WEBHOOK_QUEUE_EVENTS=false
 
 PAYSTACK_WEBHOOK_SECRET=your_paystack_webhook_secret
 FLUTTERWAVE_WEBHOOK_SECRET=your_flutterwave_webhook_secret
+STRIPE_WEBHOOK_SECRET=your_stripe_webhook_secret
 */

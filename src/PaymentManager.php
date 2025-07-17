@@ -23,6 +23,12 @@ class PaymentManager extends Manager
         return $this->buildProvider(Drivers\FlutterwaveDriver::class, $config);
     }
 
+    public function createStripeDriver()
+    {
+        $config = $this->config->get('payment-gateways.gateways.stripe');
+        return $this->buildProvider(Drivers\StripeDriver::class, $config);
+    }
+
     protected function buildProvider($provider, $config)
     {
         return new $provider($config);
