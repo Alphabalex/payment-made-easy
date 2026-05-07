@@ -224,11 +224,11 @@ class BudpayDriver extends AbstractPaymentDriver implements
         try {
             $payload = [
                 'customer' => $data['email'],
-                'firstName'=> $data['first_name'] ?? (explode(' ', $data['name'] ?? '')[0] ?? ''),
+                'firstName' => $data['first_name'] ?? (explode(' ', $data['name'] ?? '')[0] ?? ''),
                 'lastName' => $data['last_name']  ?? (explode(' ', $data['name'] ?? '')[1] ?? ''),
                 'phone'    => $data['phone'] ?? '',
                 'amount'   => isset($data['amount']) ? (string) $data['amount'] : null,
-                'reference'=> $data['reference'] ?? $this->generateReference('budpay-va'),
+                'reference' => $data['reference'] ?? $this->generateReference('budpay-va'),
             ];
 
             if ($payload['amount'] === null) {

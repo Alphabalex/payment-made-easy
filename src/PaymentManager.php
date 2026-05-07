@@ -65,6 +65,36 @@ class PaymentManager extends Manager
         return $this->buildProvider(Drivers\InterswitchDriver::class, $config);
     }
 
+    public function createPaypalDriver()
+    {
+        $config = $this->config->get('payment-gateways.gateways.paypal');
+        return $this->buildProvider(Drivers\PayPalDriver::class, $config);
+    }
+
+    public function createMpesaDriver()
+    {
+        $config = $this->config->get('payment-gateways.gateways.mpesa');
+        return $this->buildProvider(Drivers\MPesaDriver::class, $config);
+    }
+
+    public function createMtnmomoDriver()
+    {
+        $config = $this->config->get('payment-gateways.gateways.mtnmomo');
+        return $this->buildProvider(Drivers\MTNMoMoDriver::class, $config);
+    }
+
+    public function createRazorpayDriver()
+    {
+        $config = $this->config->get('payment-gateways.gateways.razorpay');
+        return $this->buildProvider(Drivers\RazorpayDriver::class, $config);
+    }
+
+    public function createPaddleDriver()
+    {
+        $config = $this->config->get('payment-gateways.gateways.paddle');
+        return $this->buildProvider(Drivers\PaddleDriver::class, $config);
+    }
+
     protected function buildProvider($provider, $config)
     {
         return new $provider($config);

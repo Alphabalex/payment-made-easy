@@ -208,7 +208,7 @@ class MonnifyDriver extends AbstractPaymentDriver implements
                 'narration'           => $data['narration'] ?? 'Bulk Transfer',
                 'sourceAccountNumber' => $this->config['wallet_account_number'] ?? '',
                 'onValidationFailure' => $data['on_validation_failure'] ?? 'CONTINUE',
-                'notificationInterval'=> $data['notification_interval'] ?? 20,
+                'notificationInterval' => $data['notification_interval'] ?? 20,
                 'transactionList'     => array_map(fn($t) => [
                     'amount'              => $t['amount'],
                     'reference'           => $t['reference'] ?? $this->generateReference('monnify-b'),

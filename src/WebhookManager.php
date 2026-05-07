@@ -8,7 +8,12 @@ use NexusPay\PaymentMadeEasy\Webhooks\BudpayWebhookHandler;
 use NexusPay\PaymentMadeEasy\Webhooks\FlutterwaveWebhookHandler;
 use NexusPay\PaymentMadeEasy\Webhooks\InterswitchWebhookHandler;
 use NexusPay\PaymentMadeEasy\Webhooks\MonnifyWebhookHandler;
+use NexusPay\PaymentMadeEasy\Webhooks\MPesaWebhookHandler;
+use NexusPay\PaymentMadeEasy\Webhooks\MTNMoMoWebhookHandler;
+use NexusPay\PaymentMadeEasy\Webhooks\PaddleWebhookHandler;
+use NexusPay\PaymentMadeEasy\Webhooks\PayPalWebhookHandler;
 use NexusPay\PaymentMadeEasy\Webhooks\PaystackWebhookHandler;
+use NexusPay\PaymentMadeEasy\Webhooks\RazorpayWebhookHandler;
 use NexusPay\PaymentMadeEasy\Webhooks\RemitaWebhookHandler;
 use NexusPay\PaymentMadeEasy\Webhooks\SeerbitWebhookHandler;
 use NexusPay\PaymentMadeEasy\Webhooks\SquadWebhookHandler;
@@ -66,6 +71,11 @@ class WebhookManager
             'remita'      => new RemitaWebhookHandler($config, $gateway),
             'budpay'      => new BudpayWebhookHandler($config, $gateway),
             'interswitch' => new InterswitchWebhookHandler($config, $gateway),
+            'paypal'      => new PayPalWebhookHandler($config, $gateway),
+            'mpesa'       => new MPesaWebhookHandler($config, $gateway),
+            'mtnmomo'     => new MTNMoMoWebhookHandler($config, $gateway),
+            'razorpay'    => new RazorpayWebhookHandler($config, $gateway),
+            'paddle'      => new PaddleWebhookHandler($config, $gateway),
             default       => throw new WebhookException("Unsupported gateway: {$gateway}"),
         };
     }

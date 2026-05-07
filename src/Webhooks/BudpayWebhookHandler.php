@@ -65,7 +65,7 @@ class BudpayWebhookHandler extends AbstractWebhookHandler
                 'customer_email'  => $data['customer']['email'] ?? '',
                 'account_number'  => $data['account_number'] ?? '',
                 'bank_name'       => $data['bank_name'] ?? '',
-                'transaction_date'=> $data['createdAt'] ?? '',
+                'transaction_date' => $data['createdAt'] ?? '',
             ];
         }
 

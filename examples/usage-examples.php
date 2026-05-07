@@ -423,3 +423,292 @@ class PaymentController extends Controller
         return $driver->createPlan($request->validated());
     }
 }
+
+// =============================================================================
+// PHASE 4 — GLOBAL GATEWAYS
+// =============================================================================
+
+// ---------------------------------------------------------------------------
+// PayPal — One-Time Payment
+// ---------------------------------------------------------------------------
+
+$paypalOrder = Payment::driver('paypal')->initializePayment([
+    'amount'      => 49.99,
+    'currency'    => 'USD',
+    'email'       => 'buyer@example.com',
+    'description' => 'Order #12345',
+]);
+// Redirect customer to the approve link:
+// $paypalOrder['links'][n]['href'] where rel == 'approve'
+
+// Capture after customer approves:
+$captured = Payment::driver('paypal')->verifyPayment($paypalOrder['id']);
+
+// Refund
+Payment::driver('paypal')->refundPayment($captured['id'], 20.00); // partial
+Payment::driver('paypal')->refundPayment($captured['id']);         // full
+
+// ---------------------------------------------------------------------------
+// PayPal — Subscriptions
+// ---------------------------------------------------------------------------
+
+$ppDriver = Payment::driver('paypal');
+
+$plan = $ppDriver->createPlan([
+    'name'       => 'Pro Monthly',
+    'amount'     => 9.99,
+    'currency'   => 'USD',
+    'interval'   => 'monthly',
+    // Optionally supply an existing PayPal product_id:
+    // 'product_id' => 'PROD-XXXXXXXX',
+]);
+$planId = $plan['data']['plan_id'];
+
+$subscription = $ppDriver->createSubscription([
+    'email'     => 'buyer@example.com',
+    'plan_code' => $planId,
+]);
+// Redirect to $subscription['links'][n]['href'] where rel == 'approve'
+
+$ppDriver->cancelSubscription($subscription['id']);
+
+// ---------------------------------------------------------------------------
+// PayPal — Payouts (Disbursements)
+// ---------------------------------------------------------------------------
+
+Payment::driver('paypal')->transfer([
+    'email'     => 'recipient@example.com',  // PayPal receiver email
+    'amount'    => 100.00,
+    'currency'  => 'USD',
+    'narration' => 'Freelancer payment',
+    'reference' => 'PAYOUT_PP_001',
+]);
+
+Payment::driver('paypal')->bulkTransfer([
+    'transfers' => [
+        ['email' => 'alice@example.com', 'amount' => 50.00, 'currency' => 'USD', 'reference' => 'B001'],
+        ['email' => 'bob@example.com',   'amount' => 75.00, 'currency' => 'USD', 'reference' => 'B002'],
+    ],
+]);
+
+// ---------------------------------------------------------------------------
+// PayPal — Payment Links
+// ---------------------------------------------------------------------------
+
+$link = Payment::driver('paypal')->createPaymentLink([
+    'amount'      => 25.00,
+    'currency'    => 'USD',
+    'description' => 'E-book purchase',
+]);
+Payment::driver('paypal')->disablePaymentLink($link['data']['id']);
+
+// ---------------------------------------------------------------------------
+// M-Pesa (Safaricom Kenya) — STK Push
+// ---------------------------------------------------------------------------
+
+// Initiate payment — sends prompt to customer's phone
+$mpesaResponse = Payment::driver('mpesa')->initializePayment([
+    'phone'     => '254712345678',   // MSISDN in international format (no +)
+    'amount'    => 1000,             // KES, whole number
+    'reference' => 'ORDER_001',
+    'narration' => 'Payment for Order #001',
+]);
+$checkoutRequestId = $mpesaResponse['data']['checkout_request_id'];
+
+// Poll for status (call this from your callback handler or a polling job)
+$status = Payment::driver('mpesa')->verifyPayment($checkoutRequestId);
+
+// Transaction status query
+Payment::driver('mpesa')->getTransactions([
+    'transaction_id' => 'QKA12BC345',
+    'party_a'        => '254712345678',
+    'identifier_type' => '1',
+]);
+
+// Refund / reversal
+Payment::driver('mpesa')->refundPayment('QKA12BC345', 500);
+
+// ---------------------------------------------------------------------------
+// MTN MoMo — RequestToPay (Collections)
+// ---------------------------------------------------------------------------
+
+$momoResponse = Payment::driver('mtnmomo')->initializePayment([
+    'phone'    => '256771234567',  // MSISDN (no +)
+    'amount'   => 5000,
+    'currency' => 'UGX',
+    'narration' => 'Invoice #42',
+]);
+$momoRef = $momoResponse['data']['reference'];  // UUID sent as X-Reference-Id
+
+// Poll status (async — no synchronous confirmation from MoMo)
+$momoStatus = Payment::driver('mtnmomo')->verifyPayment($momoRef);
+
+// Refund
+Payment::driver('mtnmomo')->refundPayment($momoRef, 2500);
+
+// ---------------------------------------------------------------------------
+// MTN MoMo — Disbursements (Transfer)
+// ---------------------------------------------------------------------------
+
+$momoTransfer = Payment::driver('mtnmomo')->transfer([
+    'phone'    => '256771234567',
+    'amount'   => 10000,
+    'currency' => 'UGX',
+    'narration' => 'Salary payout',
+    'reference' => 'MOMO_PAY_001',
+]);
+
+// Verify disbursement
+Payment::driver('mtnmomo')->verifyTransfer($momoTransfer['data']['reference']);
+
+// Account lookup
+Payment::driver('mtnmomo')->resolveAccountNumber([
+    'phone' => '256771234567',
+]);
+
+// ---------------------------------------------------------------------------
+// Razorpay — One-Time Payment
+// ---------------------------------------------------------------------------
+
+$rzOrder = Payment::driver('razorpay')->initializePayment([
+    'email'    => 'customer@example.com',
+    'amount'   => 499.00,   // INR — converted to paise internally
+    'currency' => 'INR',
+    'name'     => 'Jane Doe',
+    'phone'    => '+919876543210',
+]);
+// Use $rzOrder['id'], $rzOrder['data']['key_id'] with Razorpay checkout.js
+
+// Verify order
+Payment::driver('razorpay')->verifyPayment($rzOrder['id']);
+
+// Get payment by Razorpay payment_id (from checkout callback)
+Payment::driver('razorpay')->getPayment('pay_XXXXXXXX');
+
+// Refund
+Payment::driver('razorpay')->refundPayment('pay_XXXXXXXX', 100.00);
+
+// ---------------------------------------------------------------------------
+// Razorpay — Subscriptions
+// ---------------------------------------------------------------------------
+
+$rzDriver = Payment::driver('razorpay');
+
+$rzPlan = $rzDriver->createPlan([
+    'name'     => 'Basic Monthly',
+    'amount'   => 999.00,
+    'currency' => 'INR',
+    'interval' => 'monthly',
+]);
+$rzPlanId = $rzPlan['data']['plan_code'];
+
+$rzSub = $rzDriver->createSubscription([
+    'email'       => 'customer@example.com',
+    'plan_code'   => $rzPlanId,
+    'total_count' => 12,   // 12 billing cycles
+    'start_at'    => time() + 3600,
+]);
+
+$rzDriver->pauseSubscription($rzSub['id']);
+$rzDriver->resumeSubscription($rzSub['id']);
+$rzDriver->cancelSubscription($rzSub['id']);
+
+// ---------------------------------------------------------------------------
+// Razorpay — Disbursements (Payouts via Razorpay X)
+// ---------------------------------------------------------------------------
+
+// Step 1 — create a contact + fund account (one-time per recipient)
+$contact = Payment::driver('razorpay')->createTransferRecipient([
+    'name'           => 'Jane Doe',
+    'account_number' => '9876543210',
+    'bank_code'      => 'HDFC0001234',  // IFSC code
+    'currency'       => 'INR',
+]);
+$fundAccountId = $contact['data']['fund_account_id'];
+
+// Step 2 — send payout
+Payment::driver('razorpay')->transfer([
+    'fund_account_id' => $fundAccountId,
+    'amount'          => 10000.00,
+    'currency'        => 'INR',
+    'narration'       => 'Freelancer payment',
+    'reference'       => 'RZP_PAY_001',
+]);
+
+// ---------------------------------------------------------------------------
+// Razorpay — Payment Links
+// ---------------------------------------------------------------------------
+
+$rzLink = Payment::driver('razorpay')->createPaymentLink([
+    'amount'      => 1500.00,
+    'currency'    => 'INR',
+    'description' => 'Invoice #88',
+    'email'       => 'customer@example.com',
+    'phone'       => '+919876543210',
+    'expire_by'   => time() + 86400,   // expires in 24 hours
+]);
+Payment::driver('razorpay')->disablePaymentLink($rzLink['data']['id']);
+
+// ---------------------------------------------------------------------------
+// Paddle — One-Time Transaction
+// ---------------------------------------------------------------------------
+
+$paddleTransaction = Payment::driver('paddle')->initializePayment([
+    'amount'      => 29.99,
+    'currency'    => 'USD',
+    'description' => 'Pro Tier — Annual',
+    'email'       => 'customer@example.com',
+]);
+// Redirect to $paddleTransaction['data']['authorization_url']
+
+// Verify
+Payment::driver('paddle')->verifyPayment($paddleTransaction['id']);
+
+// Refund (creates an adjustment)
+Payment::driver('paddle')->refundPayment($paddleTransaction['id']);        // full
+Payment::driver('paddle')->refundPayment($paddleTransaction['id'], 10.00); // partial
+
+// ---------------------------------------------------------------------------
+// Paddle — Subscriptions
+// ---------------------------------------------------------------------------
+
+$pdDriver = Payment::driver('paddle');
+
+// Create a plan (Paddle: creates a Product then a Price)
+$pdPlan = $pdDriver->createPlan([
+    'name'     => 'Growth Monthly',
+    'amount'   => 49.00,
+    'currency' => 'USD',
+    'interval' => 'monthly',
+    // Optionally supply existing Paddle product_id:
+    // 'product_id' => 'pro_XXXXXXXX',
+]);
+$pdPriceId = $pdPlan['data']['plan_code'];
+
+// Subscriptions are created via hosted checkout (returns checkout URL)
+$pdSub = $pdDriver->createSubscription([
+    'email'     => 'customer@example.com',
+    'plan_code' => $pdPriceId,
+]);
+// Redirect to $pdSub['data']['authorization_url']
+
+// Cancel at next billing period
+$pdDriver->cancelSubscription($pdSub['id']);
+
+// List customer subscriptions
+$pdDriver->listCustomerSubscriptions('customer@example.com');
+
+// Archive a price (soft-delete a plan)
+$pdDriver->deletePlan($pdPriceId);
+
+// ---------------------------------------------------------------------------
+// Paddle — Payment Links
+// ---------------------------------------------------------------------------
+
+$pdLink = Payment::driver('paddle')->createPaymentLink([
+    'amount'      => 19.99,
+    'currency'    => 'USD',
+    'description' => 'Starter pack',
+]);
+$pdLinkId = $pdLink['data']['id'];
+Payment::driver('paddle')->disablePaymentLink($pdLinkId);

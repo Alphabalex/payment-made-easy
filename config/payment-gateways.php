@@ -113,6 +113,66 @@ return [
             'callback_url'    => env('INTERSWITCH_CALLBACK_URL'),
             'webhook_secret'  => env('INTERSWITCH_WEBHOOK_SECRET'),
         ],
+
+        'paypal' => [
+            'driver'        => 'paypal',
+            'client_id'     => env('PAYPAL_CLIENT_ID'),
+            'client_secret' => env('PAYPAL_CLIENT_SECRET'),
+            'currency'      => env('PAYPAL_CURRENCY', 'USD'),
+            'base_url'      => env('PAYPAL_BASE_URL', 'https://api.paypal.com'),
+            'callback_url'  => env('PAYPAL_CALLBACK_URL'),
+            'cancel_url'    => env('PAYPAL_CANCEL_URL'),
+            'webhook_id'    => env('PAYPAL_WEBHOOK_ID'),
+        ],
+
+        'mpesa' => [
+            'driver'              => 'mpesa',
+            'consumer_key'        => env('MPESA_CONSUMER_KEY'),
+            'consumer_secret'     => env('MPESA_CONSUMER_SECRET'),
+            'shortcode'           => env('MPESA_SHORTCODE'),
+            'passkey'             => env('MPESA_PASSKEY'),
+            'initiator_name'      => env('MPESA_INITIATOR_NAME'),
+            'security_credential' => env('MPESA_SECURITY_CREDENTIAL'),
+            'base_url'            => env('MPESA_BASE_URL', 'https://api.safaricom.co.ke'),
+            'callback_url'        => env('MPESA_CALLBACK_URL'),
+            'result_url'          => env('MPESA_RESULT_URL'),
+            'timeout_url'         => env('MPESA_TIMEOUT_URL'),
+        ],
+
+        'mtnmomo' => [
+            'driver'                          => 'mtnmomo',
+            'collection_user_id'              => env('MTNMOMO_COLLECTION_USER_ID'),
+            'collection_api_key'              => env('MTNMOMO_COLLECTION_API_KEY'),
+            'collection_subscription_key'     => env('MTNMOMO_COLLECTION_SUBSCRIPTION_KEY'),
+            'disbursement_user_id'            => env('MTNMOMO_DISBURSEMENT_USER_ID'),
+            'disbursement_api_key'            => env('MTNMOMO_DISBURSEMENT_API_KEY'),
+            'disbursement_subscription_key'   => env('MTNMOMO_DISBURSEMENT_SUBSCRIPTION_KEY'),
+            'environment'                     => env('MTNMOMO_ENVIRONMENT', 'sandbox'),
+            'currency'                        => env('MTNMOMO_CURRENCY', 'EUR'),
+            'base_url'                        => env('MTNMOMO_BASE_URL', 'https://sandbox.momodeveloper.mtn.com'),
+            'callback_url'                    => env('MTNMOMO_CALLBACK_URL'),
+        ],
+
+        'razorpay' => [
+            'driver'         => 'razorpay',
+            'key_id'         => env('RAZORPAY_KEY_ID'),
+            'key_secret'     => env('RAZORPAY_KEY_SECRET'),
+            'account_number' => env('RAZORPAY_ACCOUNT_NUMBER'),
+            'currency'       => env('RAZORPAY_CURRENCY', 'INR'),
+            'base_url'       => env('RAZORPAY_BASE_URL', 'https://api.razorpay.com/v1'),
+            'callback_url'   => env('RAZORPAY_CALLBACK_URL'),
+            'webhook_secret' => env('RAZORPAY_WEBHOOK_SECRET'),
+        ],
+
+        'paddle' => [
+            'driver'         => 'paddle',
+            'api_key'        => env('PADDLE_API_KEY'),
+            'client_token'   => env('PADDLE_CLIENT_TOKEN'),
+            'webhook_secret' => env('PADDLE_WEBHOOK_SECRET'),
+            'currency'       => env('PADDLE_CURRENCY', 'USD'),
+            'base_url'       => env('PADDLE_BASE_URL', 'https://api.paddle.com'),
+            'callback_url'   => env('PADDLE_CALLBACK_URL'),
+        ],
     ],
 
     /*
@@ -253,6 +313,93 @@ return [
                 'PAYMENT_SUCCESSFUL'                 => 'payment.successful',
                 'PAYMENT_PENDING'                    => 'payment.pending',
                 'PAYMENT_FAILED'                     => 'payment.failed',
+            ],
+
+            'paypal' => [
+                // Payments
+                'PAYMENT.CAPTURE.COMPLETED'          => 'payment.successful',
+                'PAYMENT.CAPTURE.DENIED'             => 'payment.failed',
+                'PAYMENT.CAPTURE.PENDING'            => 'payment.pending',
+                'CHECKOUT.ORDER.COMPLETED'           => 'payment.successful',
+                // Refunds
+                'PAYMENT.CAPTURE.REFUNDED'           => 'refund.processed',
+                // Subscriptions
+                'BILLING.SUBSCRIPTION.ACTIVATED'     => 'subscription.created',
+                'BILLING.SUBSCRIPTION.CANCELLED'     => 'subscription.cancelled',
+                'BILLING.SUBSCRIPTION.PAYMENT.COMPLETED' => 'subscription.renewed',
+                'BILLING.SUBSCRIPTION.PAYMENT.FAILED'    => 'payment.failed',
+                // Payouts
+                'PAYMENT.PAYOUTS-ITEM.SUCCEEDED'     => 'transfer.successful',
+                'PAYMENT.PAYOUTS-ITEM.FAILED'        => 'transfer.failed',
+                // Disputes
+                'CUSTOMER.DISPUTE.CREATED'           => 'dispute.created',
+                'RISK.DISPUTE.CREATED'               => 'chargeback.created',
+            ],
+
+            'mpesa' => [
+                // STK Push (collections)
+                'STK_PUSH_SUCCESS'                   => 'payment.successful',
+                'STK_PUSH_FAILED'                    => 'payment.failed',
+                // C2B
+                'C2B_PAYMENT'                        => 'payment.successful',
+                // B2C disbursements
+                'B2C_SUCCESS'                        => 'transfer.successful',
+                'B2C_FAILED'                         => 'transfer.failed',
+            ],
+
+            'mtnmomo' => [
+                // Collections (RequestToPay)
+                'PAYMENT_SUCCESSFUL'                 => 'payment.successful',
+                'PAYMENT_PENDING'                    => 'payment.pending',
+                'PAYMENT_FAILED'                     => 'payment.failed',
+                // Disbursements (Transfer)
+                'TRANSFER_SUCCESSFUL'                => 'transfer.successful',
+                'TRANSFER_FAILED'                    => 'transfer.failed',
+            ],
+
+            'razorpay' => [
+                // Payments
+                'payment.captured'                   => 'payment.successful',
+                'payment.failed'                     => 'payment.failed',
+                'order.paid'                         => 'payment.successful',
+                // Refunds
+                'refund.created'                     => 'refund.processed',
+                'refund.processed'                   => 'refund.processed',
+                // Subscriptions
+                'subscription.activated'             => 'subscription.created',
+                'subscription.charged'               => 'subscription.renewed',
+                'subscription.cancelled'             => 'subscription.cancelled',
+                'subscription.paused'                => 'subscription.cancelled',
+                'subscription.resumed'               => 'subscription.created',
+                'subscription.pending'               => 'payment.pending',
+                // Payouts
+                'payout.processed'                   => 'transfer.successful',
+                'payout.failed'                      => 'transfer.failed',
+                // Payment links
+                'payment_link.paid'                  => 'payment.successful',
+                // Disputes
+                'dispute.created'                    => 'dispute.created',
+                'dispute.won'                        => 'dispute.created',
+            ],
+
+            'paddle' => [
+                // Transactions
+                'transaction.completed'              => 'payment.successful',
+                'transaction.payment_failed'         => 'payment.failed',
+                'transaction.updated'                => 'payment.pending',
+                // Refunds / adjustments
+                'adjustment.created'                 => 'refund.processed',
+                'adjustment.updated'                 => 'refund.processed',
+                // Subscriptions
+                'subscription.activated'             => 'subscription.created',
+                'subscription.canceled'              => 'subscription.cancelled',
+                'subscription.updated'               => 'subscription.created',
+                'subscription.past_due'              => 'payment.failed',
+                'subscription.paused'                => 'subscription.cancelled',
+                'subscription.resumed'               => 'subscription.created',
+                'subscription.trialing'              => 'subscription.created',
+                // Disputes
+                'dispute.created'                    => 'dispute.created',
             ],
 
         ],

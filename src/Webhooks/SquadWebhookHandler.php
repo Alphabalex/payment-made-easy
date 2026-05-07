@@ -61,7 +61,7 @@ class SquadWebhookHandler extends AbstractWebhookHandler
                 'status'          => $data['status'] ?? '',
                 'customer_email'  => $data['email'] ?? '',
                 'account_number'  => $data['virtual_account_number'] ?? '',
-                'transaction_date'=> $data['createdAt'] ?? '',
+                'transaction_date' => $data['createdAt'] ?? '',
             ];
         }
 

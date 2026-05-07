@@ -36,8 +36,8 @@ class RemitaDriver extends AbstractPaymentDriver implements DisbursementDriverIn
             'payerEmail'      => $data['email'],
             'payerPhone'      => $data['phone'] ?? '',
             'description'     => $data['description'] ?? 'Payment',
-            'returnSuccessUrl'=> $data['callback_url'] ?? $this->config['callback_url'],
-            'returnFailureUrl'=> $data['failure_url'] ?? $this->config['callback_url'],
+            'returnSuccessUrl' => $data['callback_url'] ?? $this->config['callback_url'],
+            'returnFailureUrl' => $data['failure_url'] ?? $this->config['callback_url'],
             'customFields'    => $data['metadata'] ?? [],
         ];
 
@@ -143,7 +143,7 @@ class RemitaDriver extends AbstractPaymentDriver implements DisbursementDriverIn
                 'batchRef'    => $batchRef,
                 'narration'   => $data['narration'] ?? 'Bulk Transfer',
                 'sourceAccount' => $this->config['source_account'] ?? '',
-                'transactions'=> array_map(fn($t) => [
+                'transactions' => array_map(fn($t) => [
                     'narration'                 => $t['reason'] ?? 'Transfer',
                     'bankCode'                  => $t['bank_code'],
                     'beneficiaryBankCode'        => $t['bank_code'],

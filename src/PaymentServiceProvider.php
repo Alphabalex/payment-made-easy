@@ -7,7 +7,12 @@ use NexusPay\PaymentMadeEasy\Drivers\BudpayDriver;
 use NexusPay\PaymentMadeEasy\Drivers\FlutterwaveDriver;
 use NexusPay\PaymentMadeEasy\Drivers\InterswitchDriver;
 use NexusPay\PaymentMadeEasy\Drivers\MonnifyDriver;
+use NexusPay\PaymentMadeEasy\Drivers\MPesaDriver;
+use NexusPay\PaymentMadeEasy\Drivers\MTNMoMoDriver;
+use NexusPay\PaymentMadeEasy\Drivers\PaddleDriver;
+use NexusPay\PaymentMadeEasy\Drivers\PayPalDriver;
 use NexusPay\PaymentMadeEasy\Drivers\PaystackDriver;
+use NexusPay\PaymentMadeEasy\Drivers\RazorpayDriver;
 use NexusPay\PaymentMadeEasy\Drivers\RemitaDriver;
 use NexusPay\PaymentMadeEasy\Drivers\SeerbitDriver;
 use NexusPay\PaymentMadeEasy\Drivers\SquadDriver;
@@ -73,6 +78,21 @@ class PaymentServiceProvider extends ServiceProvider
         });
         $manager->extend('interswitch', function ($app, $config) {
             return new InterswitchDriver($config);
+        });
+        $manager->extend('paypal', function ($app, $config) {
+            return new PayPalDriver($config);
+        });
+        $manager->extend('mpesa', function ($app, $config) {
+            return new MPesaDriver($config);
+        });
+        $manager->extend('mtnmomo', function ($app, $config) {
+            return new MTNMoMoDriver($config);
+        });
+        $manager->extend('razorpay', function ($app, $config) {
+            return new RazorpayDriver($config);
+        });
+        $manager->extend('paddle', function ($app, $config) {
+            return new PaddleDriver($config);
         });
     }
 }

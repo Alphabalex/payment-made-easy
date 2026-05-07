@@ -15,6 +15,11 @@ A comprehensive Laravel package for integrating multiple payment gateways with s
 | **Remita**         |    ✅     |       —       |       ✅       |        —         |       —       |
 | **Budpay**         |    ✅     |       —       |       ✅       |        ✅         |       —       |
 | **Interswitch**    |    ✅     |       —       |       —       |        —         |       —       |
+| **PayPal**         |    ✅     |       ✅       |       ✅       |        —         |       ✅       |
+| **M-Pesa**         |    ✅     |       —       |       —       |        —         |       —       |
+| **MTN MoMo**       |    ✅     |       —       |       ✅       |        —         |       —       |
+| **Razorpay**       |    ✅     |       ✅       |       ✅       |        —         |       ✅       |
+| **Paddle**         |    ✅     |       ✅       |       —       |        —         |       ✅       |
 
 > ⚠️ Monnify implements `SubscriptionDriverInterface` for interface compatibility, but all subscription methods throw `SubscriptionException` — Monnify has no subscription API.
 
@@ -105,6 +110,52 @@ INTERSWITCH_PAYABLE_CODE=your_interswitch_payable_code
 INTERSWITCH_TERMINAL_ID=your_interswitch_terminal_id
 INTERSWITCH_CALLBACK_URL=https://yoursite.com/payment/callback
 INTERSWITCH_WEBHOOK_SECRET=your_interswitch_webhook_secret
+
+# PayPal
+PAYPAL_CLIENT_ID=your_paypal_client_id
+PAYPAL_CLIENT_SECRET=your_paypal_client_secret
+PAYPAL_CURRENCY=USD
+PAYPAL_BASE_URL=https://api.paypal.com
+PAYPAL_CALLBACK_URL=https://yoursite.com/payment/callback
+PAYPAL_CANCEL_URL=https://yoursite.com/payment/cancel
+
+# M-Pesa (Safaricom)
+MPESA_CONSUMER_KEY=your_mpesa_consumer_key
+MPESA_CONSUMER_SECRET=your_mpesa_consumer_secret
+MPESA_SHORTCODE=your_mpesa_shortcode
+MPESA_PASSKEY=your_mpesa_passkey
+MPESA_INITIATOR_NAME=your_mpesa_initiator
+MPESA_SECURITY_CREDENTIAL=your_mpesa_security_credential
+MPESA_CALLBACK_URL=https://yoursite.com/webhooks/payment-gateways/mpesa
+MPESA_RESULT_URL=https://yoursite.com/webhooks/payment-gateways/mpesa
+MPESA_TIMEOUT_URL=https://yoursite.com/webhooks/payment-gateways/mpesa
+
+# MTN MoMo
+MTNMOMO_COLLECTION_USER_ID=your_mtnmomo_collection_user_id
+MTNMOMO_COLLECTION_API_KEY=your_mtnmomo_collection_api_key
+MTNMOMO_COLLECTION_SUBSCRIPTION_KEY=your_mtnmomo_collection_subscription_key
+MTNMOMO_DISBURSEMENT_USER_ID=your_mtnmomo_disbursement_user_id
+MTNMOMO_DISBURSEMENT_API_KEY=your_mtnmomo_disbursement_api_key
+MTNMOMO_DISBURSEMENT_SUBSCRIPTION_KEY=your_mtnmomo_disbursement_subscription_key
+MTNMOMO_ENVIRONMENT=sandbox
+MTNMOMO_CURRENCY=EUR
+MTNMOMO_CALLBACK_URL=https://yoursite.com/webhooks/payment-gateways/mtnmomo
+
+# Razorpay
+RAZORPAY_KEY_ID=rzp_live_xxxxx
+RAZORPAY_KEY_SECRET=your_razorpay_key_secret
+RAZORPAY_ACCOUNT_NUMBER=your_razorpay_x_account_number
+RAZORPAY_CURRENCY=INR
+RAZORPAY_CALLBACK_URL=https://yoursite.com/payment/callback
+RAZORPAY_WEBHOOK_SECRET=your_razorpay_webhook_secret
+
+# Paddle
+PADDLE_API_KEY=your_paddle_api_key
+PADDLE_CLIENT_TOKEN=your_paddle_client_token
+PADDLE_WEBHOOK_SECRET=your_paddle_webhook_secret
+PADDLE_CURRENCY=USD
+PADDLE_BASE_URL=https://api.paddle.com
+PADDLE_CALLBACK_URL=https://yoursite.com/payment/callback
 
 # Webhook settings
 PAYMENT_WEBHOOKS_ENABLED=true
@@ -295,6 +346,11 @@ https://yoursite.com/webhooks/payment-gateways/squad
 https://yoursite.com/webhooks/payment-gateways/remita
 https://yoursite.com/webhooks/payment-gateways/budpay
 https://yoursite.com/webhooks/payment-gateways/interswitch
+https://yoursite.com/webhooks/payment-gateways/paypal
+https://yoursite.com/webhooks/payment-gateways/mpesa
+https://yoursite.com/webhooks/payment-gateways/mtnmomo
+https://yoursite.com/webhooks/payment-gateways/razorpay
+https://yoursite.com/webhooks/payment-gateways/paddle
 ```
 
 ### Available Events
@@ -461,12 +517,98 @@ Payment::driver('interswitch')->initializePayment([
 ]);
 ```
 
+### PayPal
+
+PayPal uses **OAuth2 client_credentials** — the access token is fetched and cached automatically. Amounts are in major currency units (USD, EUR, etc.) as decimal strings. The driver covers payments, billing subscriptions, and Payouts (bulk disbursements).
+
+```php
+$order = Payment::driver('paypal')->initializePayment([
+    'amount'   => 50.00,
+    'currency' => 'USD',
+    'email'    => 'customer@example.com',
+]);
+// Redirect to $order['links'][n]['href'] where rel == 'approve'
+// After approval, capture using the order ID:
+Payment::driver('paypal')->verifyPayment($order['id']);
+```
+
+PayPal webhooks use RSA-SHA256 certificate-based signing (not HMAC). The handler verifies that all required PayPal signature headers are present as a guard.
+
+### M-Pesa (Safaricom Kenya)
+
+M-Pesa uses **STK Push** — a prompt is sent to the customer's phone. Payment is **asynchronous**; the result is delivered to your `MPESA_CALLBACK_URL`.
+
+```php
+$response = Payment::driver('mpesa')->initializePayment([
+    'phone'  => '254712345678',   // international format, no +
+    'amount' => 500,              // KES whole number
+]);
+$checkoutRequestId = $response['data']['checkout_request_id'];
+
+// Poll or wait for callback, then verify:
+Payment::driver('mpesa')->verifyPayment($checkoutRequestId);
+```
+
+M-Pesa does not send HMAC signatures — secure your callback URLs via HTTPS.
+
+### MTN MoMo
+
+MTN MoMo uses two separate products (Collections and Disbursements), each with their own API User + Key + Subscription Key. Payments are also **asynchronous** — a push is sent to the customer's wallet, and the result is delivered to your `MTNMOMO_CALLBACK_URL`.
+
+```php
+$response = Payment::driver('mtnmomo')->initializePayment([
+    'phone'    => '256771234567',   // MSISDN, no +
+    'amount'   => 1000,
+    'currency' => 'UGX',
+]);
+$referenceId = $response['data']['reference'];
+
+// Poll for status:
+Payment::driver('mtnmomo')->verifyPayment($referenceId);
+
+// Disbursement:
+Payment::driver('mtnmomo')->transfer([
+    'phone'    => '256771234567',
+    'amount'   => 1000,
+    'currency' => 'UGX',
+    'narration' => 'Salary payout',
+]);
+```
+
+### Razorpay
+
+Razorpay uses **Basic Auth** (key_id:key_secret) on every request. Amounts are in paise (1 INR = 100 paise), handled internally by `convertAmount()`. The driver supports payments, subscriptions, payouts (Razorpay X account required), and payment links.
+
+```php
+$order = Payment::driver('razorpay')->initializePayment([
+    'email'    => 'customer@example.com',
+    'amount'   => 499.00,
+    'currency' => 'INR',
+    'name'     => 'Jane Doe',
+    'phone'    => '+919876543210',
+]);
+// Pass $order['id'], $order['data']['key_id'], etc. to Razorpay checkout.js
+```
+
+### Paddle
+
+Paddle is a **Merchant of Record** for SaaS / digital goods. The driver targets the Paddle Billing API. Plans map to Prices, payments to Transactions, and payment links to Paddle's native Payment Links.
+
+```php
+$transaction = Payment::driver('paddle')->initializePayment([
+    'amount'      => 29.99,
+    'currency'    => 'USD',
+    'description' => 'Pro plan',
+    'email'       => 'customer@example.com',
+]);
+// Redirect to $transaction['data']['authorization_url']
+```
+
+Paddle webhooks use HMAC-SHA256 with the `Paddle-Signature: ts=...;h1=...` format, verified automatically.
+
 ---
 
-
-```bash
-composer test
-```
+## Testing
 
 ## Contributing
 
