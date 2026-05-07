@@ -31,26 +31,66 @@ class PaystackWebhookHandler extends AbstractWebhookHandler
         }
 
         $eventType = $payload['event'] ?? '';
-        $data = $payload['data'] ?? [];
+        $data      = $payload['data'] ?? [];
 
-        // Extract relevant payment information
-        $processedData = [
-            'reference' => $data['reference'] ?? '',
-            'amount' => isset($data['amount']) ? $data['amount'] / 100 : 0, // Convert from kobo
-            'currency' => $data['currency'] ?? '',
-            'status' => $data['status'] ?? '',
-            'customer_email' => $data['customer']['email'] ?? '',
+        $processedData = $this->extractData($eventType, $data);
+
+        return new BaseWebhookEvent($eventType, $processedData, 'paystack', $payload);
+    }
+
+    private function extractData(string $eventType, array $data): array
+    {
+        // Subscription events
+        if (str_starts_with($eventType, 'subscription.') || str_starts_with($eventType, 'invoice.')) {
+            return [
+                'subscription_code' => $data['subscription_code'] ?? $data['id'] ?? '',
+                'plan_code'         => $data['plan']['plan_code'] ?? '',
+                'customer_email'    => $data['customer']['email'] ?? '',
+                'status'            => $data['status'] ?? '',
+                'amount'            => isset($data['amount']) ? $data['amount'] / 100 : 0,
+                'currency'          => $data['plan']['currency'] ?? '',
+                'next_payment_date' => $data['next_payment_date'] ?? '',
+            ];
+        }
+
+        // Transfer events
+        if (str_starts_with($eventType, 'transfer.')) {
+            return [
+                'transfer_code'    => $data['transfer_code'] ?? '',
+                'reference'        => $data['reference'] ?? '',
+                'amount'           => isset($data['amount']) ? $data['amount'] / 100 : 0,
+                'currency'         => $data['currency'] ?? '',
+                'status'           => $data['status'] ?? '',
+                'recipient_name'   => $data['recipient']['details']['account_name'] ?? '',
+                'recipient_account' => $data['recipient']['details']['account_number'] ?? '',
+                'bank_name'        => $data['recipient']['details']['bank_name'] ?? '',
+                'reason'           => $data['reason'] ?? '',
+            ];
+        }
+
+        // Dispute events
+        if (str_starts_with($eventType, 'dispute.')) {
+            return [
+                'reference'    => $data['transaction']['reference'] ?? '',
+                'amount'       => isset($data['amount']) ? $data['amount'] / 100 : 0,
+                'currency'     => $data['currency'] ?? '',
+                'status'       => $data['status'] ?? '',
+                'category'     => $data['category'] ?? '',
+                'customer_email' => $data['transaction']['customer']['email'] ?? '',
+            ];
+        }
+
+        // Default: payment / refund events
+        return [
+            'reference'        => $data['reference'] ?? '',
+            'amount'           => isset($data['amount']) ? $data['amount'] / 100 : 0,
+            'currency'         => $data['currency'] ?? '',
+            'status'           => $data['status'] ?? '',
+            'customer_email'   => $data['customer']['email'] ?? '',
             'transaction_date' => $data['transaction_date'] ?? '',
             'gateway_response' => $data['gateway_response'] ?? '',
-            'metadata' => $data['metadata'] ?? [],
+            'metadata'         => $data['metadata'] ?? [],
         ];
-
-        return new BaseWebhookEvent(
-            $eventType,
-            $processedData,
-            'paystack',
-            $payload
-        );
     }
 
     protected function getSignatureFromRequest(Request $request): string

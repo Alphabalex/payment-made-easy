@@ -56,40 +56,75 @@ class StripeWebhookHandler extends AbstractWebhookHandler
     protected function processStripeEventData(string $eventType, $eventData): array
     {
         $baseData = [
-            'id' => $eventData->id ?? '',
-            'object' => $eventData->object ?? '',
+            'id'      => $eventData->id ?? '',
+            'object'  => $eventData->object ?? '',
             'created' => isset($eventData->created) ? date('Y-m-d H:i:s', $eventData->created) : '',
         ];
 
-        switch ($eventType) {
-            case 'payment_intent.succeeded':
-            case 'payment_intent.payment_failed':
+        switch (true) {
+            case in_array($eventType, ['payment_intent.succeeded', 'payment_intent.payment_failed']):
                 return array_merge($baseData, [
-                    'reference' => $eventData->metadata->reference ?? $eventData->id,
-                    'amount' => isset($eventData->amount) ? $eventData->amount / 100 : 0,
-                    'currency' => $eventData->currency ?? '',
-                    'status' => $eventData->status ?? '',
-                    'customer_email' => $eventData->receipt_email ?? '',
-                    'metadata' => (array) ($eventData->metadata ?? []),
-                    'last_payment_error' => $eventData->last_payment_error ?? null,
+                    'reference'          => $eventData->metadata->reference ?? $eventData->id,
+                    'amount'             => isset($eventData->amount) ? $eventData->amount / 100 : 0,
+                    'currency'           => $eventData->currency ?? '',
+                    'status'             => $eventData->status ?? '',
+                    'customer_email'     => $eventData->receipt_email ?? '',
+                    'metadata'           => (array) ($eventData->metadata ?? []),
+                    'last_payment_error' => isset($eventData->last_payment_error)
+                        ? (array) $eventData->last_payment_error
+                        : null,
                 ]);
 
-            case 'charge.dispute.created':
+            case str_starts_with($eventType, 'customer.subscription.'):
                 return array_merge($baseData, [
-                    'charge_id' => $eventData->charge ?? '',
-                    'amount' => isset($eventData->amount) ? $eventData->amount / 100 : 0,
-                    'currency' => $eventData->currency ?? '',
-                    'reason' => $eventData->reason ?? '',
-                    'status' => $eventData->status ?? '',
+                    'subscription_code' => $eventData->id ?? '',
+                    'plan_code'         => $eventData->items->data[0]->price->id ?? '',
+                    'customer_id'       => $eventData->customer ?? '',
+                    'status'            => $eventData->status ?? '',
+                    'amount'            => isset($eventData->items->data[0]->price->unit_amount)
+                        ? $eventData->items->data[0]->price->unit_amount / 100
+                        : 0,
+                    'currency'          => $eventData->items->data[0]->price->currency ?? '',
+                    'current_period_end' => isset($eventData->current_period_end)
+                        ? date('Y-m-d H:i:s', $eventData->current_period_end)
+                        : '',
                 ]);
 
-            case 'invoice.payment_succeeded':
+            case str_starts_with($eventType, 'invoice.'):
                 return array_merge($baseData, [
-                    'subscription_id' => $eventData->subscription ?? '',
-                    'customer_id' => $eventData->customer ?? '',
-                    'amount' => isset($eventData->amount_paid) ? $eventData->amount_paid / 100 : 0,
-                    'currency' => $eventData->currency ?? '',
-                    'status' => $eventData->status ?? '',
+                    'subscription_code' => $eventData->subscription ?? '',
+                    'customer_id'       => $eventData->customer ?? '',
+                    'amount'            => isset($eventData->amount_paid) ? $eventData->amount_paid / 100 : 0,
+                    'currency'          => $eventData->currency ?? '',
+                    'status'            => $eventData->status ?? '',
+                ]);
+
+            case str_starts_with($eventType, 'charge.dispute.'):
+                return array_merge($baseData, [
+                    'reference'      => $eventData->charge ?? '',
+                    'amount'         => isset($eventData->amount) ? $eventData->amount / 100 : 0,
+                    'currency'       => $eventData->currency ?? '',
+                    'reason'         => $eventData->reason ?? '',
+                    'status'         => $eventData->status ?? '',
+                ]);
+
+            case str_starts_with($eventType, 'payout.'):
+                return array_merge($baseData, [
+                    'transfer_code' => $eventData->id ?? '',
+                    'reference'     => $eventData->id ?? '',
+                    'amount'        => isset($eventData->amount) ? $eventData->amount / 100 : 0,
+                    'currency'      => $eventData->currency ?? '',
+                    'status'        => $eventData->status ?? '',
+                    'arrival_date'  => isset($eventData->arrival_date)
+                        ? date('Y-m-d', $eventData->arrival_date)
+                        : '',
+                ]);
+
+            case str_starts_with($eventType, 'radar.early_fraud_warning.'):
+                return array_merge($baseData, [
+                    'reference'    => $eventData->charge ?? '',
+                    'fraud_type'   => $eventData->fraud_type ?? '',
+                    'action_taken' => $eventData->actionable ?? false,
                 ]);
 
             default:

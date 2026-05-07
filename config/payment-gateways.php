@@ -76,31 +76,72 @@ return [
         // Event mapping for different gateways
         'event_mapping' => [
             'paystack' => [
-                'charge.success' => 'payment.successful',
-                'charge.failed' => 'payment.failed',
-                'transfer.success' => 'transfer.successful',
-                'transfer.failed' => 'transfer.failed',
-                'refund.processed' => 'refund.processed',
+                // Payments
+                'charge.success'                     => 'payment.successful',
+                'charge.failed'                      => 'payment.failed',
+                // Refunds
+                'refund.processed'                   => 'refund.processed',
+                // Transfers / Disbursements
+                'transfer.success'                   => 'transfer.successful',
+                'transfer.failed'                    => 'transfer.failed',
+                'transfer.reversed'                  => 'transfer.failed',
+                // Subscriptions
+                'subscription.create'                => 'subscription.created',
+                'subscription.disable'               => 'subscription.cancelled',
+                'subscription.expiry_date_update'    => 'subscription.renewed',
+                // Invoices (subscription renewals)
+                'invoice.create'                     => 'subscription.renewed',
+                'invoice.update'                     => 'subscription.renewed',
+                'invoice.payment_failed'             => 'payment.failed',
+                // Disputes
+                'dispute.create'                     => 'dispute.created',
+                'dispute.remind'                     => 'dispute.created',
             ],
             'flutterwave' => [
-                'charge.completed' => 'payment.successful',
-                'charge.failed' => 'payment.failed',
-                'transfer.completed' => 'transfer.successful',
-                'transfer.failed' => 'transfer.failed',
+                // Payments
+                'charge.completed'                   => 'payment.successful',
+                'charge.failed'                      => 'payment.failed',
+                // Transfers / Disbursements
+                'transfer.completed'                 => 'transfer.successful',
+                'transfer.failed'                    => 'transfer.failed',
+                // Subscriptions
+                'subscription.activated'             => 'subscription.created',
+                'subscription.cancelled'             => 'subscription.cancelled',
+                // Disputes / Chargebacks
+                'dispute.raised'                     => 'dispute.created',
+                'chargeback.raised'                  => 'chargeback.created',
             ],
             'stripe' => [
-                'payment_intent.succeeded' => 'payment.successful',
-                'payment_intent.payment_failed' => 'payment.failed',
-                'charge.dispute.created' => 'dispute.created',
-                'invoice.payment_succeeded' => 'invoice.paid',
-                'customer.subscription.created' => 'subscription.created',
+                // Payments
+                'payment_intent.succeeded'           => 'payment.successful',
+                'payment_intent.payment_failed'      => 'payment.failed',
+                // Invoices (subscription renewals)
+                'invoice.payment_succeeded'          => 'subscription.renewed',
+                'invoice.payment_failed'             => 'payment.failed',
+                // Subscriptions
+                'customer.subscription.created'      => 'subscription.created',
+                'customer.subscription.deleted'      => 'subscription.cancelled',
+                'customer.subscription.updated'      => 'subscription.renewed',
+                // Transfers / Payouts
+                'payout.paid'                        => 'transfer.successful',
+                'payout.failed'                      => 'transfer.failed',
+                // Disputes / Chargebacks
+                'charge.dispute.created'             => 'dispute.created',
+                'radar.early_fraud_warning.created'  => 'chargeback.created',
             ],
             'seerbit' => [
-                'TRANSACTION_SUCCESSFUL' => 'payment.successful',
-                'TRANSACTION_FAILED' => 'payment.failed',
-                'TRANSACTION_PENDING' => 'payment.pending',
-                'REFUND_SUCCESSFUL' => 'refund.processed',
-                'REFUND_FAILED' => 'refund.failed',
+                // Payments
+                'TRANSACTION_SUCCESSFUL'             => 'payment.successful',
+                'TRANSACTION_FAILED'                 => 'payment.failed',
+                'TRANSACTION_PENDING'                => 'payment.pending',
+                // Refunds
+                'REFUND_SUCCESSFUL'                  => 'refund.processed',
+                'REFUND_FAILED'                      => 'refund.failed',
+                // Subscriptions
+                'SUBSCRIPTION_CREATED'               => 'subscription.created',
+                'SUBSCRIPTION_CANCELLED'             => 'subscription.cancelled',
+                'SUBSCRIPTION_RENEWED'               => 'subscription.renewed',
+                'SUBSCRIPTION_PAYMENT_FAILED'        => 'payment.failed',
             ],
 
         ],

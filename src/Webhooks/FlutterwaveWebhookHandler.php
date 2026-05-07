@@ -31,26 +31,65 @@ class FlutterwaveWebhookHandler extends AbstractWebhookHandler
         }
 
         $eventType = $payload['event'] ?? '';
-        $data = $payload['data'] ?? [];
+        $data      = $payload['data'] ?? [];
 
-        // Extract relevant payment information
-        $processedData = [
-            'reference' => $data['tx_ref'] ?? $data['flw_ref'] ?? '',
-            'amount' => $data['amount'] ?? 0,
-            'currency' => $data['currency'] ?? '',
-            'status' => $data['status'] ?? '',
-            'customer_email' => $data['customer']['email'] ?? '',
-            'transaction_date' => $data['created_at'] ?? '',
+        $processedData = $this->extractData($eventType, $data);
+
+        return new BaseWebhookEvent($eventType, $processedData, 'flutterwave', $payload);
+    }
+
+    private function extractData(string $eventType, array $data): array
+    {
+        // Subscription events
+        if (str_starts_with($eventType, 'subscription.')) {
+            return [
+                'subscription_code' => $data['id'] ?? '',
+                'plan_code'         => $data['plan']['id'] ?? '',
+                'customer_email'    => $data['customer']['customer_email'] ?? '',
+                'status'            => $data['status'] ?? '',
+                'amount'            => $data['plan']['amount'] ?? 0,
+                'currency'          => $data['plan']['currency'] ?? '',
+                'next_payment_date' => $data['next_renewal'] ?? '',
+            ];
+        }
+
+        // Transfer / disbursement events
+        if (str_starts_with($eventType, 'transfer.')) {
+            return [
+                'transfer_code'     => $data['id'] ?? '',
+                'reference'         => $data['reference'] ?? '',
+                'amount'            => $data['amount'] ?? 0,
+                'currency'          => $data['currency'] ?? '',
+                'status'            => $data['status'] ?? '',
+                'recipient_name'    => $data['full_name'] ?? '',
+                'recipient_account' => $data['account_number'] ?? '',
+                'bank_name'         => $data['bank_name'] ?? '',
+                'reason'            => $data['narration'] ?? '',
+            ];
+        }
+
+        // Dispute / chargeback events
+        if (str_starts_with($eventType, 'dispute.') || str_starts_with($eventType, 'chargeback.')) {
+            return [
+                'reference'      => $data['flw_ref'] ?? $data['tx_ref'] ?? '',
+                'amount'         => $data['amount'] ?? 0,
+                'currency'       => $data['currency'] ?? '',
+                'status'         => $data['status'] ?? '',
+                'customer_email' => $data['customer']['email'] ?? '',
+            ];
+        }
+
+        // Default: payment events
+        return [
+            'reference'          => $data['tx_ref'] ?? $data['flw_ref'] ?? '',
+            'amount'             => $data['amount'] ?? 0,
+            'currency'           => $data['currency'] ?? '',
+            'status'             => $data['status'] ?? '',
+            'customer_email'     => $data['customer']['email'] ?? '',
+            'transaction_date'   => $data['created_at'] ?? '',
             'processor_response' => $data['processor_response'] ?? '',
-            'metadata' => $data['meta'] ?? [],
+            'metadata'           => $data['meta'] ?? [],
         ];
-
-        return new BaseWebhookEvent(
-            $eventType,
-            $processedData,
-            'flutterwave',
-            $payload
-        );
     }
 
     protected function getSignatureFromRequest(Request $request): string

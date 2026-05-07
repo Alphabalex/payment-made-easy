@@ -2,7 +2,13 @@
 
 namespace NexusPay\PaymentMadeEasy\Drivers;
 
-class SeerbitDriver extends AbstractPaymentDriver
+use NexusPay\PaymentMadeEasy\Contracts\SubscriptionDriverInterface;
+use NexusPay\PaymentMadeEasy\Contracts\VirtualAccountDriverInterface;
+use NexusPay\PaymentMadeEasy\Exceptions\SubscriptionException;
+
+class SeerbitDriver extends AbstractPaymentDriver implements
+    SubscriptionDriverInterface,
+    VirtualAccountDriverInterface
 {
     public function initializePayment(array $data): array
     {
@@ -225,5 +231,250 @@ class SeerbitDriver extends AbstractPaymentDriver
         ]);
 
         return $response;
+    }
+
+    // -------------------------------------------------------------------------
+    // SubscriptionDriverInterface
+    // -------------------------------------------------------------------------
+
+    public function createPlan(array $data): array
+    {
+        $intervalMap = [
+            'daily'      => 'DAILY',
+            'weekly'     => 'WEEKLY',
+            'monthly'    => 'MONTHLY',
+            'quarterly'  => 'QUARTERLY',
+            'biannually' => 'BIANNUALLY',
+            'annually'   => 'ANNUALLY',
+        ];
+
+        $payload = [
+            'publicKey'          => $this->config['public_key'],
+            'name'               => $data['name'],
+            'amount'             => $data['amount'],
+            'currency'           => $data['currency'] ?? 'NGN',
+            'country'            => $data['country'] ?? 'NG',
+            'period'             => $intervalMap[$data['interval']] ?? strtoupper($data['interval']),
+            'description'        => $data['description'] ?? $data['name'],
+            'trialDays'          => $data['trial_days'] ?? 0,
+            'invoiceLimit'       => $data['invoice_limit'] ?? 0,
+        ];
+
+        try {
+            return $this->makeRequest('POST', $this->config['base_url'] . '/recurring/plans', [
+                'headers' => $this->authHeaders(),
+                'json'    => $payload,
+            ]);
+        } catch (\Throwable $e) {
+            throw new SubscriptionException('Failed to create Seerbit plan: ' . $e->getMessage(), 0, $e);
+        }
+    }
+
+    public function updatePlan(string $planCode, array $data): array
+    {
+        try {
+            return $this->makeRequest('PUT', $this->config['base_url'] . '/recurring/plans/' . $planCode, [
+                'headers' => $this->authHeaders(),
+                'json'    => $data,
+            ]);
+        } catch (\Throwable $e) {
+            throw new SubscriptionException('Failed to update Seerbit plan: ' . $e->getMessage(), 0, $e);
+        }
+    }
+
+    public function getPlan(string $planCode): array
+    {
+        try {
+            return $this->makeRequest('GET', $this->config['base_url'] . '/recurring/plans/' . $planCode, [
+                'headers' => $this->authHeaders(false),
+            ]);
+        } catch (\Throwable $e) {
+            throw new SubscriptionException('Failed to fetch Seerbit plan: ' . $e->getMessage(), 0, $e);
+        }
+    }
+
+    public function listPlans(array $params = []): array
+    {
+        $qs = $params ? '?' . http_build_query($params) : '';
+        try {
+            return $this->makeRequest('GET', $this->config['base_url'] . '/recurring/plans' . $qs, [
+                'headers' => $this->authHeaders(false),
+            ]);
+        } catch (\Throwable $e) {
+            throw new SubscriptionException('Failed to list Seerbit plans: ' . $e->getMessage(), 0, $e);
+        }
+    }
+
+    public function deletePlan(string $planCode): array
+    {
+        try {
+            return $this->makeRequest('DELETE', $this->config['base_url'] . '/recurring/plans/' . $planCode, [
+                'headers' => $this->authHeaders(false),
+            ]);
+        } catch (\Throwable $e) {
+            throw new SubscriptionException('Failed to delete Seerbit plan: ' . $e->getMessage(), 0, $e);
+        }
+    }
+
+    public function createSubscription(array $data): array
+    {
+        $payload = [
+            'publicKey'        => $this->config['public_key'],
+            'email'            => $data['customer'],
+            'planCode'         => $data['plan'],
+            'startDate'        => $data['start_date'] ?? date('Y-m-d'),
+            'customReference'  => $data['reference'] ?? $this->generateReference('seerbit_sub'),
+        ];
+
+        if (isset($data['authorization'])) $payload['cardToken'] = $data['authorization'];
+
+        try {
+            return $this->makeRequest('POST', $this->config['base_url'] . '/recurring/subscribes', [
+                'headers' => $this->authHeaders(),
+                'json'    => $payload,
+            ]);
+        } catch (\Throwable $e) {
+            throw new SubscriptionException('Failed to create Seerbit subscription: ' . $e->getMessage(), 0, $e);
+        }
+    }
+
+    public function cancelSubscription(string $subscriptionCode): array
+    {
+        try {
+            return $this->makeRequest('PUT', $this->config['base_url'] . '/recurring/subscribes/' . $subscriptionCode . '/cancel', [
+                'headers' => $this->authHeaders(),
+                'json'    => [],
+            ]);
+        } catch (\Throwable $e) {
+            throw new SubscriptionException('Failed to cancel Seerbit subscription: ' . $e->getMessage(), 0, $e);
+        }
+    }
+
+    public function pauseSubscription(string $subscriptionCode): array
+    {
+        try {
+            return $this->makeRequest('PUT', $this->config['base_url'] . '/recurring/subscribes/' . $subscriptionCode . '/pause', [
+                'headers' => $this->authHeaders(),
+                'json'    => [],
+            ]);
+        } catch (\Throwable $e) {
+            throw new SubscriptionException('Failed to pause Seerbit subscription: ' . $e->getMessage(), 0, $e);
+        }
+    }
+
+    public function resumeSubscription(string $subscriptionCode): array
+    {
+        try {
+            return $this->makeRequest('PUT', $this->config['base_url'] . '/recurring/subscribes/' . $subscriptionCode . '/resume', [
+                'headers' => $this->authHeaders(),
+                'json'    => [],
+            ]);
+        } catch (\Throwable $e) {
+            throw new SubscriptionException('Failed to resume Seerbit subscription: ' . $e->getMessage(), 0, $e);
+        }
+    }
+
+    public function getSubscription(string $subscriptionCode): array
+    {
+        try {
+            return $this->makeRequest('GET', $this->config['base_url'] . '/recurring/subscribes/' . $subscriptionCode, [
+                'headers' => $this->authHeaders(false),
+            ]);
+        } catch (\Throwable $e) {
+            throw new SubscriptionException('Failed to fetch Seerbit subscription: ' . $e->getMessage(), 0, $e);
+        }
+    }
+
+    public function listSubscriptions(array $params = []): array
+    {
+        $qs = $params ? '?' . http_build_query($params) : '';
+        try {
+            return $this->makeRequest('GET', $this->config['base_url'] . '/recurring/subscribes' . $qs, [
+                'headers' => $this->authHeaders(false),
+            ]);
+        } catch (\Throwable $e) {
+            throw new SubscriptionException('Failed to list Seerbit subscriptions: ' . $e->getMessage(), 0, $e);
+        }
+    }
+
+    public function listCustomerSubscriptions(string $customerEmail): array
+    {
+        return $this->listSubscriptions(['email' => $customerEmail]);
+    }
+
+    // -------------------------------------------------------------------------
+    // VirtualAccountDriverInterface
+    // -------------------------------------------------------------------------
+
+    public function createVirtualAccount(array $data): array
+    {
+        $payload = [
+            'publicKey'   => $this->config['public_key'],
+            'fullName'    => $data['name'],
+            'email'       => $data['email'],
+            'bankCode'    => $data['preferred_bank'] ?? '',
+            'reference'   => $data['reference'] ?? $this->generateReference('seerbit_va'),
+            'currency'    => $data['currency'] ?? 'NGN',
+            'country'     => $data['country'] ?? 'NG',
+        ];
+
+        if (isset($data['bvn']))      $payload['bvn']      = $data['bvn'];
+        if (isset($data['metadata'])) $payload['metadata'] = $data['metadata'];
+
+        try {
+            return $this->makeRequest('POST', $this->config['base_url'] . '/virtual-accounts', [
+                'headers' => $this->authHeaders(),
+                'json'    => $payload,
+            ]);
+        } catch (\Throwable $e) {
+            throw new \RuntimeException('Failed to create Seerbit virtual account: ' . $e->getMessage(), 0, $e);
+        }
+    }
+
+    public function getVirtualAccount(string $reference): array
+    {
+        try {
+            return $this->makeRequest('GET', $this->config['base_url'] . '/virtual-accounts/' . $reference, [
+                'headers' => $this->authHeaders(false),
+            ]);
+        } catch (\Throwable $e) {
+            throw new \RuntimeException('Failed to fetch Seerbit virtual account: ' . $e->getMessage(), 0, $e);
+        }
+    }
+
+    public function listVirtualAccounts(array $params = []): array
+    {
+        $qs = $params ? '?' . http_build_query($params) : '';
+        try {
+            return $this->makeRequest('GET', $this->config['base_url'] . '/virtual-accounts' . $qs, [
+                'headers' => $this->authHeaders(false),
+            ]);
+        } catch (\Throwable $e) {
+            throw new \RuntimeException('Failed to list Seerbit virtual accounts: ' . $e->getMessage(), 0, $e);
+        }
+    }
+
+    public function deactivateVirtualAccount(string $reference): array
+    {
+        try {
+            return $this->makeRequest('DELETE', $this->config['base_url'] . '/virtual-accounts/' . $reference, [
+                'headers' => $this->authHeaders(false),
+            ]);
+        } catch (\Throwable $e) {
+            throw new \RuntimeException('Failed to deactivate Seerbit virtual account: ' . $e->getMessage(), 0, $e);
+        }
+    }
+
+    // -------------------------------------------------------------------------
+    // Helpers
+    // -------------------------------------------------------------------------
+
+    private function authHeaders(bool $withContentType = true): array
+    {
+        $headers = ['Authorization' => 'Bearer ' . $this->config['secret_key']];
+        if ($withContentType) {
+            $headers['Content-Type'] = 'application/json';
+        }
+        return $headers;
     }
 }
