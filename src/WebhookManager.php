@@ -4,11 +4,16 @@ namespace NexusPay\PaymentMadeEasy;
 
 use Illuminate\Http\Request;
 use NexusPay\PaymentMadeEasy\Exceptions\WebhookException;
-use NexusPay\PaymentMadeEasy\Webhooks\StripeWebhookHandler;
-use NexusPay\PaymentMadeEasy\Webhooks\SeerbitWebhookHandler;
-use NexusPay\PaymentMadeEasy\Webhooks\PaystackWebhookHandler;
-use NexusPay\PaymentMadeEasy\Contracts\WebhookHandlerInterface;
+use NexusPay\PaymentMadeEasy\Webhooks\BudpayWebhookHandler;
 use NexusPay\PaymentMadeEasy\Webhooks\FlutterwaveWebhookHandler;
+use NexusPay\PaymentMadeEasy\Webhooks\InterswitchWebhookHandler;
+use NexusPay\PaymentMadeEasy\Webhooks\MonnifyWebhookHandler;
+use NexusPay\PaymentMadeEasy\Webhooks\PaystackWebhookHandler;
+use NexusPay\PaymentMadeEasy\Webhooks\RemitaWebhookHandler;
+use NexusPay\PaymentMadeEasy\Webhooks\SeerbitWebhookHandler;
+use NexusPay\PaymentMadeEasy\Webhooks\SquadWebhookHandler;
+use NexusPay\PaymentMadeEasy\Webhooks\StripeWebhookHandler;
+use NexusPay\PaymentMadeEasy\Contracts\WebhookHandlerInterface;
 
 class WebhookManager
 {
@@ -52,11 +57,16 @@ class WebhookManager
     protected function createHandler(string $gateway, array $config): WebhookHandlerInterface
     {
         return match ($gateway) {
-            'paystack' => new PaystackWebhookHandler($config, $gateway),
+            'paystack'    => new PaystackWebhookHandler($config, $gateway),
             'flutterwave' => new FlutterwaveWebhookHandler($config, $gateway),
-            'stripe' => new StripeWebhookHandler($config, $gateway),
-            'seerbit' => new SeerbitWebhookHandler($config, $gateway),
-            default => throw new WebhookException("Unsupported gateway: {$gateway}"),
+            'stripe'      => new StripeWebhookHandler($config, $gateway),
+            'seerbit'     => new SeerbitWebhookHandler($config, $gateway),
+            'monnify'     => new MonnifyWebhookHandler($config, $gateway),
+            'squad'       => new SquadWebhookHandler($config, $gateway),
+            'remita'      => new RemitaWebhookHandler($config, $gateway),
+            'budpay'      => new BudpayWebhookHandler($config, $gateway),
+            'interswitch' => new InterswitchWebhookHandler($config, $gateway),
+            default       => throw new WebhookException("Unsupported gateway: {$gateway}"),
         };
     }
 }

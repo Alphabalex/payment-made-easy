@@ -4,12 +4,19 @@ A comprehensive Laravel package for integrating multiple payment gateways with s
 
 ## Supported Gateways
 
-| Gateway         | One-Time | Subscriptions | Disbursements | Virtual Accounts | Payment Links |
-| --------------- | :------: | :-----------: | :-----------: | :--------------: | :-----------: |
-| **Paystack**    |    ✅     |       ✅       |       ✅       |        ✅         |       ✅       |
-| **Flutterwave** |    ✅     |       ✅       |       ✅       |        ✅         |       ✅       |
-| **Stripe**      |    ✅     |       ✅       |       —       |        —         |       ✅       |
-| **Seerbit**     |    ✅     |       ✅       |       —       |        ✅         |       ✅       |
+| Gateway            | One-Time | Subscriptions | Disbursements | Virtual Accounts | Payment Links |
+| ------------------ | :------: | :-----------: | :-----------: | :--------------: | :-----------: |
+| **Paystack**       |    ✅     |       ✅       |       ✅       |        ✅         |       ✅       |
+| **Flutterwave**    |    ✅     |       ✅       |       ✅       |        ✅         |       ✅       |
+| **Stripe**         |    ✅     |       ✅       |       —       |        —         |       ✅       |
+| **Seerbit**        |    ✅     |       ✅       |       —       |        ✅         |       —       |
+| **Monnify**        |    ✅     |    ⚠️ n/a    |       ✅       |        ✅         |       —       |
+| **Squad**          |    ✅     |       —       |       ✅       |        ✅         |       —       |
+| **Remita**         |    ✅     |       —       |       ✅       |        —         |       —       |
+| **Budpay**         |    ✅     |       —       |       ✅       |        ✅         |       —       |
+| **Interswitch**    |    ✅     |       —       |       —       |        —         |       —       |
+
+> ⚠️ Monnify implements `SubscriptionDriverInterface` for interface compatibility, but all subscription methods throw `SubscriptionException` — Monnify has no subscription API.
 
 > Capability detection is done via `instanceof` — drivers only implement the interfaces they support. No breaking changes when new capabilities are added.
 
@@ -61,6 +68,43 @@ SEERBIT_SECRET_KEY=your_seerbit_secret_key
 SEERBIT_BASE_URL=https://seerbitapi.com/api/v2
 SEERBIT_CALLBACK_URL=https://yoursite.com/payment/callback
 SEERBIT_WEBHOOK_SECRET=your_seerbit_webhook_secret
+
+# Monnify
+MONNIFY_API_KEY=your_monnify_api_key
+MONNIFY_SECRET_KEY=your_monnify_secret_key
+MONNIFY_CONTRACT_CODE=your_monnify_contract_code
+MONNIFY_WALLET_ACCOUNT_NUMBER=your_monnify_wallet_account
+MONNIFY_CALLBACK_URL=https://yoursite.com/payment/callback
+MONNIFY_WEBHOOK_SECRET=your_monnify_webhook_secret
+
+# Squad (GTCo)
+SQUAD_SECRET_KEY=your_squad_secret_key
+SQUAD_PUBLIC_KEY=your_squad_public_key
+SQUAD_BENEFICIARY_ACCOUNT=your_squad_beneficiary_account
+SQUAD_CALLBACK_URL=https://yoursite.com/payment/callback
+SQUAD_WEBHOOK_SECRET=your_squad_webhook_secret
+
+# Remita
+REMITA_API_KEY=your_remita_api_key
+REMITA_MERCHANT_ID=your_remita_merchant_id
+REMITA_SERVICE_TYPE_ID=your_remita_service_type_id
+REMITA_SOURCE_ACCOUNT=your_remita_source_account
+REMITA_CALLBACK_URL=https://yoursite.com/payment/callback
+
+# Budpay
+BUDPAY_SECRET_KEY=your_budpay_secret_key
+BUDPAY_PUBLIC_KEY=your_budpay_public_key
+BUDPAY_CALLBACK_URL=https://yoursite.com/payment/callback
+BUDPAY_WEBHOOK_SECRET=your_budpay_webhook_secret
+
+# Interswitch
+INTERSWITCH_CLIENT_ID=your_interswitch_client_id
+INTERSWITCH_CLIENT_SECRET=your_interswitch_client_secret
+INTERSWITCH_MERCHANT_CODE=your_interswitch_merchant_code
+INTERSWITCH_PAYABLE_CODE=your_interswitch_payable_code
+INTERSWITCH_TERMINAL_ID=your_interswitch_terminal_id
+INTERSWITCH_CALLBACK_URL=https://yoursite.com/payment/callback
+INTERSWITCH_WEBHOOK_SECRET=your_interswitch_webhook_secret
 
 # Webhook settings
 PAYMENT_WEBHOOKS_ENABLED=true
@@ -188,7 +232,7 @@ $banks = Payment::driver('paystack')->listBanks(['country' => 'nigeria']);
 
 ## Virtual Accounts
 
-> Available on: **Paystack**, **Flutterwave**, **Seerbit**
+> Available on: **Paystack**, **Flutterwave**, **Seerbit**, **Monnify**, **Squad**, **Budpay**
 
 ```php
 // Create a dedicated virtual account (bank transfer → auto-credited)
@@ -246,6 +290,11 @@ https://yoursite.com/webhooks/payment-gateways/paystack
 https://yoursite.com/webhooks/payment-gateways/flutterwave
 https://yoursite.com/webhooks/payment-gateways/stripe
 https://yoursite.com/webhooks/payment-gateways/seerbit
+https://yoursite.com/webhooks/payment-gateways/monnify
+https://yoursite.com/webhooks/payment-gateways/squad
+https://yoursite.com/webhooks/payment-gateways/remita
+https://yoursite.com/webhooks/payment-gateways/budpay
+https://yoursite.com/webhooks/payment-gateways/interswitch
 ```
 
 ### Available Events
@@ -325,9 +374,95 @@ if ($driver instanceof PaymentLinkDriverInterface) {
 }
 ```
 
+> **Note:** Monnify implements `SubscriptionDriverInterface` but all methods throw `SubscriptionException`. Always wrap in try/catch or check before calling.
+
 ---
 
-## Testing
+## Gateway-Specific Notes
+
+### Monnify
+
+Monnify's primary use case is **virtual accounts** (reserved bank accounts). The package supports:
+
+- Reserved account creation (`createVirtualAccount`) via POST `/api/v2/bank-transfer/reserved-accounts`
+- Single and bulk disbursements
+- Authentication is automatic — the driver fetches and caches a Bearer token via Basic Auth
+
+```php
+$va = Payment::driver('monnify')->createVirtualAccount([
+    'email'             => 'customer@example.com',
+    'name'              => 'Jane Doe',
+    'bvn'               => '12345678901',
+    'currency_code'     => 'NGN',
+    'contract_code'     => config('payment-gateways.gateways.monnify.contract_code'),
+    'reference'         => 'VA_' . uniqid(),
+    'split_percentages' => [],
+]);
+```
+
+### Squad (GTCo)
+
+```php
+Payment::driver('squad')->initializePayment([
+    'email'     => 'customer@example.com',
+    'amount'    => 5000.00,
+    'currency'  => 'NGN',
+    'reference' => 'TXN_' . uniqid(),
+]);
+
+// Virtual account
+Payment::driver('squad')->createVirtualAccount([
+    'customer_identifier' => 'customer_001',
+    'email'               => 'customer@example.com',
+    'name'                => 'Jane Doe',
+]);
+```
+
+### Remita
+
+Remita's payment flow uses a **Remita Retrieval Reference (RRR)**. `initializePayment()` returns an RRR that you use to construct the checkout URL. Pass the RRR as `$reference` to `verifyPayment()`.
+
+```php
+$result = Payment::driver('remita')->initializePayment([
+    'email'       => 'customer@example.com',
+    'amount'      => 5000.00,
+    'description' => 'Invoice #1001',
+    'reference'   => 'ORDER_1001',
+]);
+
+// Redirect to checkout: $result['data']['authorization_url']
+// After callback, verify with RRR:
+Payment::driver('remita')->verifyPayment($result['data']['rrr']);
+```
+
+### Budpay
+
+Budpay uses a dual-header auth: Bearer token + `Encryption` header (HMAC-SHA512). This is handled internally; no extra configuration required.
+
+```php
+Payment::driver('budpay')->initializePayment([
+    'email'     => 'customer@example.com',
+    'amount'    => 5000.00,
+    'reference' => 'BDP_' . uniqid(),
+    'currency'  => 'NGN',
+]);
+```
+
+### Interswitch (Webpay)
+
+Interswitch uses **OAuth2 client_credentials** — the token is fetched and cached automatically. Amount is stored in kobo internally. Currency uses ISO 4217 numeric codes (e.g. `566` for NGN).
+
+```php
+Payment::driver('interswitch')->initializePayment([
+    'email'     => 'customer@example.com',
+    'amount'    => 5000.00,
+    'reference' => 'ISW_' . uniqid(),
+    'currency'  => 'NGN',
+]);
+```
+
+---
+
 
 ```bash
 composer test

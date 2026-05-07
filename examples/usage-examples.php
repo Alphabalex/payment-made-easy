@@ -48,6 +48,61 @@ $seerbitResponse = Payment::driver('seerbit')->initializePayment([
     'phone'    => '+2348123456789',
 ]);
 
+// ---------------------------------------------------------------------------
+// Monnify
+$monnifyResponse = Payment::driver('monnify')->initializePayment([
+    'email'       => 'customer@example.com',
+    'amount'      => 5000.00,
+    'currency'    => 'NGN',
+    'name'        => 'John Doe',
+    'description' => 'Order #123',
+    'reference'   => 'ORDER_123',
+]);
+// Redirect to $monnifyResponse['data']['checkoutUrl']
+
+// ---------------------------------------------------------------------------
+// Squad (GTCo)
+$squadResponse = Payment::driver('squad')->initializePayment([
+    'email'     => 'customer@example.com',
+    'amount'    => 5000.00,
+    'currency'  => 'NGN',
+    'reference' => 'SQ_' . uniqid(),
+]);
+// Redirect to $squadResponse['data']['authorization_url']
+
+// ---------------------------------------------------------------------------
+// Remita (RRR flow)
+$remitaResponse = Payment::driver('remita')->initializePayment([
+    'email'       => 'customer@example.com',
+    'amount'      => 5000.00,
+    'description' => 'Invoice #1001',
+    'name'        => 'John Doe',
+    'reference'   => 'RMT_1001',
+]);
+$rrr = $remitaResponse['data']['rrr'];
+// Redirect to $remitaResponse['data']['authorization_url']
+// After callback, verify using the RRR:
+Payment::driver('remita')->verifyPayment($rrr);
+
+// ---------------------------------------------------------------------------
+// Budpay
+$budpayResponse = Payment::driver('budpay')->initializePayment([
+    'email'     => 'customer@example.com',
+    'amount'    => 5000.00,
+    'reference' => 'BDP_' . uniqid(),
+    'currency'  => 'NGN',
+]);
+
+// ---------------------------------------------------------------------------
+// Interswitch (Webpay)
+$interswitchResponse = Payment::driver('interswitch')->initializePayment([
+    'email'     => 'customer@example.com',
+    'amount'    => 5000.00,
+    'currency'  => 'NGN',
+    'reference' => 'ISW_' . uniqid(),
+]);
+// Redirect to $interswitchResponse['data']['authorization_url']
+
 // Verify payment after callback redirect
 $verification = Payment::driver('paystack')->verifyPayment('ORDER_123');
 
@@ -112,7 +167,7 @@ Payment::driver('stripe')->createSubscription([
 
 // =============================================================================
 // DISBURSEMENTS & TRANSFERS
-// Available on: Paystack, Flutterwave
+// Available on: Paystack, Flutterwave, Monnify, Squad, Remita, Budpay
 // =============================================================================
 
 $pDriver = Payment::driver('paystack');
@@ -155,9 +210,84 @@ $pDriver->bulkTransfer([
 $pDriver->verifyTransfer('PAYOUT_001');
 $pDriver->listTransfers(['per_page' => 50]);
 
+// ---------------------------------------------------------------------------
+// Monnify Disbursements
+$mDriver = Payment::driver('monnify');
+
+$mDriver->resolveAccountNumber([
+    'account_number' => '0123456789',
+    'bank_code'      => '044',
+]);
+
+$mDriver->transfer([
+    'amount'              => 10000.00,
+    'account_number'      => '0123456789',
+    'bank_code'           => '044',
+    'narration'           => 'Salary payout',
+    'reference'           => 'MNFY_PAYOUT_001',
+    'wallet_account_number' => config('payment-gateways.gateways.monnify.wallet_account_number'),
+]);
+
+$mDriver->bulkTransfer([
+    'transfers' => [
+        ['amount' => 5000.00, 'account_number' => '0123456789', 'bank_code' => '044', 'reference' => 'B001'],
+        ['amount' => 3000.00, 'account_number' => '9876543210', 'bank_code' => '058', 'reference' => 'B002'],
+    ],
+]);
+
+$mDriver->verifyTransfer('MNFY_PAYOUT_001');
+$mDriver->listTransfers(['pageSize' => 20, 'pageNo' => 0]);
+$mDriver->listBanks();
+
+// ---------------------------------------------------------------------------
+// Squad Disbursements
+$sqDriver = Payment::driver('squad');
+
+$sqDriver->transfer([
+    'account_number' => '0123456789',
+    'bank_code'      => '044',
+    'amount'         => 5000.00,
+    'currency'       => 'NGN',
+    'reference'      => 'SQ_PAYOUT_001',
+    'narration'      => 'Salary',
+]);
+
+$sqDriver->listBanks();
+
+// ---------------------------------------------------------------------------
+// Remita Bulk Disbursement
+$rmDriver = Payment::driver('remita');
+
+$rmDriver->bulkTransfer([
+    'batchRef'    => 'BATCH_001',
+    'narration'   => 'Payroll',
+    'transfers'   => [
+        ['amount' => 5000.00, 'account_number' => '0123456789', 'bank_code' => '044', 'name' => 'Jane Doe'],
+    ],
+]);
+
+// ---------------------------------------------------------------------------
+// Budpay Disbursements
+$bdDriver = Payment::driver('budpay');
+
+$bdDriver->transfer([
+    'amount'         => 5000.00,
+    'currency'       => 'NGN',
+    'account_number' => '0123456789',
+    'bank_code'      => '044',
+    'narration'      => 'Payout',
+    'reference'      => 'BDP_PAYOUT_001',
+]);
+
+$bdDriver->bulkTransfer([
+    'transfers' => [
+        ['amount' => 5000.00, 'currency' => 'NGN', 'account_number' => '0123456789', 'bank_code' => '044', 'reference' => 'B001'],
+    ],
+]);
+
 // =============================================================================
 // VIRTUAL ACCOUNTS
-// Available on: Paystack, Flutterwave, Seerbit
+// Available on: Paystack, Flutterwave, Seerbit, Monnify, Squad, Budpay
 // =============================================================================
 
 // Paystack — Dedicated Nuban
@@ -182,6 +312,45 @@ $flwVa = Payment::driver('flutterwave')->createVirtualAccount([
     'currency'     => 'NGN',
     'reference'    => 'VA_ORDER_001',
 ]);
+
+// ---------------------------------------------------------------------------
+// Monnify — Reserved Account (core Monnify feature)
+$monnifyVa = Payment::driver('monnify')->createVirtualAccount([
+    'email'             => 'customer@example.com',
+    'name'              => 'Jane Doe',
+    'bvn'               => '12345678901',
+    'currency_code'     => 'NGN',
+    'contract_code'     => config('payment-gateways.gateways.monnify.contract_code'),
+    'reference'         => 'VA_' . uniqid(),
+    'split_percentages' => [],
+]);
+$reservedAccountRef = $monnifyVa['data']['accountReference'];
+
+Payment::driver('monnify')->getVirtualAccount($reservedAccountRef);
+Payment::driver('monnify')->deactivateVirtualAccount($reservedAccountRef);
+
+// ---------------------------------------------------------------------------
+// Squad — Virtual Account
+$squadVa = Payment::driver('squad')->createVirtualAccount([
+    'customer_identifier' => 'customer_001',
+    'email'               => 'customer@example.com',
+    'name'                => 'Jane Doe',
+    'mobile_num'          => '08123456789',
+]);
+
+Payment::driver('squad')->getVirtualAccount($squadVa['data']['virtual_account_number']);
+
+// ---------------------------------------------------------------------------
+// Budpay — Virtual Account
+$budpayVa = Payment::driver('budpay')->createVirtualAccount([
+    'email'      => 'customer@example.com',
+    'amount'     => 5000.00,
+    'currency'   => 'NGN',
+    'name'       => 'Jane Doe',
+    'reference'  => 'BDP_VA_' . uniqid(),
+]);
+
+Payment::driver('budpay')->getVirtualAccount($budpayVa['data']['id']);
 
 // =============================================================================
 // PAYMENT LINKS
