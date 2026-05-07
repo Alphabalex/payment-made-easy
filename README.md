@@ -4,22 +4,22 @@ A comprehensive Laravel package for integrating multiple payment gateways with s
 
 ## Supported Gateways
 
-| Gateway            | One-Time | Subscriptions | Disbursements | Virtual Accounts | Payment Links |
-| ------------------ | :------: | :-----------: | :-----------: | :--------------: | :-----------: |
-| **Paystack**       |    ✅     |       ✅       |       ✅       |        ✅         |       ✅       |
-| **Flutterwave**    |    ✅     |       ✅       |       ✅       |        ✅         |       ✅       |
-| **Stripe**         |    ✅     |       ✅       |       —       |        —         |       ✅       |
-| **Seerbit**        |    ✅     |       ✅       |       —       |        ✅         |       —       |
-| **Monnify**        |    ✅     |    ⚠️ n/a    |       ✅       |        ✅         |       —       |
-| **Squad**          |    ✅     |       —       |       ✅       |        ✅         |       —       |
-| **Remita**         |    ✅     |       —       |       ✅       |        —         |       —       |
-| **Budpay**         |    ✅     |       —       |       ✅       |        ✅         |       —       |
-| **Interswitch**    |    ✅     |       —       |       —       |        —         |       —       |
-| **PayPal**         |    ✅     |       ✅       |       ✅       |        —         |       ✅       |
-| **M-Pesa**         |    ✅     |       —       |       —       |        —         |       —       |
-| **MTN MoMo**       |    ✅     |       —       |       ✅       |        —         |       —       |
-| **Razorpay**       |    ✅     |       ✅       |       ✅       |        —         |       ✅       |
-| **Paddle**         |    ✅     |       ✅       |       —       |        —         |       ✅       |
+| Gateway         | One-Time | Subscriptions | Disbursements | Virtual Accounts | Payment Links |
+| --------------- | :------: | :-----------: | :-----------: | :--------------: | :-----------: |
+| **Paystack**    |    ✅     |       ✅       |       ✅       |        ✅         |       ✅       |
+| **Flutterwave** |    ✅     |       ✅       |       ✅       |        ✅         |       ✅       |
+| **Stripe**      |    ✅     |       ✅       |       —       |        —         |       ✅       |
+| **Seerbit**     |    ✅     |       ✅       |       —       |        ✅         |       —       |
+| **Monnify**     |    ✅     |     ⚠️ n/a     |       ✅       |        ✅         |       —       |
+| **Squad**       |    ✅     |       —       |       ✅       |        ✅         |       —       |
+| **Remita**      |    ✅     |       —       |       ✅       |        —         |       —       |
+| **Budpay**      |    ✅     |       —       |       ✅       |        ✅         |       —       |
+| **Interswitch** |    ✅     |       —       |       —       |        —         |       —       |
+| **PayPal**      |    ✅     |       ✅       |       ✅       |        —         |       ✅       |
+| **M-Pesa**      |    ✅     |       —       |       —       |        —         |       —       |
+| **MTN MoMo**    |    ✅     |       —       |       ✅       |        —         |       —       |
+| **Razorpay**    |    ✅     |       ✅       |       ✅       |        —         |       ✅       |
+| **Paddle**      |    ✅     |       ✅       |       —       |        —         |       ✅       |
 
 > ⚠️ Monnify implements `SubscriptionDriverInterface` for interface compatibility, but all subscription methods throw `SubscriptionException` — Monnify has no subscription API.
 
