@@ -49,6 +49,15 @@ return [
             'webhook_secret' => env('STRIPE_WEBHOOK_SECRET'),
             'callback_url' => env('STRIPE_CALLBACK_URL'),
         ],
+
+        'seerbit' => [
+            'driver' => 'seerbit',
+            'public_key' => env('SEERBIT_PUBLIC_KEY'),
+            'secret_key' => env('SEERBIT_SECRET_KEY'),
+            'base_url' => env('SEERBIT_BASE_URL', 'https://seerbitapi.com/api/v2'),
+            'callback_url' => env('SEERBIT_CALLBACK_URL'),
+            'webhook_secret' => env('SEERBIT_WEBHOOK_SECRET'),
+        ],
     ],
 
     /*
@@ -86,6 +95,14 @@ return [
                 'invoice.payment_succeeded' => 'invoice.paid',
                 'customer.subscription.created' => 'subscription.created',
             ],
+            'seerbit' => [
+                'TRANSACTION_SUCCESSFUL' => 'payment.successful',
+                'TRANSACTION_FAILED' => 'payment.failed',
+                'TRANSACTION_PENDING' => 'payment.pending',
+                'REFUND_SUCCESSFUL' => 'refund.processed',
+                'REFUND_FAILED' => 'refund.failed',
+            ],
+
         ],
     ],
     /*

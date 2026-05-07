@@ -45,6 +45,13 @@ STRIPE_PUBLIC_KEY=your_stripe_public_key
 STRIPE_SECRET_KEY=your_stripe_secret_key
 STRIPE_WEBHOOK_SECRET=your_stripe_webhook_secret
 STRIPE_CALLBACK_URL=https://yoursite.com/payment/callback
+
+# Seerbit
+SEERBIT_PUBLIC_KEY=your_seerbit_public_key
+SEERBIT_SECRET_KEY=your_seerbit_secret_key
+SEERBIT_BASE_URL=https://seerbitapi.com/api/v2
+SEERBIT_CALLBACK_URL=https://yoursite.com/payment/callback
+SEERBIT_WEBHOOK_SECRET=your_seerbit_webhook_secret
 ```
 
 ## 4. Usage

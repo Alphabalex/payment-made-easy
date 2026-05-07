@@ -29,6 +29,12 @@ class PaymentManager extends Manager
         return $this->buildProvider(Drivers\StripeDriver::class, $config);
     }
 
+    public function createSeerbitDriver()
+    {
+        $config = $this->config->get('payment-gateways.gateways.seerbit');
+        return $this->buildProvider(Drivers\SeerbitDriver::class, $config);
+    }
+
     protected function buildProvider($provider, $config)
     {
         return new $provider($config);

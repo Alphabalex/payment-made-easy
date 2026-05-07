@@ -7,10 +7,16 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Event;
 use NexusPay\PaymentMadeEasy\Contracts\WebhookHandlerInterface;
 use NexusPay\PaymentMadeEasy\Contracts\WebhookEventInterface;
-use NexusPay\PaymentMadeEasy\Events\BaseWebhookEvent;
-use NexusPay\PaymentMadeEasy\Events\PaymentSuccessful;
+use NexusPay\PaymentMadeEasy\Events\ChargebackCreated;
+use NexusPay\PaymentMadeEasy\Events\DisputeCreated;
 use NexusPay\PaymentMadeEasy\Events\PaymentFailed;
+use NexusPay\PaymentMadeEasy\Events\PaymentSuccessful;
 use NexusPay\PaymentMadeEasy\Events\RefundProcessed;
+use NexusPay\PaymentMadeEasy\Events\SubscriptionCancelled;
+use NexusPay\PaymentMadeEasy\Events\SubscriptionCreated;
+use NexusPay\PaymentMadeEasy\Events\SubscriptionRenewed;
+use NexusPay\PaymentMadeEasy\Events\TransferFailed;
+use NexusPay\PaymentMadeEasy\Events\TransferSuccessful;
 use NexusPay\PaymentMadeEasy\Exceptions\WebhookException;
 
 abstract class AbstractWebhookHandler implements WebhookHandlerInterface
@@ -57,6 +63,36 @@ abstract class AbstractWebhookHandler implements WebhookHandlerInterface
 
             case 'refund.processed':
                 Event::dispatch(new RefundProcessed($event, $event->getData()));
+                break;
+
+            case 'transfer.successful':
+                Event::dispatch(new TransferSuccessful($event, $event->getData()));
+                break;
+
+            case 'transfer.failed':
+                $reason = $this->extractFailureReason($event->getData());
+                Event::dispatch(new TransferFailed($event, $event->getData(), $reason));
+                break;
+
+            case 'subscription.created':
+                Event::dispatch(new SubscriptionCreated($event, $event->getData()));
+                break;
+
+            case 'subscription.cancelled':
+                $reason = $this->extractFailureReason($event->getData());
+                Event::dispatch(new SubscriptionCancelled($event, $event->getData(), $reason));
+                break;
+
+            case 'subscription.renewed':
+                Event::dispatch(new SubscriptionRenewed($event, $event->getData()));
+                break;
+
+            case 'dispute.created':
+                Event::dispatch(new DisputeCreated($event, $event->getData()));
+                break;
+
+            case 'chargeback.created':
+                Event::dispatch(new ChargebackCreated($event, $event->getData()));
                 break;
 
             default:
