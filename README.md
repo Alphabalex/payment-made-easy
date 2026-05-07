@@ -41,7 +41,26 @@ composer require nexuspay/payment-made-easy
 php artisan vendor:publish --provider="NexusPay\PaymentMadeEasy\PaymentServiceProvider"
 ```
 
-### 3. Environment Variables
+### 3. (Optional) Publish & Run Migrations
+
+The package ships with migrations for recording payment activity to your database. This is opt-in:
+
+```bash
+# Publish migrations
+php artisan vendor:publish --tag=payment-gateways-migrations
+
+# Run migrations
+php artisan migrate
+```
+
+Then enable recording in your `.env`:
+
+```env
+PAYMENT_RECORDING_ENABLED=true
+PAYMENT_RECORD_WEBHOOKS=true
+```
+
+### 4. Environment Variables
 
 ```env
 # Default gateway & currency
@@ -609,6 +628,76 @@ Paddle webhooks use HMAC-SHA256 with the `Paddle-Signature: ts=...;h1=...` forma
 ---
 
 ## Testing
+
+Run the package's own test suite:
+
+```bash
+composer test          # all tests
+composer test:unit     # unit tests only
+composer test:feature  # feature tests only
+```
+
+The test suite covers:
+
+| Test file                                   | What it tests                                            |
+| ------------------------------------------- | -------------------------------------------------------- |
+| `tests/Unit/PaymentManagerTest.php`         | driver resolution, interface detection, alias binding    |
+| `tests/Unit/WebhookManagerTest.php`         | handler resolution, unknown gateway exception            |
+| `tests/Unit/Drivers/PaystackDriverTest.php` | HTTP mock — initialize, verify, refund, error handling   |
+| `tests/Unit/Drivers/RazorpayDriverTest.php` | HTTP mock — order creation, verify, refund, errors       |
+| `tests/Feature/WebhookHandlingTest.php`     | full HTTP webhook flow — signature check, event dispatch |
+
+In your own application, you can mock the `Payment` facade or bind a fake driver:
+
+```php
+// In your test
+Payment::shouldReceive('driver->initializePayment')
+    ->once()
+    ->andReturn(['status' => true, 'data' => ['authorization_url' => 'https://...']]);
+```
+
+## Database Recording
+
+When `PAYMENT_RECORDING_ENABLED=true`, use `PaymentRecorder` to persist activity:
+
+```php
+use NexusPay\PaymentMadeEasy\Services\PaymentRecorder;
+
+$recorder = app(PaymentRecorder::class);
+
+// After initializing a payment
+$transaction = $recorder->recordTransaction('paystack', $requestData, $gatewayResponse);
+
+// After verifying / receiving a webhook
+$recorder->updateTransactionStatus('ORDER_001', 'successful', 'PS_GATEWAY_REF');
+
+// Record a transfer
+$transfer = $recorder->recordTransfer('paystack', $transferData, $transferResponse);
+
+// Log a webhook event for auditing
+$recorder->logWebhookEvent('paystack', $webhookEvent);
+```
+
+### Available Models
+
+| Model                 | Table                   | Purpose                             |
+| --------------------- | ----------------------- | ----------------------------------- |
+| `PaymentTransaction`  | `payment_transactions`  | One-time payment records            |
+| `PaymentSubscription` | `payment_subscriptions` | Subscription / billing records      |
+| `PaymentTransfer`     | `payment_transfers`     | Disbursement / transfer records     |
+| `PaymentWebhookLog`   | `payment_webhook_logs`  | Audit log for all incoming webhooks |
+
+All models support polymorphic `payable` / `subscriber` / `initiator` relationships so you can link them to your own models (e.g. `User`, `Order`).
+
+```php
+// Attach a transaction to a user
+$transaction->payable()->associate($user)->save();
+
+// Scope helpers
+PaymentTransaction::successful()->gateway('paystack')->get();
+PaymentSubscription::active()->forEmail('user@example.com')->get();
+PaymentTransfer::successful()->gateway('mtnmomo')->get();
+```
 
 ## Contributing
 

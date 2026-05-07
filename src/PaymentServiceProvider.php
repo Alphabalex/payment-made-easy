@@ -17,6 +17,7 @@ use NexusPay\PaymentMadeEasy\Drivers\RemitaDriver;
 use NexusPay\PaymentMadeEasy\Drivers\SeerbitDriver;
 use NexusPay\PaymentMadeEasy\Drivers\SquadDriver;
 use NexusPay\PaymentMadeEasy\Drivers\StripeDriver;
+use NexusPay\PaymentMadeEasy\Services\PaymentRecorder;
 
 class PaymentServiceProvider extends ServiceProvider
 {
@@ -32,8 +33,13 @@ class PaymentServiceProvider extends ServiceProvider
             return new WebhookManager();
         });
 
+        $this->app->singleton(PaymentRecorder::class, function () {
+            return new PaymentRecorder();
+        });
+
         $this->app->alias(PaymentManager::class, 'payment-gateways');
         $this->app->alias(WebhookManager::class, 'payment-webhooks');
+        $this->app->alias(PaymentRecorder::class, 'payment-recorder');
     }
 
     public function boot()
@@ -42,6 +48,10 @@ class PaymentServiceProvider extends ServiceProvider
             $this->publishes([
                 __DIR__ . '/../config/payment-gateways.php' => config_path('payment-gateways.php'),
             ], 'payment-gateways-config');
+
+            $this->publishes([
+                __DIR__ . '/../database/migrations' => database_path('migrations'),
+            ], 'payment-gateways-migrations');
         }
 
         $this->loadRoutesFrom(__DIR__ . '/routes/webhooks.php');

@@ -8,5 +8,5 @@ Route::prefix('webhooks/payment-gateways')
     ->group(function () {
         Route::post('{gateway}', [WebhookController::class, 'handle'])
             ->name('handle')
-            ->where('gateway', 'paystack|flutterwave|stripe|seerbit');
+            ->where('gateway', 'paystack|flutterwave|stripe|seerbit|monnify|squad|remita|budpay|interswitch|paypal|mpesa|mtnmomo|razorpay|paddle');
     });

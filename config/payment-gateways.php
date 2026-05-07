@@ -413,4 +413,23 @@ return [
     |
     */
     'currency' => env('PAYMENT_CURRENCY', 'NGN'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Database Recording
+    |--------------------------------------------------------------------------
+    |
+    | When enabled, the PaymentRecorder service automatically persists
+    | payment transactions, subscriptions, transfers, and webhook events to
+    | the database. Requires the package migrations to have been run.
+    |
+    | Publish migrations:
+    |   php artisan vendor:publish --tag=payment-gateways-migrations
+    |   php artisan migrate
+    |
+    */
+    'recording' => [
+        'enabled'    => env('PAYMENT_RECORDING_ENABLED', false),
+        'log_webhooks' => env('PAYMENT_RECORD_WEBHOOKS', true),
+    ],
 ];
