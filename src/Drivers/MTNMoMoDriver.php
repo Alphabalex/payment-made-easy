@@ -288,7 +288,7 @@ class MTNMoMoDriver extends AbstractPaymentDriver implements DisbursementDriverI
 
     public function resolveAccountNumber(array $data): array
     {
-        $phone = ltrim($data['phone'] ?? $data['msisdn'] ?? '', '+');
+        $phone = ltrim($data['account_number'] ?? $data['phone'] ?? $data['msisdn'] ?? '', '+');
         return $this->makeRequest('GET', $this->config['base_url'] . '/collection/v1_0/accountholder/msisdn/' . $phone . '/basicuserinfo', [
             'headers' => $this->collectionHeaders(false),
         ]);

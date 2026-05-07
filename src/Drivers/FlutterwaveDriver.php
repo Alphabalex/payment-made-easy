@@ -360,10 +360,11 @@ class FlutterwaveDriver extends AbstractPaymentDriver implements
         }
     }
 
-    public function listBanks(string $country = 'NG'): array
+    public function listBanks(array $filters = []): array
     {
+        $country = strtoupper($filters['country'] ?? 'NG');
         try {
-            return $this->makeRequest('GET', $this->config['base_url'] . '/banks/' . strtoupper($country), [
+            return $this->makeRequest('GET', $this->config['base_url'] . '/banks/' . $country, [
                 'headers' => $this->authHeaders(false),
             ]);
         } catch (\Throwable $e) {
@@ -371,8 +372,10 @@ class FlutterwaveDriver extends AbstractPaymentDriver implements
         }
     }
 
-    public function resolveAccountNumber(string $accountNumber, string $bankCode): array
+    public function resolveAccountNumber(array $data): array
     {
+        $accountNumber = $data['account_number'] ?? '';
+        $bankCode      = $data['bank_code'] ?? $data['account_bank'] ?? '';
         try {
             return $this->makeRequest(
                 'GET',

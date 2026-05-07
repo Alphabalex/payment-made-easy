@@ -147,4 +147,14 @@ class RazorpayWebhookHandler extends AbstractWebhookHandler
             'error_reason'   => $payment['error_description'] ?? null,
         ];
     }
+
+    protected function getSignatureFromRequest(\Illuminate\Http\Request $request): string
+    {
+        return $request->header('X-Razorpay-Signature', '');
+    }
+
+    protected function calculateExpectedSignature(string $payload): string
+    {
+        return hash_hmac('sha256', $payload, $this->config['webhook_secret'] ?? '');
+    }
 }

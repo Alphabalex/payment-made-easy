@@ -130,4 +130,15 @@ class PaddleWebhookHandler extends AbstractWebhookHandler
             'status'         => $data['status'] ?? '',
         ];
     }
+
+    protected function getSignatureFromRequest(\Illuminate\Http\Request $request): string
+    {
+        return $request->header('Paddle-Signature', '');
+    }
+
+    protected function calculateExpectedSignature(string $payload): string
+    {
+        // Paddle uses ts=...;h1=HMAC-SHA256 format; computed in verifySignature directly
+        return '';
+    }
 }

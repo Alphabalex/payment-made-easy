@@ -111,4 +111,15 @@ class PayPalWebhookHandler extends AbstractWebhookHandler
             'payer_id'       => $resource['payer']['payer_id'] ?? '',
         ];
     }
+
+    protected function getSignatureFromRequest(\Illuminate\Http\Request $request): string
+    {
+        return $request->header('PAYPAL-TRANSMISSION-SIG', '');
+    }
+
+    protected function calculateExpectedSignature(string $payload): string
+    {
+        // PayPal uses RSA-SHA256; return empty string (verified differently)
+        return '';
+    }
 }

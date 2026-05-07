@@ -90,4 +90,14 @@ class RemitaWebhookHandler extends AbstractWebhookHandler
     {
         return $data['status'] ?? parent::extractFailureReason($data);
     }
+
+    protected function getSignatureFromRequest(\Illuminate\Http\Request $request): string
+    {
+        return '';
+    }
+
+    protected function calculateExpectedSignature(string $payload): string
+    {
+        return '';
+    }
 }

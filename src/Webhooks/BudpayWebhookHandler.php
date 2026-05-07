@@ -97,6 +97,16 @@ class BudpayWebhookHandler extends AbstractWebhookHandler
         ];
     }
 
+    protected function getSignatureFromRequest(\Illuminate\Http\Request $request): string
+    {
+        return $request->header('x-budpay-signature', '');
+    }
+
+    protected function calculateExpectedSignature(string $payload): string
+    {
+        return hash_hmac('sha512', $payload, $this->config['webhook_secret'] ?? '');
+    }
+
     protected function extractFailureReason(array $data): string
     {
         return $data['gateway_response'] ?? parent::extractFailureReason($data);

@@ -80,4 +80,15 @@ class InterswitchWebhookHandler extends AbstractWebhookHandler
     {
         return $data['status'] ?? parent::extractFailureReason($data);
     }
+
+    protected function getSignatureFromRequest(\Illuminate\Http\Request $request): string
+    {
+        return $request->header('x-interswitch-signature', '');
+    }
+
+    protected function calculateExpectedSignature(string $payload): string
+    {
+        $secret = $this->config['client_secret'] ?? $this->config['webhook_secret'] ?? '';
+        return hash_hmac('sha512', $payload, $secret);
+    }
 }

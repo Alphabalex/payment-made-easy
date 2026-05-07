@@ -58,12 +58,10 @@ abstract class TestCase extends BaseTestCase
         ]);
 
         // Webhooks config
-        $app['config']->set('payment-gateways.webhooks', [
-            'enabled'          => true,
-            'verify_signature' => true,
-            'log_events'       => false,
-            'queue_events'     => false,
-        ]);
+        $app['config']->set('payment-gateways.webhooks.enabled', true);
+        $app['config']->set('payment-gateways.webhooks.verify_signature', true);
+        $app['config']->set('payment-gateways.webhooks.log_events', false);
+        $app['config']->set('payment-gateways.webhooks.queue_events', false);
 
         // Recording disabled in tests by default
         $app['config']->set('payment-gateways.recording.enabled', false);

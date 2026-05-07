@@ -3,20 +3,9 @@
 namespace NexusPay\PaymentMadeEasy;
 
 use Illuminate\Support\ServiceProvider;
-use NexusPay\PaymentMadeEasy\Drivers\BudpayDriver;
-use NexusPay\PaymentMadeEasy\Drivers\FlutterwaveDriver;
-use NexusPay\PaymentMadeEasy\Drivers\InterswitchDriver;
-use NexusPay\PaymentMadeEasy\Drivers\MonnifyDriver;
-use NexusPay\PaymentMadeEasy\Drivers\MPesaDriver;
-use NexusPay\PaymentMadeEasy\Drivers\MTNMoMoDriver;
-use NexusPay\PaymentMadeEasy\Drivers\PaddleDriver;
-use NexusPay\PaymentMadeEasy\Drivers\PayPalDriver;
-use NexusPay\PaymentMadeEasy\Drivers\PaystackDriver;
-use NexusPay\PaymentMadeEasy\Drivers\RazorpayDriver;
-use NexusPay\PaymentMadeEasy\Drivers\RemitaDriver;
-use NexusPay\PaymentMadeEasy\Drivers\SeerbitDriver;
-use NexusPay\PaymentMadeEasy\Drivers\SquadDriver;
-use NexusPay\PaymentMadeEasy\Drivers\StripeDriver;
+use NexusPay\PaymentMadeEasy\Console\Commands\PaymentGatewaysCommand;
+use NexusPay\PaymentMadeEasy\Console\Commands\PaymentVerifyCommand;
+use NexusPay\PaymentMadeEasy\Console\Commands\PaymentWebhookReplayCommand;
 use NexusPay\PaymentMadeEasy\Services\PaymentRecorder;
 
 class PaymentServiceProvider extends ServiceProvider
@@ -55,54 +44,13 @@ class PaymentServiceProvider extends ServiceProvider
         }
 
         $this->loadRoutesFrom(__DIR__ . '/routes/webhooks.php');
-        $this->registerDrivers();
-    }
 
-    protected function registerDrivers()
-    {
-        $manager = $this->app->make(PaymentManager::class);
-
-        $manager->extend('paystack', function ($app, $config) {
-            return new PaystackDriver($config);
-        });
-        $manager->extend('flutterwave', function ($app, $config) {
-            return new FlutterwaveDriver($config);
-        });
-        $manager->extend('stripe', function ($app, $config) {
-            return new StripeDriver($config);
-        });
-        $manager->extend('seerbit', function ($app, $config) {
-            return new SeerbitDriver($config);
-        });
-        $manager->extend('monnify', function ($app, $config) {
-            return new MonnifyDriver($config);
-        });
-        $manager->extend('squad', function ($app, $config) {
-            return new SquadDriver($config);
-        });
-        $manager->extend('remita', function ($app, $config) {
-            return new RemitaDriver($config);
-        });
-        $manager->extend('budpay', function ($app, $config) {
-            return new BudpayDriver($config);
-        });
-        $manager->extend('interswitch', function ($app, $config) {
-            return new InterswitchDriver($config);
-        });
-        $manager->extend('paypal', function ($app, $config) {
-            return new PayPalDriver($config);
-        });
-        $manager->extend('mpesa', function ($app, $config) {
-            return new MPesaDriver($config);
-        });
-        $manager->extend('mtnmomo', function ($app, $config) {
-            return new MTNMoMoDriver($config);
-        });
-        $manager->extend('razorpay', function ($app, $config) {
-            return new RazorpayDriver($config);
-        });
-        $manager->extend('paddle', function ($app, $config) {
-            return new PaddleDriver($config);
-        });
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                PaymentGatewaysCommand::class,
+                PaymentVerifyCommand::class,
+                PaymentWebhookReplayCommand::class,
+            ]);
+        }
     }
 }

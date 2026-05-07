@@ -355,7 +355,7 @@ class PaystackDriver extends AbstractPaymentDriver implements
         }
     }
 
-    public function listBanks(string $country = 'NG'): array
+    public function listBanks(array $filters = []): array
     {
         try {
             return $this->makeRequest('GET', $this->config['base_url'] . '/bank?country=' . strtolower($country), [
@@ -366,8 +366,10 @@ class PaystackDriver extends AbstractPaymentDriver implements
         }
     }
 
-    public function resolveAccountNumber(string $accountNumber, string $bankCode): array
+    public function resolveAccountNumber(array $data): array
     {
+        $accountNumber = $data['account_number'] ?? '';
+        $bankCode      = $data['bank_code'] ?? '';
         try {
             return $this->makeRequest(
                 'GET',

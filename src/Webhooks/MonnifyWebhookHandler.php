@@ -101,4 +101,15 @@ class MonnifyWebhookHandler extends AbstractWebhookHandler
     {
         return $data['message'] ?? parent::extractFailureReason($data);
     }
+
+    protected function getSignatureFromRequest(Request $request): string
+    {
+        return $request->header('monnify-signature', '');
+    }
+
+    protected function calculateExpectedSignature(string $payload): string
+    {
+        $secret = $this->config['webhook_secret'] ?? $this->config['secret_key'] ?? '';
+        return base64_encode(hash_hmac('sha512', $payload, $secret, true));
+    }
 }

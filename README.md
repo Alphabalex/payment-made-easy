@@ -60,7 +60,15 @@ PAYMENT_RECORDING_ENABLED=true
 PAYMENT_RECORD_WEBHOOKS=true
 ```
 
-### 4. Environment Variables
+### 4. Verify Your Setup
+
+After adding credentials to your `.env`, run the following to confirm all gateways are configured correctly:
+
+```bash
+php artisan payment:gateways --configured
+```
+
+Gateways with missing credentials will be highlighted in yellow.
 
 ```env
 # Default gateway & currency
@@ -698,6 +706,56 @@ PaymentTransaction::successful()->gateway('paystack')->get();
 PaymentSubscription::active()->forEmail('user@example.com')->get();
 PaymentTransfer::successful()->gateway('mtnmomo')->get();
 ```
+
+---
+
+## Artisan Commands
+
+The package ships three built-in Artisan commands for local development and debugging.
+
+### `payment:gateways` — List all configured gateways
+
+```bash
+# List all 14 supported gateways with their capabilities
+php artisan payment:gateways
+
+# Show only gateways that have credentials configured
+php artisan payment:gateways --configured
+```
+
+Output shows a capability matrix (Payments, Subscriptions, Disbursements, Virtual Accounts, Payment Links), marks the default gateway with `*`, and colour-codes each gateway as **ready** (green) or **missing env** (yellow) based on whether credentials are present in your `.env`.
+
+---
+
+### `payment:verify` — Verify a payment by reference
+
+```bash
+# Pretty-print the verification result
+php artisan payment:verify paystack ORDER_123
+
+# Dump the full raw API response as JSON
+php artisan payment:verify paystack ORDER_123 --json
+```
+
+Useful for quickly checking a payment status from the command line without writing a temporary controller.
+
+---
+
+### `payment:webhook-replay` — Replay a logged webhook event
+
+> Requires `PAYMENT_RECORDING_ENABLED=true` and migrations to have been run.
+
+```bash
+# Replay webhook log #42 — re-fires the stored event through the handler
+php artisan payment:webhook-replay 42
+
+# Dry-run — prints the stored payload without dispatching any events
+php artisan payment:webhook-replay 42 --dry-run
+```
+
+Looks up the `PaymentWebhookLog` row by its primary key, reconstructs the original request, and routes it back through the appropriate webhook handler. The log's status is updated to `processed` on success or `failed` on error.
+
+---
 
 ## Contributing
 

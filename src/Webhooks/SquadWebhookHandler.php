@@ -97,4 +97,14 @@ class SquadWebhookHandler extends AbstractWebhookHandler
     {
         return $data['gateway_response'] ?? parent::extractFailureReason($data);
     }
+
+    protected function getSignatureFromRequest(\Illuminate\Http\Request $request): string
+    {
+        return $request->header('x-squad-signature', '');
+    }
+
+    protected function calculateExpectedSignature(string $payload): string
+    {
+        return hash_hmac('sha512', $payload, $this->config['webhook_secret'] ?? '');
+    }
 }

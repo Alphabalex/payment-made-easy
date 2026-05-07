@@ -65,17 +65,16 @@ interface DisbursementDriverInterface
     /**
      * List supported banks for the given country.
      *
-     * @param  string $country  ISO 3166-1 alpha-2 country code (e.g. 'NG', 'GH', 'KE')
+     * @param  array $filters  Filters e.g. ['country' => 'NG', 'per_page' => 50]
      * @return array  Array of banks with 'name', 'code', and 'country'
      */
-    public function listBanks(string $country = 'NG'): array;
+    public function listBanks(array $filters = []): array;
 
     /**
      * Resolve / validate a bank account number to get the account holder name.
      *
-     * @param  string $accountNumber
-     * @param  string $bankCode
+     * @param  array $data  e.g. ['account_number' => '...', 'bank_code' => '...']
      * @return array  Normalized response with 'account_name' and 'account_number' in data
      */
-    public function resolveAccountNumber(string $accountNumber, string $bankCode): array;
+    public function resolveAccountNumber(array $data): array;
 }
