@@ -3,13 +3,16 @@
 namespace NexusPay\PaymentMadeEasy\Webhooks;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Event;
+use NexusPay\PaymentMadeEasy\Contracts\WebhookLogSanitizerInterface;
 use NexusPay\PaymentMadeEasy\Contracts\WebhookHandlerInterface;
 use NexusPay\PaymentMadeEasy\Contracts\WebhookEventInterface;
 use NexusPay\PaymentMadeEasy\Events\ChargebackCreated;
 use NexusPay\PaymentMadeEasy\Events\DisputeCreated;
 use NexusPay\PaymentMadeEasy\Events\PaymentFailed;
+use NexusPay\PaymentMadeEasy\Events\PaymentPending;
 use NexusPay\PaymentMadeEasy\Events\PaymentSuccessful;
 use NexusPay\PaymentMadeEasy\Events\RefundProcessed;
 use NexusPay\PaymentMadeEasy\Events\SubscriptionCancelled;
@@ -37,11 +40,18 @@ abstract class AbstractWebhookHandler implements WebhookHandlerInterface
         }
 
         if (config('payment-gateways.webhooks.log_events', true)) {
-            Log::info('Payment webhook received', [
-                'gateway' => $event->getGateway(),
+            $context = [
+                'gateway'    => $event->getGateway(),
                 'event_type' => $event->getEventType(),
-                'data' => $event->getData(),
-            ]);
+            ];
+            if (config('payment-gateways.webhooks.log_detail', 'full') === 'full') {
+                $data = $event->getData();
+                if (config('payment-gateways.webhooks.log_sanitize', true)) {
+                    $data = App::make(WebhookLogSanitizerInterface::class)->sanitize($data);
+                }
+                $context['data'] = $data;
+            }
+            Log::info('Payment webhook received', $context);
         }
 
         $this->dispatchEvent($event);
@@ -59,6 +69,10 @@ abstract class AbstractWebhookHandler implements WebhookHandlerInterface
             case 'payment.failed':
                 $reason = $this->extractFailureReason($event->getData());
                 Event::dispatch(new PaymentFailed($event, $event->getData(), $reason));
+                break;
+
+            case 'payment.pending':
+                Event::dispatch(new PaymentPending($event, $event->getData()));
                 break;
 
             case 'refund.processed':
@@ -113,6 +127,51 @@ abstract class AbstractWebhookHandler implements WebhookHandlerInterface
     {
         // Override in specific handlers to extract failure reason
         return $data['message'] ?? $data['reason'] ?? 'Payment failed';
+    }
+
+    /**
+     * Gateways that verify via HMAC (or Stripe signing secret) must have non-empty signing material when
+     * webhooks.verify_signature and webhooks.require_signing_secret are true. Handlers without such signing
+     * (e.g. M-Pesa) override requiresConfiguredSigningSecret() to return false.
+     */
+    public function ensureSigningSecretConfiguredWhenRequired(): void
+    {
+        if (!config('payment-gateways.webhooks.verify_signature', true)) {
+            return;
+        }
+        if (!(bool) config('payment-gateways.webhooks.require_signing_secret', true)) {
+            return;
+        }
+        if (!$this->requiresConfiguredSigningSecret()) {
+            return;
+        }
+        if ($this->configuredSigningSecret() !== null) {
+            return;
+        }
+
+        throw new WebhookException(
+            'Webhook signing secret is not configured for gateway [' . $this->gateway . ']. '
+            . 'Set webhook_secret (or the gateway-specific secret documented for that driver) in config, '
+            . 'or disable PAYMENT_WEBHOOK_REQUIRE_SIGNING_SECRET only if you accept weaker verification.'
+        );
+    }
+
+    /**
+     * @return bool False for gateways that do not use a configurable shared secret for webhook verification.
+     */
+    protected function requiresConfiguredSigningSecret(): bool
+    {
+        return true;
+    }
+
+    /**
+     * Non-empty trimmed secret used when requiresConfiguredSigningSecret() is true.
+     */
+    protected function configuredSigningSecret(): ?string
+    {
+        $s = trim((string) ($this->config['webhook_secret'] ?? ''));
+
+        return $s !== '' ? $s : null;
     }
 
     abstract protected function getSignatureFromRequest(Request $request): string;

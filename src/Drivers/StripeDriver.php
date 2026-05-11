@@ -17,6 +17,11 @@ class StripeDriver extends AbstractPaymentDriver implements
 
     public function __construct(array $config)
     {
+        if (!class_exists(StripeClient::class)) {
+            throw new PaymentException(
+                'The Stripe driver requires stripe/stripe-php. Install with: composer require stripe/stripe-php:^17.4'
+            );
+        }
         parent::__construct($config);
         $this->stripe = new StripeClient($this->config['secret_key']);
     }

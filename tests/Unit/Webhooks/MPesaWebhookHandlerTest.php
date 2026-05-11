@@ -32,6 +32,16 @@ class MPesaWebhookHandlerTest extends TestCase
         $this->assertTrue($handler->verifySignature($request));
     }
 
+    public function test_ensure_signing_secret_does_not_require_config_for_mpesa(): void
+    {
+        $this->app['config']->set('payment-gateways.webhooks.verify_signature', true);
+        $this->app['config']->set('payment-gateways.webhooks.require_signing_secret', true);
+
+        $this->makeHandler()->ensureSigningSecretConfiguredWhenRequired();
+
+        $this->assertTrue(true);
+    }
+
     public function test_parse_stk_push_success_payload(): void
     {
         $handler = $this->makeHandler();

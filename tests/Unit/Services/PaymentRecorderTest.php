@@ -135,6 +135,34 @@ class PaymentRecorderTest extends TestCase
     // Subscriptions
     // -------------------------------------------------------------------------
 
+    public function test_handle_subscription_webhook_does_not_match_other_gateway(): void
+    {
+        $recorder = $this->recorder();
+
+        PaymentSubscription::create([
+            'gateway'            => 'paystack',
+            'plan_code'          => 'PLN_shared',
+            'plan_name'          => 'Plan',
+            'subscription_code'  => 'SUB_paystack_only',
+            'email'              => 'a@example.com',
+            'amount'             => 1000,
+            'currency'           => 'NGN',
+            'interval'           => 'monthly',
+            'status'             => 'active',
+            'invoice_limit'      => 0,
+            'invoices_paid'      => 0,
+        ]);
+
+        $this->assertNull(
+            $recorder->handleSubscriptionWebhook('stripe', 'SUB_paystack_only', 'cancelled')
+        );
+
+        $this->assertEquals(
+            'active',
+            PaymentSubscription::where('gateway', 'paystack')->first()->status
+        );
+    }
+
     public function test_record_subscription_creates_database_record(): void
     {
         $recorder = $this->recorder();

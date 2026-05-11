@@ -14,13 +14,17 @@ use NexusPay\PaymentMadeEasy\Exceptions\WebhookException;
  * Payloads are typically JSON with a `responseCode` field indicating
  * success (00) or failure.
  *
- * There is no standard HMAC header; instead Remita recommends verifying
- * by re-querying the RRR. When verify_signature is enabled, this handler
- * performs that re-query stub (returns true for now; implement active
- * verification by calling verifyPayment on the driver).
+ * There is no standard HMAC header; Remita recommends verifying by re-querying
+ * the RRR via the driver. This handler does not use a shared signing secret;
+ * secure the URL (HTTPS, allowlisting) and validate in application listeners if needed.
  */
 class RemitaWebhookHandler extends AbstractWebhookHandler
 {
+    protected function requiresConfiguredSigningSecret(): bool
+    {
+        return false;
+    }
+
     public function verifySignature(Request $request): bool
     {
         // Remita does not send an HMAC header. Signature verification should

@@ -3,6 +3,7 @@
 namespace NexusPay\PaymentMadeEasy\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class PaymentTransaction extends Model
@@ -76,6 +77,21 @@ class PaymentTransaction extends Model
         return $this->status === 'failed';
     }
 
+    public function isRefunded(): bool
+    {
+        return $this->status === 'refunded';
+    }
+
+    public function isPartiallyRefunded(): bool
+    {
+        return $this->status === 'partially_refunded';
+    }
+
+    public function isDisputed(): bool
+    {
+        return $this->status === 'disputed';
+    }
+
     public function markSuccessful(string $gatewayReference = null): bool
     {
         return $this->update([
@@ -97,5 +113,20 @@ class PaymentTransaction extends Model
     public function payable(): MorphTo
     {
         return $this->morphTo();
+    }
+
+    public function refunds(): HasMany
+    {
+        return $this->hasMany(PaymentRefund::class, 'payment_transaction_id');
+    }
+
+    public function disputes(): HasMany
+    {
+        return $this->hasMany(PaymentDispute::class, 'payment_transaction_id');
+    }
+
+    public function totalRefundedAmount(): float
+    {
+        return (float) $this->refunds()->sum('amount');
     }
 }

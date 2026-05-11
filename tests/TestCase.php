@@ -60,6 +60,7 @@ abstract class TestCase extends BaseTestCase
         // Webhooks config
         $app['config']->set('payment-gateways.webhooks.enabled', true);
         $app['config']->set('payment-gateways.webhooks.verify_signature', true);
+        $app['config']->set('payment-gateways.webhooks.require_signing_secret', true);
         $app['config']->set('payment-gateways.webhooks.log_events', false);
         $app['config']->set('payment-gateways.webhooks.queue_events', false);
 

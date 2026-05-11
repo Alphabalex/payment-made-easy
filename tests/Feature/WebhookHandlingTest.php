@@ -2,11 +2,14 @@
 
 namespace NexusPay\PaymentMadeEasy\Tests\Feature;
 
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Queue;
 use NexusPay\PaymentMadeEasy\Events\PaymentFailed;
 use NexusPay\PaymentMadeEasy\Events\PaymentSuccessful;
 use NexusPay\PaymentMadeEasy\Events\RefundProcessed;
 use NexusPay\PaymentMadeEasy\Events\TransferSuccessful;
+use NexusPay\PaymentMadeEasy\Jobs\ProcessWebhookJob;
 use NexusPay\PaymentMadeEasy\Tests\TestCase;
 
 class WebhookHandlingTest extends TestCase
@@ -35,12 +38,92 @@ class WebhookHandlingTest extends TestCase
 
         $signature = hash_hmac('sha512', $payload, $secret);
 
-        $response = $this->postJson('/webhooks/payment-gateways/paystack', json_decode($payload, true), [
-            'X-Paystack-Signature' => $signature,
-        ]);
+        $response = $this->call(
+            'POST',
+            '/webhooks/payment-gateways/paystack',
+            [],
+            [],
+            [],
+            ['HTTP_X_PAYSTACK_SIGNATURE' => $signature, 'CONTENT_TYPE' => 'application/json'],
+            $payload
+        );
 
         $response->assertStatus(200);
         Event::assertDispatched(PaymentSuccessful::class);
+    }
+
+    public function test_paystack_webhook_can_be_queued_with_raw_body_for_signature(): void
+    {
+        Event::fake();
+        Queue::fake();
+
+        $this->app['config']->set('payment-gateways.webhooks.queue_events', true);
+
+        $secret = 'paystack_webhook_secret';
+        $this->app['config']->set('payment-gateways.gateways.paystack.webhook_secret', $secret);
+
+        $payload = json_encode([
+            'event' => 'charge.success',
+            'data'  => [
+                'reference' => 'ORDER_QUEUED',
+                'amount'    => 500000,
+                'currency'  => 'NGN',
+                'status'    => 'success',
+                'customer'  => ['email' => 'test@example.com'],
+            ],
+        ]);
+
+        $signature = hash_hmac('sha512', $payload, $secret);
+
+        $response = $this->call(
+            'POST',
+            '/webhooks/payment-gateways/paystack',
+            [],
+            [],
+            [],
+            ['HTTP_X_PAYSTACK_SIGNATURE' => $signature, 'CONTENT_TYPE' => 'application/json'],
+            $payload
+        );
+
+        $response->assertStatus(202);
+        Event::assertNotDispatched(PaymentSuccessful::class);
+        Queue::assertPushed(ProcessWebhookJob::class, function (ProcessWebhookJob $job) use ($payload) {
+            return $job->gateway === 'paystack' && $job->rawContent === $payload;
+        });
+    }
+
+    public function test_paystack_duplicate_webhook_is_ignored_when_idempotency_enabled(): void
+    {
+        Event::fake();
+        Cache::flush();
+
+        $this->app['config']->set('payment-gateways.webhooks.idempotency.enabled', true);
+        $this->app['config']->set('payment-gateways.webhooks.idempotency.ttl', 3600);
+
+        $secret = 'paystack_webhook_secret';
+        $this->app['config']->set('payment-gateways.gateways.paystack.webhook_secret', $secret);
+
+        $payload = json_encode([
+            'event' => 'charge.success',
+            'data'  => [
+                'reference' => 'ORDER_DUP',
+                'amount'    => 500000,
+                'currency'  => 'NGN',
+                'status'    => 'success',
+                'customer'  => ['email' => 'test@example.com'],
+            ],
+        ]);
+
+        $signature = hash_hmac('sha512', $payload, $secret);
+        $headers = ['HTTP_X_PAYSTACK_SIGNATURE' => $signature, 'CONTENT_TYPE' => 'application/json'];
+
+        $this->call('POST', '/webhooks/payment-gateways/paystack', [], [], [], $headers, $payload)
+            ->assertStatus(200);
+        Event::assertDispatchedTimes(PaymentSuccessful::class, 1);
+
+        $this->call('POST', '/webhooks/payment-gateways/paystack', [], [], [], $headers, $payload)
+            ->assertStatus(200);
+        Event::assertDispatchedTimes(PaymentSuccessful::class, 1);
     }
 
     public function test_paystack_webhook_rejects_invalid_signature(): void
@@ -51,6 +134,21 @@ class WebhookHandlingTest extends TestCase
 
         $response = $this->postJson('/webhooks/payment-gateways/paystack', $payload, [
             'X-Paystack-Signature' => 'invalid_signature',
+        ]);
+
+        $response->assertStatus(400);
+    }
+
+    public function test_paystack_webhook_rejects_when_signing_secret_missing(): void
+    {
+        $base = $this->app['config']->get('payment-gateways.gateways.paystack', []);
+        $this->app['config']->set('payment-gateways.gateways.paystack', array_merge($base, [
+            'webhook_secret' => '',
+        ]));
+
+        $response = $this->postJson('/webhooks/payment-gateways/paystack', [
+            'event' => 'charge.success',
+            'data'  => ['reference' => 'ORDER_001'],
         ]);
 
         $response->assertStatus(400);
@@ -85,9 +183,15 @@ class WebhookHandlingTest extends TestCase
 
         $signature = hash_hmac('sha256', $payload, $secret);
 
-        $response = $this->postJson('/webhooks/payment-gateways/razorpay', json_decode($payload, true), [
-            'X-Razorpay-Signature' => $signature,
-        ]);
+        $response = $this->call(
+            'POST',
+            '/webhooks/payment-gateways/razorpay',
+            [],
+            [],
+            [],
+            ['HTTP_X_RAZORPAY_SIGNATURE' => $signature, 'CONTENT_TYPE' => 'application/json'],
+            $payload
+        );
 
         $response->assertStatus(200);
         Event::assertDispatched(PaymentSuccessful::class);
@@ -144,7 +248,7 @@ class WebhookHandlingTest extends TestCase
             'callback_url'   => 'https://example.com/callback',
         ]);
 
-        $payload = [
+        $payloadArray = [
             'event' => 'charge.completed',
             'data'  => [
                 'id'         => 123456,
@@ -157,12 +261,17 @@ class WebhookHandlingTest extends TestCase
                 'created_at' => '2026-05-07T10:00:00.000Z',
             ],
         ];
+        $rawPayload = json_encode($payloadArray);
 
         // Flutterwave sends the webhook_secret directly as the verif-hash header
-        $response = $this->postJson(
+        $response = $this->call(
+            'POST',
             '/webhooks/payment-gateways/flutterwave',
-            $payload,
-            ['verif-hash' => $secret]
+            [],
+            [],
+            [],
+            ['HTTP_VERIF_HASH' => $secret, 'CONTENT_TYPE' => 'application/json'],
+            $rawPayload
         );
 
         $response->assertStatus(200);

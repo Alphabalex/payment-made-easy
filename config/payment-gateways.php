@@ -15,6 +15,23 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | HTTP client — Laravel Http facade
+    |--------------------------------------------------------------------------
+    |
+    | Gateway API calls use Illuminate\Support\Facades\Http (timeout / verify
+    | from each gateway's http_timeout and http_verify). For proxies, custom
+    | handlers, or global defaults, use Laravel's API, for example in a service
+    | provider boot():
+    |
+    |   use Illuminate\Support\Facades\Http;
+    |   Http::globalOptions(['verify' => true, 'timeout' => 60]);
+    |   Http::globalRequestMiddleware(fn ($request) => $request->withHeader('X-App', 'payments'));
+    |
+    */
+    'http' => [],
+
+    /*
+    |--------------------------------------------------------------------------
     | Payment Gateways
     |--------------------------------------------------------------------------
     |
@@ -183,10 +200,49 @@ return [
     'webhooks' => [
         'enabled' => env('PAYMENT_WEBHOOKS_ENABLED', true),
         'verify_signature' => env('PAYMENT_WEBHOOK_VERIFY_SIGNATURE', true),
+        // When true with verify_signature, gateways that use a shared signing secret reject requests if it is missing (fail closed).
+        'require_signing_secret' => env('PAYMENT_WEBHOOK_REQUIRE_SIGNING_SECRET', true),
         'log_events' => env('PAYMENT_WEBHOOK_LOG_EVENTS', true),
         'queue_events' => env('PAYMENT_WEBHOOK_QUEUE_EVENTS', false),
         'queue_connection' => env('PAYMENT_WEBHOOK_QUEUE_CONNECTION', 'default'),
         'queue_name' => env('PAYMENT_WEBHOOK_QUEUE_NAME', 'payment-webhooks'),
+
+        // full: gateway, event_type, payload data | minimal: gateway and event_type only
+        'log_detail' => env('PAYMENT_WEBHOOK_LOG_DETAIL', 'full'),
+
+        // When true and log_detail=full, webhook / error logs run through WebhookLogSanitizerInterface
+        'log_sanitize' => env('PAYMENT_WEBHOOK_LOG_SANITIZE', true),
+        // Optional FQCN implementing WebhookLogSanitizerInterface (null = DefaultWebhookLogSanitizer)
+        'log_sanitizer' => env('PAYMENT_WEBHOOK_LOG_SANITIZER'),
+        // Extra keys to redact (merged with package defaults). Keys ending with _secret, _token, etc. are also redacted.
+        'log_redact_keys' => [],
+
+        // null = include stack trace only when config('app.debug') is true; true/false to force on or off for unexpected webhook errors (HTTP 500 path).
+        'log_unexpected_exception_trace' => env('PAYMENT_WEBHOOK_LOG_UNEXPECTED_TRACE'),
+
+        // Optional route middleware, e.g. ['throttle:60,1']
+        'middleware' => [],
+
+        /*
+        | Dedupe retries: first request wins; on handler failure the lock is released so the gateway can retry.
+        */
+        'idempotency' => [
+            'enabled' => env('PAYMENT_WEBHOOK_IDEMPOTENCY_ENABLED', false),
+            'ttl' => (int) env('PAYMENT_WEBHOOK_IDEMPOTENCY_TTL', 86400),
+            'cache_prefix' => env('PAYMENT_WEBHOOK_IDEMPOTENCY_PREFIX', 'payment-webhook'),
+        ],
+
+        /*
+        | Rate limit webhook HTTP requests (per IP + gateway). Add
+        | \NexusPay\PaymentMadeEasy\Http\Middleware\ThrottlePaymentWebhooks::class
+        | to webhooks.middleware when enabled.
+        */
+        'throttle' => [
+            'enabled' => env('PAYMENT_WEBHOOK_THROTTLE_ENABLED', false),
+            'max_attempts' => (int) env('PAYMENT_WEBHOOK_THROTTLE_MAX_ATTEMPTS', 60),
+            'decay_seconds' => (int) env('PAYMENT_WEBHOOK_THROTTLE_DECAY_SECONDS', 60),
+            'cache_prefix' => env('PAYMENT_WEBHOOK_THROTTLE_PREFIX', 'payment-webhook-throttle'),
+        ],
 
         // Event mapping for different gateways
         'event_mapping' => [
@@ -419,9 +475,10 @@ return [
     | Database Recording
     |--------------------------------------------------------------------------
     |
-    | When enabled, the PaymentRecorder service automatically persists
-    | payment transactions, subscriptions, transfers, and webhook events to
-    | the database. Requires the package migrations to have been run.
+    | recording.enabled: master switch for persistence helpers.
+    | recording.auto_from_webhook_events: when both are true, package listeners
+    | map PaymentSuccessful / transfers / subscriptions etc. into PaymentRecorder.
+    | You can still call PaymentRecorder manually regardless of auto_from_webhook_events.
     |
     | Publish migrations:
     |   php artisan vendor:publish --tag=payment-gateways-migrations
@@ -429,7 +486,8 @@ return [
     |
     */
     'recording' => [
-        'enabled'    => env('PAYMENT_RECORDING_ENABLED', false),
+        'enabled' => env('PAYMENT_RECORDING_ENABLED', false),
         'log_webhooks' => env('PAYMENT_RECORD_WEBHOOKS', true),
+        'auto_from_webhook_events' => env('PAYMENT_RECORDING_AUTO_WEBHOOK_EVENTS', false),
     ],
 ];

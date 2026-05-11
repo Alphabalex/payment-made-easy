@@ -23,6 +23,12 @@ use NexusPay\PaymentMadeEasy\Exceptions\WebhookException;
  */
 class PayPalWebhookHandler extends AbstractWebhookHandler
 {
+    protected function requiresConfiguredSigningSecret(): bool
+    {
+        // PayPal uses RSA transmission headers, not a single webhook_secret for HMAC here.
+        return false;
+    }
+
     public function verifySignature(Request $request): bool
     {
         if (!config('payment-gateways.webhooks.verify_signature', true)) {

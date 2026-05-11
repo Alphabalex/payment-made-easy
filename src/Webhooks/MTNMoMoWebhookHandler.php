@@ -24,6 +24,11 @@ use NexusPay\PaymentMadeEasy\Exceptions\WebhookException;
  */
 class MTNMoMoWebhookHandler extends AbstractWebhookHandler
 {
+    protected function requiresConfiguredSigningSecret(): bool
+    {
+        return false;
+    }
+
     public function verifySignature(Request $request): bool
     {
         // MTN MoMo does not send an HMAC signature.

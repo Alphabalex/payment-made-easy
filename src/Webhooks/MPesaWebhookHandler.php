@@ -23,6 +23,11 @@ use NexusPay\PaymentMadeEasy\Exceptions\WebhookException;
  */
 class MPesaWebhookHandler extends AbstractWebhookHandler
 {
+    protected function requiresConfiguredSigningSecret(): bool
+    {
+        return false;
+    }
+
     public function verifySignature(Request $request): bool
     {
         // Safaricom does not provide an HMAC signature.

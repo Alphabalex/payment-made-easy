@@ -29,6 +29,17 @@ class MonnifyWebhookHandlerTest extends TestCase
         return $request;
     }
 
+    public function test_ensure_signing_secret_passes_with_secret_key_only(): void
+    {
+        $this->app['config']->set('payment-gateways.webhooks.verify_signature', true);
+        $this->app['config']->set('payment-gateways.webhooks.require_signing_secret', true);
+
+        $handler = new MonnifyWebhookHandler(['secret_key' => 'api_secret_only'], 'monnify');
+        $handler->ensureSigningSecretConfiguredWhenRequired();
+
+        $this->assertTrue(true);
+    }
+
     public function test_verify_signature_with_valid_base64_hmac(): void
     {
         $handler = $this->makeHandler();

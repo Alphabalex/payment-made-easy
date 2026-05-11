@@ -2,43 +2,33 @@
 
 namespace NexusPay\PaymentMadeEasy\Tests\Unit\Drivers;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Handler\MockHandler;
-use GuzzleHttp\HandlerStack;
-use GuzzleHttp\Psr7\Response;
+use Illuminate\Support\Facades\Http;
 use NexusPay\PaymentMadeEasy\Drivers\PaystackDriver;
 use NexusPay\PaymentMadeEasy\Exceptions\PaymentException;
 use NexusPay\PaymentMadeEasy\Tests\TestCase;
 
 class PaystackDriverTest extends TestCase
 {
-    private function makeDriver(array $responses): PaystackDriver
+    private function driverConfig(): array
     {
-        $mock    = new MockHandler($responses);
-        $handler = HandlerStack::create($mock);
-        $client  = new Client(['handler' => $handler]);
-
-        $driver = new PaystackDriver([
+        return [
             'driver'       => 'paystack',
             'public_key'   => 'pk_test_xxx',
             'secret_key'   => 'sk_test_xxx',
             'base_url'     => 'https://api.paystack.co',
             'callback_url' => 'https://example.com/callback',
-        ]);
+        ];
+    }
 
-        // Inject the mock client via reflection
-        $reflection = new \ReflectionClass($driver);
-        $prop = $reflection->getProperty('client');
-        $prop->setAccessible(true);
-        $prop->setValue($driver, $client);
-
-        return $driver;
+    private function driver(): PaystackDriver
+    {
+        return new PaystackDriver($this->driverConfig());
     }
 
     public function test_initialize_payment_sends_correct_request(): void
     {
-        $driver = $this->makeDriver([
-            new Response(200, [], json_encode([
+        Http::fake([
+            'https://api.paystack.co/*' => Http::response([
                 'status'  => true,
                 'message' => 'Authorization URL created',
                 'data'    => [
@@ -46,10 +36,10 @@ class PaystackDriverTest extends TestCase
                     'access_code'       => 'abc123',
                     'reference'         => 'ORDER_001',
                 ],
-            ])),
+            ], 200),
         ]);
 
-        $response = $driver->initializePayment([
+        $response = $this->driver()->initializePayment([
             'email'     => 'test@example.com',
             'amount'    => 5000.00,
             'reference' => 'ORDER_001',
@@ -62,8 +52,8 @@ class PaystackDriverTest extends TestCase
 
     public function test_verify_payment_returns_response(): void
     {
-        $driver = $this->makeDriver([
-            new Response(200, [], json_encode([
+        Http::fake([
+            'https://api.paystack.co/*' => Http::response([
                 'status'  => true,
                 'message' => 'Verification successful',
                 'data'    => [
@@ -71,10 +61,10 @@ class PaystackDriverTest extends TestCase
                     'status'    => 'success',
                     'amount'    => 500000,
                 ],
-            ])),
+            ], 200),
         ]);
 
-        $response = $driver->verifyPayment('ORDER_001');
+        $response = $this->driver()->verifyPayment('ORDER_001');
 
         $this->assertTrue($response['status']);
         $this->assertEquals('success', $response['data']['status']);
@@ -82,16 +72,16 @@ class PaystackDriverTest extends TestCase
 
     public function test_initialize_payment_throws_on_http_error(): void
     {
-        $driver = $this->makeDriver([
-            new Response(401, [], json_encode([
+        Http::fake([
+            'https://api.paystack.co/*' => Http::response([
                 'status'  => false,
                 'message' => 'Invalid key',
-            ])),
+            ], 401),
         ]);
 
         $this->expectException(PaymentException::class);
 
-        $driver->initializePayment([
+        $this->driver()->initializePayment([
             'email'  => 'test@example.com',
             'amount' => 5000.00,
         ]);
@@ -99,32 +89,32 @@ class PaystackDriverTest extends TestCase
 
     public function test_refund_sends_correct_payload(): void
     {
-        $driver = $this->makeDriver([
-            new Response(200, [], json_encode([
+        Http::fake([
+            'https://api.paystack.co/*' => Http::response([
                 'status'  => true,
                 'message' => 'Refund has been queued for processing',
                 'data'    => ['status' => 'pending'],
-            ])),
+            ], 200),
         ]);
 
-        $response = $driver->refundPayment('ORDER_001', 2500.00);
+        $response = $this->driver()->refundPayment('ORDER_001', 2500.00);
 
         $this->assertTrue($response['status']);
     }
 
     public function test_get_transactions_returns_list(): void
     {
-        $driver = $this->makeDriver([
-            new Response(200, [], json_encode([
+        Http::fake([
+            'https://api.paystack.co/*' => Http::response([
                 'status' => true,
                 'data'   => [
                     ['id' => 1, 'reference' => 'ref_1', 'amount' => 500000, 'status' => 'success'],
                     ['id' => 2, 'reference' => 'ref_2', 'amount' => 100000, 'status' => 'success'],
                 ],
-            ])),
+            ], 200),
         ]);
 
-        $response = $driver->getTransactions(['per_page' => 2]);
+        $response = $this->driver()->getTransactions(['per_page' => 2]);
 
         $this->assertTrue($response['status']);
         $this->assertCount(2, $response['data']);
@@ -136,8 +126,7 @@ class PaystackDriverTest extends TestCase
         $method = $reflection->getMethod('convertAmount');
         $method->setAccessible(true);
 
-        $driver = $this->makeDriver([]);
-        $result = $method->invoke($driver, 5000.00);
+        $result = $method->invoke($this->driver(), 5000.00);
 
         $this->assertEquals(500000, $result);
     }

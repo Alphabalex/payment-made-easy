@@ -81,4 +81,5 @@ class PaymentManagerTest extends TestCase
 
         $this->app->make(PaymentManager::class)->driver('nonexistent_gateway');
     }
+
 }

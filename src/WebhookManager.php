@@ -3,80 +3,84 @@
 namespace NexusPay\PaymentMadeEasy;
 
 use Illuminate\Http\Request;
-use NexusPay\PaymentMadeEasy\Exceptions\WebhookException;
-use NexusPay\PaymentMadeEasy\Webhooks\BudpayWebhookHandler;
-use NexusPay\PaymentMadeEasy\Webhooks\FlutterwaveWebhookHandler;
-use NexusPay\PaymentMadeEasy\Webhooks\InterswitchWebhookHandler;
-use NexusPay\PaymentMadeEasy\Webhooks\MonnifyWebhookHandler;
-use NexusPay\PaymentMadeEasy\Webhooks\MPesaWebhookHandler;
-use NexusPay\PaymentMadeEasy\Webhooks\MTNMoMoWebhookHandler;
-use NexusPay\PaymentMadeEasy\Webhooks\PaddleWebhookHandler;
-use NexusPay\PaymentMadeEasy\Webhooks\PayPalWebhookHandler;
-use NexusPay\PaymentMadeEasy\Webhooks\PaystackWebhookHandler;
-use NexusPay\PaymentMadeEasy\Webhooks\RazorpayWebhookHandler;
-use NexusPay\PaymentMadeEasy\Webhooks\RemitaWebhookHandler;
-use NexusPay\PaymentMadeEasy\Webhooks\SeerbitWebhookHandler;
-use NexusPay\PaymentMadeEasy\Webhooks\SquadWebhookHandler;
-use NexusPay\PaymentMadeEasy\Webhooks\StripeWebhookHandler;
+use Illuminate\Support\Facades\Cache;
 use NexusPay\PaymentMadeEasy\Contracts\WebhookHandlerInterface;
+use NexusPay\PaymentMadeEasy\Exceptions\WebhookException;
+use NexusPay\PaymentMadeEasy\Webhooks\AbstractWebhookHandler;
 
 class WebhookManager
 {
-    protected array $handlers = [];
-
-    public function __construct()
-    {
-        $this->registerHandlers();
-    }
-
-    public function handle(string $gateway, Request $request): void
+    /**
+     * Verify, optionally dedupe, parse and dispatch the webhook.
+     *
+     * @return bool True if the webhook was processed; false if treated as a duplicate (still safe to return HTTP 2xx).
+     */
+    public function handle(string $gateway, Request $request): bool
     {
         $handler = $this->getHandler($gateway);
+
+        if ($handler instanceof AbstractWebhookHandler) {
+            $handler->ensureSigningSecretConfiguredWhenRequired();
+        }
 
         if (!$handler->verifySignature($request)) {
             throw new WebhookException('Invalid webhook signature');
         }
 
-        $event = $handler->parsePayload($request);
-        $handler->handle($event);
+        $idempotencyKey = null;
+        if ($this->idempotencyEnabled()) {
+            $idempotencyKey = $this->idempotencyKey($gateway, $request);
+            $ttl = (int) config('payment-gateways.webhooks.idempotency.ttl', 86400);
+            if (!Cache::add($idempotencyKey, 1, $ttl)) {
+                return false;
+            }
+        }
+
+        try {
+            $event = $handler->parsePayload($request);
+            $handler->handle($event);
+        } catch (\Throwable $e) {
+            if ($idempotencyKey !== null) {
+                Cache::forget($idempotencyKey);
+            }
+            throw $e;
+        }
+
+        return true;
     }
 
+    /**
+     * Build a handler using the current config (tests and runtime-safe; not cached per gateway).
+     */
     public function getHandler(string $gateway): WebhookHandlerInterface
     {
-        if (!isset($this->handlers[$gateway])) {
+        $gateways = config('payment-gateways.gateways', []);
+        if (!isset($gateways[$gateway])) {
             throw new WebhookException("No webhook handler found for gateway: {$gateway}");
         }
 
-        return $this->handlers[$gateway];
-    }
-
-    protected function registerHandlers(): void
-    {
-        $gateways = config('payment-gateways.gateways', []);
-
-        foreach ($gateways as $name => $config) {
-            $this->handlers[$name] = $this->createHandler($name, $config);
+        $class = GatewayRegistry::webhookHandlerClass($gateway);
+        if ($class === null) {
+            throw new WebhookException("Unsupported gateway: {$gateway}");
         }
+
+        return new $class($gateways[$gateway], $gateway);
     }
 
-    protected function createHandler(string $gateway, array $config): WebhookHandlerInterface
+    protected function idempotencyEnabled(): bool
     {
-        return match ($gateway) {
-            'paystack'    => new PaystackWebhookHandler($config, $gateway),
-            'flutterwave' => new FlutterwaveWebhookHandler($config, $gateway),
-            'stripe'      => new StripeWebhookHandler($config, $gateway),
-            'seerbit'     => new SeerbitWebhookHandler($config, $gateway),
-            'monnify'     => new MonnifyWebhookHandler($config, $gateway),
-            'squad'       => new SquadWebhookHandler($config, $gateway),
-            'remita'      => new RemitaWebhookHandler($config, $gateway),
-            'budpay'      => new BudpayWebhookHandler($config, $gateway),
-            'interswitch' => new InterswitchWebhookHandler($config, $gateway),
-            'paypal'      => new PayPalWebhookHandler($config, $gateway),
-            'mpesa'       => new MPesaWebhookHandler($config, $gateway),
-            'mtnmomo'     => new MTNMoMoWebhookHandler($config, $gateway),
-            'razorpay'    => new RazorpayWebhookHandler($config, $gateway),
-            'paddle'      => new PaddleWebhookHandler($config, $gateway),
-            default       => throw new WebhookException("Unsupported gateway: {$gateway}"),
-        };
+        return (bool) config('payment-gateways.webhooks.idempotency.enabled', false);
+    }
+
+    protected function idempotencyKey(string $gateway, Request $request): string
+    {
+        $prefix = (string) config('payment-gateways.webhooks.idempotency.cache_prefix', 'payment-webhook');
+        $raw = $request->getContent();
+        if ($raw === '' || $raw === false) {
+            $encoded = json_encode($request->request->all(), JSON_UNESCAPED_SLASHES);
+            $raw = $encoded !== false ? $encoded : '';
+        }
+
+        return $prefix . ':' . $gateway . ':' . hash('sha256', $raw);
     }
 }

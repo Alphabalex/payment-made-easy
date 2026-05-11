@@ -17,6 +17,12 @@ class StripeWebhookHandler extends AbstractWebhookHandler
             return true;
         }
 
+        if (!class_exists(Webhook::class)) {
+            throw new WebhookException(
+                'stripe/stripe-php is required for Stripe webhooks. Install with: composer require stripe/stripe-php:^17.4'
+            );
+        }
+
         try {
             $signature = $this->getSignatureFromRequest($request);
             $payload = $request->getContent();
@@ -31,6 +37,12 @@ class StripeWebhookHandler extends AbstractWebhookHandler
 
     public function parsePayload(Request $request): WebhookEventInterface
     {
+        if (!class_exists(Webhook::class)) {
+            throw new WebhookException(
+                'stripe/stripe-php is required for Stripe webhooks. Install with: composer require stripe/stripe-php:^17.4'
+            );
+        }
+
         try {
             $signature = $this->getSignatureFromRequest($request);
             $payload = $request->getContent();

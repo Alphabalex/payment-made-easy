@@ -21,6 +21,13 @@ use NexusPay\PaymentMadeEasy\Exceptions\WebhookException;
  */
 class MonnifyWebhookHandler extends AbstractWebhookHandler
 {
+    protected function configuredSigningSecret(): ?string
+    {
+        $s = trim((string) ($this->config['webhook_secret'] ?? $this->config['secret_key'] ?? ''));
+
+        return $s !== '' ? $s : null;
+    }
+
     public function verifySignature(Request $request): bool
     {
         if (!config('payment-gateways.webhooks.verify_signature', true)) {
