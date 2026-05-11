@@ -29,6 +29,10 @@ class PaystackDriver extends AbstractPaymentDriver implements
             $payload['currency'] = $data['currency'];
         }
 
+        if (isset($data['bearer'])) {
+            $payload['bearer'] = $data['bearer'];
+        }
+
         $response = $this->makeRequest('POST', $this->config['base_url'] . '/transaction/initialize', [
             'headers' => [
                 'Authorization' => 'Bearer ' . $this->config['secret_key'],
