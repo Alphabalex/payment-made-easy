@@ -15,6 +15,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - **`LICENSE`** file (MIT), aligned with **`composer.json`**.
 - **`CONTRIBUTING.md`** contributor guide (development setup, tests, PR expectations, Conventional Commits).
 - **`SECURITY.md`** vulnerability reporting policy (private contact, scope, safe harbor).
+- **`ext-bcmath`** as a Composer requirement for reliable minor-unit / money conversion in drivers.
+- **PHPStan** (level **6**) with **`phpstan-baseline.neon`** to lock current findings while preventing new issues; run **`composer phpstan`** locally.
+- **CI:** **`composer audit`** on the test matrix and lint jobs; **PHPStan** on the lint job.
 
 ### Removed
 
@@ -22,6 +25,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- **`ProcessWebhookJob`:** **`WebhookException`** (invalid signature, unknown gateway, invalid payload, etc.) is **logged and not rethrown**, so the queue does not retry permanently failing webhooks; unexpected errors still use the job’s **`$tries`** (**5**) for transient failures (e.g. listener DB errors).
 - **README:** expanded usage and webhook documentation (default `Payment::initializePayment`, multi-driver one-time snippets, `getPayment`, Stripe Price ID as `plan_code`, bank-account disbursements for Monnify/Squad/Remita/Budpay, full `EventServiceProvider` webhook map, `WebhookManager` manual handling, Monnify hosted checkout, `PaymentManager` constructor injection).
 - **`WebhookManager`** builds handlers from **live config** on each **`getHandler()`** call (no per-gateway handler cache), so tests and config refreshes always see current secrets.
 - **Outbound HTTP:** payment drivers now use Laravel’s **`Illuminate\Support\Facades\Http`** client instead of injecting **`GuzzleHttp\Client`**. Timeout and TLS verify still come from each gateway’s **`http_timeout`** / **`http_verify`** config. Advanced customization uses Laravel’s **`Http::globalOptions()`** and related APIs; the **`payment-made-easy.http.client`** container binding and **`payment-gateways.http.client`** / per-gateway **`http_client`** Guzzle resolution have been removed.

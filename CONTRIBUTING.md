@@ -51,6 +51,14 @@ composer test:unit
 composer test:feature
 ```
 
+## Static analysis
+
+```bash
+composer phpstan
+```
+
+Analysis uses **PHPStan** at level **6** with **`phpstan-baseline.neon`** for existing findings. New code should not add baseline entries when avoidable; shrinking the baseline over time is welcome.
+
 All tests should pass before you open a PR. CI exercises multiple **Laravel** and **PHP** combinations (see `.github/workflows/ci.yml`); if something fails only on a specific matrix row, mention it in the PR description.
 
 ## Project conventions

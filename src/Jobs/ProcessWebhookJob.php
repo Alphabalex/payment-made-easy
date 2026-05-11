@@ -17,6 +17,13 @@ class ProcessWebhookJob implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     /**
+     * Retries apply only to unexpected failures (e.g. DB errors in listeners).
+     * {@see WebhookException} is caught and not rethrown — bad signatures and similar
+     * client/configuration errors must not spin the queue.
+     */
+    public int $tries = 5;
+
+    /**
      * @param  array<string, string>  $headers
      */
     public function __construct(
@@ -34,12 +41,10 @@ class ProcessWebhookJob implements ShouldQueue
             $request = WebhookRequestFactory::fromRawContent($this->rawContent, $this->headers);
             $webhookManager->handle($this->gateway, $request);
         } catch (WebhookException $e) {
-            Log::error('Queued webhook processing failed', [
+            Log::error('Queued webhook rejected (not retrying)', [
                 'gateway' => $this->gateway,
                 'error'   => $e->getMessage(),
             ]);
-
-            throw $e;
         }
     }
 }

@@ -78,6 +78,9 @@ jobs:
           composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --no-update --no-interaction
           composer update --prefer-dist --no-progress --no-interaction
 
+      - name: Composer audit
+        run: composer audit
+
       - name: Run tests
         run: ./vendor/bin/phpunit --no-coverage
 
@@ -93,10 +96,17 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: "8.3"
+          extensions: mbstring, xml, curl, openssl, bcmath
           coverage: none
 
       - name: Install dependencies
-        run: composer install --prefer-dist --no-progress --no-interaction
+        run: composer update --prefer-dist --no-progress --no-interaction
 
       - name: Check syntax (PHP lint)
         run: find src tests -name "*.php" -print0 | xargs -0 php -l
+
+      - name: Composer audit
+        run: composer audit
+
+      - name: PHPStan
+        run: vendor/bin/phpstan analyse --memory-limit=512M --no-progress

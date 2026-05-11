@@ -1,0 +1,4273 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Console\\Commands\\PaymentGatewaysCommand\:\:isConfigured\(\) has parameter \$config with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Console/Commands/PaymentGatewaysCommand.php
+
+		-
+			message: '#^Access to an undefined property NexusPay\\PaymentMadeEasy\\Models\\PaymentTransaction\:\:\$amount\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Console/Commands/PaymentTransactionsCommand.php
+
+		-
+			message: '#^Access to an undefined property NexusPay\\PaymentMadeEasy\\Models\\PaymentTransaction\:\:\$currency\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Console/Commands/PaymentTransactionsCommand.php
+
+		-
+			message: '#^Access to an undefined property NexusPay\\PaymentMadeEasy\\Models\\PaymentTransaction\:\:\$gateway\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Console/Commands/PaymentTransactionsCommand.php
+
+		-
+			message: '#^Access to an undefined property NexusPay\\PaymentMadeEasy\\Models\\PaymentTransaction\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Console/Commands/PaymentTransactionsCommand.php
+
+		-
+			message: '#^Access to an undefined property NexusPay\\PaymentMadeEasy\\Models\\PaymentTransaction\:\:\$reference\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Console/Commands/PaymentTransactionsCommand.php
+
+		-
+			message: '#^Access to an undefined property NexusPay\\PaymentMadeEasy\\Models\\PaymentTransaction\:\:\$status\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Console/Commands/PaymentTransactionsCommand.php
+
+		-
+			message: '#^Access to an undefined property NexusPay\\PaymentMadeEasy\\Models\\PaymentTransaction\:\:\$updated_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Console/Commands/PaymentTransactionsCommand.php
+
+		-
+			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<int,stdClass\>\:\:map\(\) contains unresolvable type\.$#'
+			identifier: argument.unresolvableType
+			count: 1
+			path: src/Console/Commands/PaymentTransactionsCommand.php
+
+		-
+			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<int,stdClass\>\:\:map\(\) expects callable\(stdClass, int\)\: array\{mixed, mixed, mixed, string, mixed, mixed, mixed\}, Closure\(NexusPay\\PaymentMadeEasy\\Models\\PaymentTransaction\)\: array\{mixed, mixed, mixed, string, mixed, mixed, mixed\} given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Console/Commands/PaymentTransactionsCommand.php
+
+		-
+			message: '#^Return type of call to method Illuminate\\Support\\Collection\<int,array\<int, mixed\>\>\:\:all\(\) contains unresolvable type\.$#'
+			identifier: method.unresolvableReturnType
+			count: 1
+			path: src/Console/Commands/PaymentTransactionsCommand.php
+
+		-
+			message: '#^Return type of call to method Illuminate\\Support\\Collection\<int,stdClass\>\:\:map\(\) contains unresolvable type\.$#'
+			identifier: method.unresolvableReturnType
+			count: 1
+			path: src/Console/Commands/PaymentTransactionsCommand.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Console\\Commands\\PaymentVerifyCommand\:\:extractAmount\(\) has parameter \$response with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Console/Commands/PaymentVerifyCommand.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Console\\Commands\\PaymentVerifyCommand\:\:extractEmail\(\) has parameter \$response with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Console/Commands/PaymentVerifyCommand.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Console\\Commands\\PaymentVerifyCommand\:\:extractPaidAt\(\) has parameter \$response with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Console/Commands/PaymentVerifyCommand.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Console\\Commands\\PaymentVerifyCommand\:\:extractStatus\(\) has parameter \$response with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Console/Commands/PaymentVerifyCommand.php
+
+		-
+			message: '#^Call to an undefined static method NexusPay\\PaymentMadeEasy\\Models\\PaymentWebhookLog\:\:find\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 1
+			path: src/Console/Commands/PaymentWebhookReplayCommand.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\DisbursementDriverInterface\:\:bulkTransfer\(\) has parameter \$transfers with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/DisbursementDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\DisbursementDriverInterface\:\:bulkTransfer\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/DisbursementDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\DisbursementDriverInterface\:\:createTransferRecipient\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/DisbursementDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\DisbursementDriverInterface\:\:createTransferRecipient\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/DisbursementDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\DisbursementDriverInterface\:\:listBanks\(\) has parameter \$filters with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/DisbursementDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\DisbursementDriverInterface\:\:listBanks\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/DisbursementDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\DisbursementDriverInterface\:\:listTransfers\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/DisbursementDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\DisbursementDriverInterface\:\:listTransfers\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/DisbursementDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\DisbursementDriverInterface\:\:resolveAccountNumber\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/DisbursementDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\DisbursementDriverInterface\:\:resolveAccountNumber\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/DisbursementDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\DisbursementDriverInterface\:\:transfer\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/DisbursementDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\DisbursementDriverInterface\:\:transfer\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/DisbursementDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\DisbursementDriverInterface\:\:verifyTransfer\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/DisbursementDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\PaymentDriverInterface\:\:getPayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/PaymentDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\PaymentDriverInterface\:\:getTransactions\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/PaymentDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\PaymentDriverInterface\:\:getTransactions\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/PaymentDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\PaymentDriverInterface\:\:initializePayment\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/PaymentDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\PaymentDriverInterface\:\:initializePayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/PaymentDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\PaymentDriverInterface\:\:refundPayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/PaymentDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\PaymentDriverInterface\:\:verifyPayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/PaymentDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\PaymentLinkDriverInterface\:\:createPaymentLink\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/PaymentLinkDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\PaymentLinkDriverInterface\:\:createPaymentLink\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/PaymentLinkDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\PaymentLinkDriverInterface\:\:disablePaymentLink\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/PaymentLinkDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\PaymentLinkDriverInterface\:\:getPaymentLink\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/PaymentLinkDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\PaymentLinkDriverInterface\:\:listPaymentLinks\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/PaymentLinkDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\PaymentLinkDriverInterface\:\:listPaymentLinks\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/PaymentLinkDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\PaymentLinkDriverInterface\:\:updatePaymentLink\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/PaymentLinkDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\PaymentLinkDriverInterface\:\:updatePaymentLink\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/PaymentLinkDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\SubscriptionDriverInterface\:\:cancelSubscription\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/SubscriptionDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\SubscriptionDriverInterface\:\:createPlan\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/SubscriptionDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\SubscriptionDriverInterface\:\:createPlan\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/SubscriptionDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\SubscriptionDriverInterface\:\:createSubscription\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/SubscriptionDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\SubscriptionDriverInterface\:\:createSubscription\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/SubscriptionDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\SubscriptionDriverInterface\:\:deletePlan\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/SubscriptionDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\SubscriptionDriverInterface\:\:getPlan\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/SubscriptionDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\SubscriptionDriverInterface\:\:getSubscription\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/SubscriptionDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\SubscriptionDriverInterface\:\:listCustomerSubscriptions\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/SubscriptionDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\SubscriptionDriverInterface\:\:listPlans\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/SubscriptionDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\SubscriptionDriverInterface\:\:listPlans\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/SubscriptionDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\SubscriptionDriverInterface\:\:listSubscriptions\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/SubscriptionDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\SubscriptionDriverInterface\:\:listSubscriptions\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/SubscriptionDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\SubscriptionDriverInterface\:\:pauseSubscription\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/SubscriptionDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\SubscriptionDriverInterface\:\:resumeSubscription\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/SubscriptionDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\SubscriptionDriverInterface\:\:updatePlan\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/SubscriptionDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\SubscriptionDriverInterface\:\:updatePlan\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/SubscriptionDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\VirtualAccountDriverInterface\:\:createVirtualAccount\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/VirtualAccountDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\VirtualAccountDriverInterface\:\:createVirtualAccount\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/VirtualAccountDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\VirtualAccountDriverInterface\:\:deactivateVirtualAccount\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/VirtualAccountDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\VirtualAccountDriverInterface\:\:getVirtualAccount\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/VirtualAccountDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\VirtualAccountDriverInterface\:\:listVirtualAccounts\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/VirtualAccountDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\VirtualAccountDriverInterface\:\:listVirtualAccounts\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/VirtualAccountDriverInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\WebhookEventInterface\:\:getData\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/WebhookEventInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Contracts\\WebhookEventInterface\:\:getRawPayload\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Contracts/WebhookEventInterface.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\AbstractPaymentDriver\:\:__construct\(\) has parameter \$config with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/AbstractPaymentDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\AbstractPaymentDriver\:\:sendHttpRequest\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Drivers/AbstractPaymentDriver.php
+
+		-
+			message: '#^Property NexusPay\\PaymentMadeEasy\\Drivers\\AbstractPaymentDriver\:\:\$config has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Drivers/AbstractPaymentDriver.php
+
+		-
+			message: '#^Ternary operator condition is always true\.$#'
+			identifier: ternary.alwaysTrue
+			count: 2
+			path: src/Drivers/AbstractPaymentDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\BudpayDriver\:\:authHeaders\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/BudpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\BudpayDriver\:\:bulkTransfer\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/BudpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\BudpayDriver\:\:bulkTransfer\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/BudpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\BudpayDriver\:\:createTransferRecipient\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/BudpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\BudpayDriver\:\:createTransferRecipient\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/BudpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\BudpayDriver\:\:createVirtualAccount\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/BudpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\BudpayDriver\:\:createVirtualAccount\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/BudpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\BudpayDriver\:\:deactivateVirtualAccount\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/BudpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\BudpayDriver\:\:getPayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/BudpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\BudpayDriver\:\:getTransactions\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/BudpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\BudpayDriver\:\:getTransactions\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/BudpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\BudpayDriver\:\:getVirtualAccount\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/BudpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\BudpayDriver\:\:initializePayment\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/BudpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\BudpayDriver\:\:initializePayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/BudpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\BudpayDriver\:\:listBanks\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/BudpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\BudpayDriver\:\:listBanks\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/BudpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\BudpayDriver\:\:listTransfers\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/BudpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\BudpayDriver\:\:listTransfers\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/BudpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\BudpayDriver\:\:listVirtualAccounts\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/BudpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\BudpayDriver\:\:listVirtualAccounts\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/BudpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\BudpayDriver\:\:refundPayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/BudpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\BudpayDriver\:\:resolveAccountNumber\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/BudpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\BudpayDriver\:\:resolveAccountNumber\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/BudpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\BudpayDriver\:\:transfer\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/BudpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\BudpayDriver\:\:transfer\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/BudpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\BudpayDriver\:\:verifyPayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/BudpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\BudpayDriver\:\:verifyTransfer\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/BudpayDriver.php
+
+		-
+			message: '#^Offset 0 on non\-empty\-list\<string\> on left side of \?\? always exists and is not nullable\.$#'
+			identifier: nullCoalesce.offset
+			count: 1
+			path: src/Drivers/BudpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:authHeaders\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:bulkTransfer\(\) has parameter \$transfers with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:bulkTransfer\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:cancelSubscription\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:createPaymentLink\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:createPaymentLink\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:createPlan\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:createPlan\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:createSubscription\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:createSubscription\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:createTransferRecipient\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:createTransferRecipient\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:createVirtualAccount\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:createVirtualAccount\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:deactivateVirtualAccount\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:deletePlan\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:disablePaymentLink\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:getPayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:getPaymentLink\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:getPlan\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:getSubscription\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:getTransactions\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:getTransactions\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:getVirtualAccount\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:initializePayment\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:initializePayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:listBanks\(\) has parameter \$filters with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:listBanks\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:listCustomerSubscriptions\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:listPaymentLinks\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:listPaymentLinks\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:listPlans\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:listPlans\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:listSubscriptions\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:listSubscriptions\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:listTransfers\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:listTransfers\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:listVirtualAccounts\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:listVirtualAccounts\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:pauseSubscription\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:refundPayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:resolveAccountNumber\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:resolveAccountNumber\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:resumeSubscription\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:transfer\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:transfer\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:updatePaymentLink\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:updatePaymentLink\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:updatePlan\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:updatePlan\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:verifyPayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\FlutterwaveDriver\:\:verifyTransfer\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/FlutterwaveDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\InterswitchDriver\:\:authHeaders\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/InterswitchDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\InterswitchDriver\:\:getPayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/InterswitchDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\InterswitchDriver\:\:getTransactions\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/InterswitchDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\InterswitchDriver\:\:getTransactions\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/InterswitchDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\InterswitchDriver\:\:initializePayment\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/InterswitchDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\InterswitchDriver\:\:initializePayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/InterswitchDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\InterswitchDriver\:\:refundPayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/InterswitchDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\InterswitchDriver\:\:verifyPayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/InterswitchDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MPesaDriver\:\:authHeaders\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MPesaDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MPesaDriver\:\:getPayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MPesaDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MPesaDriver\:\:getTransactions\(\) has parameter \$filters with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MPesaDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MPesaDriver\:\:getTransactions\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MPesaDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MPesaDriver\:\:initializePayment\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MPesaDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MPesaDriver\:\:initializePayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MPesaDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MPesaDriver\:\:refundPayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MPesaDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MPesaDriver\:\:verifyPayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MPesaDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MTNMoMoDriver\:\:bulkTransfer\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MTNMoMoDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MTNMoMoDriver\:\:bulkTransfer\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MTNMoMoDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MTNMoMoDriver\:\:collectionHeaders\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MTNMoMoDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MTNMoMoDriver\:\:createTransferRecipient\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MTNMoMoDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MTNMoMoDriver\:\:createTransferRecipient\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MTNMoMoDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MTNMoMoDriver\:\:disbursementHeaders\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MTNMoMoDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MTNMoMoDriver\:\:getPayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MTNMoMoDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MTNMoMoDriver\:\:getTransactions\(\) has parameter \$filters with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MTNMoMoDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MTNMoMoDriver\:\:getTransactions\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MTNMoMoDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MTNMoMoDriver\:\:initializePayment\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MTNMoMoDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MTNMoMoDriver\:\:initializePayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MTNMoMoDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MTNMoMoDriver\:\:listBanks\(\) has parameter \$filters with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MTNMoMoDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MTNMoMoDriver\:\:listBanks\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MTNMoMoDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MTNMoMoDriver\:\:listTransfers\(\) has parameter \$filters with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MTNMoMoDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MTNMoMoDriver\:\:listTransfers\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MTNMoMoDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MTNMoMoDriver\:\:refundPayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MTNMoMoDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MTNMoMoDriver\:\:resolveAccountNumber\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MTNMoMoDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MTNMoMoDriver\:\:resolveAccountNumber\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MTNMoMoDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MTNMoMoDriver\:\:transfer\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MTNMoMoDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MTNMoMoDriver\:\:transfer\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MTNMoMoDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MTNMoMoDriver\:\:verifyPayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MTNMoMoDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MTNMoMoDriver\:\:verifyTransfer\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MTNMoMoDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MonnifyDriver\:\:authHeaders\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MonnifyDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MonnifyDriver\:\:bulkTransfer\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MonnifyDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MonnifyDriver\:\:bulkTransfer\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MonnifyDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MonnifyDriver\:\:cancelSubscription\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MonnifyDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MonnifyDriver\:\:createPlan\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MonnifyDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MonnifyDriver\:\:createPlan\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MonnifyDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MonnifyDriver\:\:createSubscription\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MonnifyDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MonnifyDriver\:\:createSubscription\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MonnifyDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MonnifyDriver\:\:createTransferRecipient\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MonnifyDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MonnifyDriver\:\:createTransferRecipient\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MonnifyDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MonnifyDriver\:\:createVirtualAccount\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MonnifyDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MonnifyDriver\:\:createVirtualAccount\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MonnifyDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MonnifyDriver\:\:deactivateVirtualAccount\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MonnifyDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MonnifyDriver\:\:deletePlan\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MonnifyDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MonnifyDriver\:\:getPayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MonnifyDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MonnifyDriver\:\:getPlan\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MonnifyDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MonnifyDriver\:\:getSubscription\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MonnifyDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MonnifyDriver\:\:getTransactions\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MonnifyDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MonnifyDriver\:\:getTransactions\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MonnifyDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MonnifyDriver\:\:getVirtualAccount\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MonnifyDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MonnifyDriver\:\:initializePayment\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MonnifyDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MonnifyDriver\:\:initializePayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MonnifyDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MonnifyDriver\:\:listBanks\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MonnifyDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MonnifyDriver\:\:listBanks\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MonnifyDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MonnifyDriver\:\:listCustomerSubscriptions\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MonnifyDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MonnifyDriver\:\:listPlans\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MonnifyDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MonnifyDriver\:\:listPlans\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MonnifyDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MonnifyDriver\:\:listSubscriptions\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MonnifyDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MonnifyDriver\:\:listSubscriptions\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MonnifyDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MonnifyDriver\:\:listTransfers\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MonnifyDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MonnifyDriver\:\:listTransfers\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MonnifyDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MonnifyDriver\:\:listVirtualAccounts\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MonnifyDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MonnifyDriver\:\:listVirtualAccounts\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MonnifyDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MonnifyDriver\:\:pauseSubscription\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MonnifyDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MonnifyDriver\:\:refundPayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MonnifyDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MonnifyDriver\:\:resolveAccountNumber\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MonnifyDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MonnifyDriver\:\:resolveAccountNumber\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MonnifyDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MonnifyDriver\:\:resumeSubscription\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MonnifyDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MonnifyDriver\:\:transfer\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MonnifyDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MonnifyDriver\:\:transfer\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MonnifyDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MonnifyDriver\:\:updatePlan\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MonnifyDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MonnifyDriver\:\:updatePlan\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MonnifyDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MonnifyDriver\:\:verifyPayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MonnifyDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\MonnifyDriver\:\:verifyTransfer\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/MonnifyDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaddleDriver\:\:authHeaders\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaddleDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaddleDriver\:\:cancelSubscription\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaddleDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaddleDriver\:\:createPaymentLink\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaddleDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaddleDriver\:\:createPaymentLink\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaddleDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaddleDriver\:\:createPlan\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaddleDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaddleDriver\:\:createPlan\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaddleDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaddleDriver\:\:createSubscription\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaddleDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaddleDriver\:\:createSubscription\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaddleDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaddleDriver\:\:deletePlan\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaddleDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaddleDriver\:\:disablePaymentLink\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaddleDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaddleDriver\:\:getPayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaddleDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaddleDriver\:\:getPaymentLink\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaddleDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaddleDriver\:\:getPlan\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaddleDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaddleDriver\:\:getSubscription\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaddleDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaddleDriver\:\:getTransactions\(\) has parameter \$filters with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaddleDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaddleDriver\:\:getTransactions\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaddleDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaddleDriver\:\:initializePayment\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaddleDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaddleDriver\:\:initializePayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaddleDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaddleDriver\:\:listCustomerSubscriptions\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaddleDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaddleDriver\:\:listPaymentLinks\(\) has parameter \$filters with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaddleDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaddleDriver\:\:listPaymentLinks\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaddleDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaddleDriver\:\:listPlans\(\) has parameter \$filters with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaddleDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaddleDriver\:\:listPlans\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaddleDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaddleDriver\:\:listSubscriptions\(\) has parameter \$filters with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaddleDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaddleDriver\:\:listSubscriptions\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaddleDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaddleDriver\:\:pauseSubscription\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaddleDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaddleDriver\:\:refundPayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaddleDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaddleDriver\:\:resumeSubscription\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaddleDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaddleDriver\:\:updatePaymentLink\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaddleDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaddleDriver\:\:updatePaymentLink\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaddleDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaddleDriver\:\:updatePlan\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaddleDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaddleDriver\:\:updatePlan\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaddleDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaddleDriver\:\:verifyPayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaddleDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PayPalDriver\:\:authHeaders\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PayPalDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PayPalDriver\:\:bulkTransfer\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PayPalDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PayPalDriver\:\:bulkTransfer\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PayPalDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PayPalDriver\:\:cancelSubscription\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PayPalDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PayPalDriver\:\:createPaymentLink\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PayPalDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PayPalDriver\:\:createPaymentLink\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PayPalDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PayPalDriver\:\:createPlan\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PayPalDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PayPalDriver\:\:createPlan\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PayPalDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PayPalDriver\:\:createSubscription\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PayPalDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PayPalDriver\:\:createSubscription\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PayPalDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PayPalDriver\:\:createTransferRecipient\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PayPalDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PayPalDriver\:\:createTransferRecipient\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PayPalDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PayPalDriver\:\:deletePlan\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PayPalDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PayPalDriver\:\:disablePaymentLink\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PayPalDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PayPalDriver\:\:getPayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PayPalDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PayPalDriver\:\:getPaymentLink\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PayPalDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PayPalDriver\:\:getPlan\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PayPalDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PayPalDriver\:\:getSubscription\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PayPalDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PayPalDriver\:\:getTransactions\(\) has parameter \$filters with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PayPalDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PayPalDriver\:\:getTransactions\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PayPalDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PayPalDriver\:\:initializePayment\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PayPalDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PayPalDriver\:\:initializePayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PayPalDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PayPalDriver\:\:listBanks\(\) has parameter \$filters with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PayPalDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PayPalDriver\:\:listBanks\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PayPalDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PayPalDriver\:\:listCustomerSubscriptions\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PayPalDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PayPalDriver\:\:listPaymentLinks\(\) has parameter \$filters with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PayPalDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PayPalDriver\:\:listPaymentLinks\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PayPalDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PayPalDriver\:\:listPlans\(\) has parameter \$filters with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PayPalDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PayPalDriver\:\:listPlans\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PayPalDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PayPalDriver\:\:listSubscriptions\(\) has parameter \$filters with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PayPalDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PayPalDriver\:\:listSubscriptions\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PayPalDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PayPalDriver\:\:listTransfers\(\) has parameter \$filters with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PayPalDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PayPalDriver\:\:listTransfers\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PayPalDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PayPalDriver\:\:pauseSubscription\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PayPalDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PayPalDriver\:\:refundPayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PayPalDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PayPalDriver\:\:resolveAccountNumber\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PayPalDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PayPalDriver\:\:resolveAccountNumber\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PayPalDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PayPalDriver\:\:resumeSubscription\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PayPalDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PayPalDriver\:\:transfer\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PayPalDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PayPalDriver\:\:transfer\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PayPalDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PayPalDriver\:\:updatePaymentLink\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PayPalDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PayPalDriver\:\:updatePaymentLink\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PayPalDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PayPalDriver\:\:updatePlan\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PayPalDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PayPalDriver\:\:updatePlan\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PayPalDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PayPalDriver\:\:verifyPayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PayPalDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PayPalDriver\:\:verifyTransfer\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PayPalDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:authHeaders\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:bulkTransfer\(\) has parameter \$transfers with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:bulkTransfer\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:cancelSubscription\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:createPaymentLink\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:createPaymentLink\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:createPlan\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:createPlan\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:createSubscription\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:createSubscription\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:createTransferRecipient\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:createTransferRecipient\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:createVirtualAccount\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:createVirtualAccount\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:deactivateVirtualAccount\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:deletePlan\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:disablePaymentLink\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:getPayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:getPaymentLink\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:getPlan\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:getSubscription\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:getTransactions\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:getTransactions\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:getVirtualAccount\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:initializePayment\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:initializePayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:listBanks\(\) has parameter \$filters with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:listBanks\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:listCustomerSubscriptions\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:listPaymentLinks\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:listPaymentLinks\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:listPlans\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:listPlans\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:listSubscriptions\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:listSubscriptions\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:listTransfers\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:listTransfers\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:listVirtualAccounts\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:listVirtualAccounts\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:pauseSubscription\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:refundPayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:resolveAccountNumber\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:resolveAccountNumber\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:resumeSubscription\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:transfer\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:transfer\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:updatePaymentLink\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:updatePaymentLink\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:updatePlan\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:updatePlan\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:verifyPayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\PaystackDriver\:\:verifyTransfer\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Offset 0 on non\-empty\-list\<string\> on left side of \?\? always exists and is not nullable\.$#'
+			identifier: nullCoalesce.offset
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Undefined variable\: \$country$#'
+			identifier: variable.undefined
+			count: 1
+			path: src/Drivers/PaystackDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RazorpayDriver\:\:authHeaders\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RazorpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RazorpayDriver\:\:bulkTransfer\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RazorpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RazorpayDriver\:\:bulkTransfer\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RazorpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RazorpayDriver\:\:cancelSubscription\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RazorpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RazorpayDriver\:\:createPaymentLink\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RazorpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RazorpayDriver\:\:createPaymentLink\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RazorpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RazorpayDriver\:\:createPlan\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RazorpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RazorpayDriver\:\:createPlan\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RazorpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RazorpayDriver\:\:createSubscription\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RazorpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RazorpayDriver\:\:createSubscription\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RazorpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RazorpayDriver\:\:createTransferRecipient\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RazorpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RazorpayDriver\:\:createTransferRecipient\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RazorpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RazorpayDriver\:\:deletePlan\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RazorpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RazorpayDriver\:\:disablePaymentLink\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RazorpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RazorpayDriver\:\:getPayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RazorpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RazorpayDriver\:\:getPaymentLink\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RazorpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RazorpayDriver\:\:getPlan\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RazorpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RazorpayDriver\:\:getSubscription\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RazorpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RazorpayDriver\:\:getTransactions\(\) has parameter \$filters with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RazorpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RazorpayDriver\:\:getTransactions\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RazorpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RazorpayDriver\:\:initializePayment\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RazorpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RazorpayDriver\:\:initializePayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RazorpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RazorpayDriver\:\:listBanks\(\) has parameter \$filters with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RazorpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RazorpayDriver\:\:listBanks\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RazorpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RazorpayDriver\:\:listCustomerSubscriptions\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RazorpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RazorpayDriver\:\:listPaymentLinks\(\) has parameter \$filters with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RazorpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RazorpayDriver\:\:listPaymentLinks\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RazorpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RazorpayDriver\:\:listPlans\(\) has parameter \$filters with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RazorpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RazorpayDriver\:\:listPlans\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RazorpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RazorpayDriver\:\:listSubscriptions\(\) has parameter \$filters with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RazorpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RazorpayDriver\:\:listSubscriptions\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RazorpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RazorpayDriver\:\:listTransfers\(\) has parameter \$filters with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RazorpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RazorpayDriver\:\:listTransfers\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RazorpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RazorpayDriver\:\:pauseSubscription\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RazorpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RazorpayDriver\:\:refundPayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RazorpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RazorpayDriver\:\:resolveAccountNumber\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RazorpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RazorpayDriver\:\:resolveAccountNumber\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RazorpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RazorpayDriver\:\:resumeSubscription\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RazorpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RazorpayDriver\:\:transfer\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RazorpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RazorpayDriver\:\:transfer\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RazorpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RazorpayDriver\:\:updatePaymentLink\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RazorpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RazorpayDriver\:\:updatePaymentLink\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RazorpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RazorpayDriver\:\:updatePlan\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RazorpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RazorpayDriver\:\:updatePlan\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RazorpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RazorpayDriver\:\:verifyPayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RazorpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RazorpayDriver\:\:verifyTransfer\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RazorpayDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RemitaDriver\:\:authHeaders\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RemitaDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RemitaDriver\:\:bulkTransfer\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RemitaDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RemitaDriver\:\:bulkTransfer\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RemitaDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RemitaDriver\:\:createTransferRecipient\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RemitaDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RemitaDriver\:\:createTransferRecipient\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RemitaDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RemitaDriver\:\:getPayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RemitaDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RemitaDriver\:\:getTransactions\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RemitaDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RemitaDriver\:\:getTransactions\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RemitaDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RemitaDriver\:\:initializePayment\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RemitaDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RemitaDriver\:\:initializePayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RemitaDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RemitaDriver\:\:listBanks\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RemitaDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RemitaDriver\:\:listBanks\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RemitaDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RemitaDriver\:\:listTransfers\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RemitaDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RemitaDriver\:\:listTransfers\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RemitaDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RemitaDriver\:\:refundPayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RemitaDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RemitaDriver\:\:resolveAccountNumber\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RemitaDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RemitaDriver\:\:resolveAccountNumber\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RemitaDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RemitaDriver\:\:transfer\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RemitaDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RemitaDriver\:\:transfer\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RemitaDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RemitaDriver\:\:verifyPayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RemitaDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\RemitaDriver\:\:verifyTransfer\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/RemitaDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SeerbitDriver\:\:authHeaders\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SeerbitDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SeerbitDriver\:\:cancelSubscription\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SeerbitDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SeerbitDriver\:\:createPaymentLink\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SeerbitDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SeerbitDriver\:\:createPaymentLink\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SeerbitDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SeerbitDriver\:\:createPlan\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SeerbitDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SeerbitDriver\:\:createPlan\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SeerbitDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SeerbitDriver\:\:createSubscription\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SeerbitDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SeerbitDriver\:\:createSubscription\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SeerbitDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SeerbitDriver\:\:createVirtualAccount\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SeerbitDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SeerbitDriver\:\:createVirtualAccount\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SeerbitDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SeerbitDriver\:\:deactivateVirtualAccount\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SeerbitDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SeerbitDriver\:\:deletePlan\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SeerbitDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SeerbitDriver\:\:getPayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SeerbitDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SeerbitDriver\:\:getPlan\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SeerbitDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SeerbitDriver\:\:getRefundStatus\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SeerbitDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SeerbitDriver\:\:getSubscription\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SeerbitDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SeerbitDriver\:\:getSupportedBanks\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SeerbitDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SeerbitDriver\:\:getTransactions\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SeerbitDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SeerbitDriver\:\:getTransactions\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SeerbitDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SeerbitDriver\:\:getTransactionsByDateRange\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SeerbitDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SeerbitDriver\:\:getTransactionsByDateRange\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SeerbitDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SeerbitDriver\:\:getVirtualAccount\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SeerbitDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SeerbitDriver\:\:initializePayment\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SeerbitDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SeerbitDriver\:\:initializePayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SeerbitDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SeerbitDriver\:\:listCustomerSubscriptions\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SeerbitDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SeerbitDriver\:\:listPlans\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SeerbitDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SeerbitDriver\:\:listPlans\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SeerbitDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SeerbitDriver\:\:listSubscriptions\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SeerbitDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SeerbitDriver\:\:listSubscriptions\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SeerbitDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SeerbitDriver\:\:listVirtualAccounts\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SeerbitDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SeerbitDriver\:\:listVirtualAccounts\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SeerbitDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SeerbitDriver\:\:pauseSubscription\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SeerbitDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SeerbitDriver\:\:refundPayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SeerbitDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SeerbitDriver\:\:resumeSubscription\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SeerbitDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SeerbitDriver\:\:updatePlan\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SeerbitDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SeerbitDriver\:\:updatePlan\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SeerbitDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SeerbitDriver\:\:validateAccountNumber\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SeerbitDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SeerbitDriver\:\:verifyPayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SeerbitDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SquadDriver\:\:authHeaders\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SquadDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SquadDriver\:\:bulkTransfer\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SquadDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SquadDriver\:\:bulkTransfer\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SquadDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SquadDriver\:\:createTransferRecipient\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SquadDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SquadDriver\:\:createTransferRecipient\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SquadDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SquadDriver\:\:createVirtualAccount\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SquadDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SquadDriver\:\:createVirtualAccount\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SquadDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SquadDriver\:\:deactivateVirtualAccount\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SquadDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SquadDriver\:\:getPayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SquadDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SquadDriver\:\:getTransactions\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SquadDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SquadDriver\:\:getTransactions\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SquadDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SquadDriver\:\:getVirtualAccount\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SquadDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SquadDriver\:\:initializePayment\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SquadDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SquadDriver\:\:initializePayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SquadDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SquadDriver\:\:listBanks\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SquadDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SquadDriver\:\:listBanks\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SquadDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SquadDriver\:\:listTransfers\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SquadDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SquadDriver\:\:listTransfers\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SquadDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SquadDriver\:\:listVirtualAccounts\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SquadDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SquadDriver\:\:listVirtualAccounts\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SquadDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SquadDriver\:\:refundPayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SquadDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SquadDriver\:\:resolveAccountNumber\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SquadDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SquadDriver\:\:resolveAccountNumber\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SquadDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SquadDriver\:\:transfer\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SquadDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SquadDriver\:\:transfer\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SquadDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SquadDriver\:\:verifyPayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SquadDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\SquadDriver\:\:verifyTransfer\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/SquadDriver.php
+
+		-
+			message: '#^Offset 0 on non\-empty\-list\<string\> on left side of \?\? always exists and is not nullable\.$#'
+			identifier: nullCoalesce.offset
+			count: 1
+			path: src/Drivers/SquadDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\StripeDriver\:\:__construct\(\) has parameter \$config with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/StripeDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\StripeDriver\:\:cancelSubscription\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/StripeDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\StripeDriver\:\:createPaymentLink\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/StripeDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\StripeDriver\:\:createPaymentLink\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/StripeDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\StripeDriver\:\:createPlan\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/StripeDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\StripeDriver\:\:createPlan\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/StripeDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\StripeDriver\:\:createSubscription\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/StripeDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\StripeDriver\:\:createSubscription\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/StripeDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\StripeDriver\:\:deletePlan\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/StripeDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\StripeDriver\:\:disablePaymentLink\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/StripeDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\StripeDriver\:\:getPayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/StripeDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\StripeDriver\:\:getPaymentLink\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/StripeDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\StripeDriver\:\:getPlan\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/StripeDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\StripeDriver\:\:getSubscription\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/StripeDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\StripeDriver\:\:getTransactions\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/StripeDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\StripeDriver\:\:getTransactions\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/StripeDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\StripeDriver\:\:initializePayment\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/StripeDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\StripeDriver\:\:initializePayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/StripeDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\StripeDriver\:\:listCustomerSubscriptions\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/StripeDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\StripeDriver\:\:listPaymentLinks\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/StripeDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\StripeDriver\:\:listPaymentLinks\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/StripeDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\StripeDriver\:\:listPlans\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/StripeDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\StripeDriver\:\:listPlans\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/StripeDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\StripeDriver\:\:listSubscriptions\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/StripeDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\StripeDriver\:\:listSubscriptions\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/StripeDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\StripeDriver\:\:pauseSubscription\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/StripeDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\StripeDriver\:\:refundPayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/StripeDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\StripeDriver\:\:resumeSubscription\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/StripeDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\StripeDriver\:\:updatePaymentLink\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/StripeDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\StripeDriver\:\:updatePaymentLink\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/StripeDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\StripeDriver\:\:updatePlan\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/StripeDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\StripeDriver\:\:updatePlan\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/StripeDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Drivers\\StripeDriver\:\:verifyPayment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Drivers/StripeDriver.php
+
+		-
+			message: '#^Property NexusPay\\PaymentMadeEasy\\Drivers\\StripeDriver\:\:\$stripe has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Drivers/StripeDriver.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Events\\BaseWebhookEvent\:\:__construct\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Events/BaseWebhookEvent.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Events\\BaseWebhookEvent\:\:__construct\(\) has parameter \$rawPayload with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Events/BaseWebhookEvent.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Events\\BaseWebhookEvent\:\:getData\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Events/BaseWebhookEvent.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Events\\BaseWebhookEvent\:\:getRawPayload\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Events/BaseWebhookEvent.php
+
+		-
+			message: '#^Property NexusPay\\PaymentMadeEasy\\Events\\BaseWebhookEvent\:\:\$data type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Events/BaseWebhookEvent.php
+
+		-
+			message: '#^Property NexusPay\\PaymentMadeEasy\\Events\\BaseWebhookEvent\:\:\$rawPayload type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Events/BaseWebhookEvent.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Events\\ChargebackCreated\:\:__construct\(\) has parameter \$chargebackData with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Events/ChargebackCreated.php
+
+		-
+			message: '#^Property NexusPay\\PaymentMadeEasy\\Events\\ChargebackCreated\:\:\$chargebackData type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Events/ChargebackCreated.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Events\\DisputeCreated\:\:__construct\(\) has parameter \$disputeData with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Events/DisputeCreated.php
+
+		-
+			message: '#^Property NexusPay\\PaymentMadeEasy\\Events\\DisputeCreated\:\:\$disputeData type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Events/DisputeCreated.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Events\\PaymentFailed\:\:__construct\(\) has parameter \$paymentData with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Events/PaymentFailed.php
+
+		-
+			message: '#^Property NexusPay\\PaymentMadeEasy\\Events\\PaymentFailed\:\:\$paymentData type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Events/PaymentFailed.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Events\\PaymentPending\:\:__construct\(\) has parameter \$paymentData with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Events/PaymentPending.php
+
+		-
+			message: '#^Property NexusPay\\PaymentMadeEasy\\Events\\PaymentPending\:\:\$paymentData type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Events/PaymentPending.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Events\\PaymentSuccessful\:\:__construct\(\) has parameter \$paymentData with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Events/PaymentSuccessful.php
+
+		-
+			message: '#^Property NexusPay\\PaymentMadeEasy\\Events\\PaymentSuccessful\:\:\$paymentData type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Events/PaymentSuccessful.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Events\\RefundProcessed\:\:__construct\(\) has parameter \$refundData with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Events/RefundProcessed.php
+
+		-
+			message: '#^Property NexusPay\\PaymentMadeEasy\\Events\\RefundProcessed\:\:\$refundData type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Events/RefundProcessed.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Events\\SubscriptionCancelled\:\:__construct\(\) has parameter \$subscriptionData with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Events/SubscriptionCancelled.php
+
+		-
+			message: '#^Property NexusPay\\PaymentMadeEasy\\Events\\SubscriptionCancelled\:\:\$subscriptionData type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Events/SubscriptionCancelled.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Events\\SubscriptionCreated\:\:__construct\(\) has parameter \$subscriptionData with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Events/SubscriptionCreated.php
+
+		-
+			message: '#^Property NexusPay\\PaymentMadeEasy\\Events\\SubscriptionCreated\:\:\$subscriptionData type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Events/SubscriptionCreated.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Events\\SubscriptionRenewed\:\:__construct\(\) has parameter \$invoiceData with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Events/SubscriptionRenewed.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Events\\SubscriptionRenewed\:\:__construct\(\) has parameter \$subscriptionData with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Events/SubscriptionRenewed.php
+
+		-
+			message: '#^Property NexusPay\\PaymentMadeEasy\\Events\\SubscriptionRenewed\:\:\$invoiceData type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Events/SubscriptionRenewed.php
+
+		-
+			message: '#^Property NexusPay\\PaymentMadeEasy\\Events\\SubscriptionRenewed\:\:\$subscriptionData type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Events/SubscriptionRenewed.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Events\\TransferFailed\:\:__construct\(\) has parameter \$transferData with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Events/TransferFailed.php
+
+		-
+			message: '#^Property NexusPay\\PaymentMadeEasy\\Events\\TransferFailed\:\:\$transferData type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Events/TransferFailed.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Events\\TransferSuccessful\:\:__construct\(\) has parameter \$transferData with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Events/TransferSuccessful.php
+
+		-
+			message: '#^Property NexusPay\\PaymentMadeEasy\\Events\\TransferSuccessful\:\:\$transferData type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Events/TransferSuccessful.php
+
+		-
+			message: '#^Call to function is_array\(\) with list\<string\|null\> will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: src/Http/Controllers/WebhookController.php
+
+		-
+			message: '#^Strict comparison using \!\=\= between string and false will always evaluate to true\.$#'
+			identifier: notIdentical.alwaysTrue
+			count: 1
+			path: src/Http/Controllers/WebhookController.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Listeners\\PersistWebhookPaymentEvents\:\:extractGatewayDisputeIdFromData\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Listeners/PersistWebhookPaymentEvents.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Listeners\\PersistWebhookPaymentEvents\:\:extractGatewayRefundIdFromRefundData\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Listeners/PersistWebhookPaymentEvents.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Listeners\\PersistWebhookPaymentEvents\:\:persistDisputeOrChargeback\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Listeners/PersistWebhookPaymentEvents.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Listeners\\PersistWebhookPaymentEvents\:\:persistDisputeOrChargeback\(\) has parameter \$rawPayload with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Listeners/PersistWebhookPaymentEvents.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Listeners\\PersistWebhookPaymentEvents\:\:persistSubscription\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Listeners/PersistWebhookPaymentEvents.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Listeners\\PersistWebhookPaymentEvents\:\:refundTransactionReference\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Listeners/PersistWebhookPaymentEvents.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Listeners\\PersistWebhookPaymentEvents\:\:transactionReference\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Listeners/PersistWebhookPaymentEvents.php
+
+		-
+			message: '#^Access to an undefined property NexusPay\\PaymentMadeEasy\\Models\\PaymentDispute\:\:\$kind\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Models/PaymentDispute.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Models\\PaymentDispute\:\:transaction\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Models/PaymentDispute.php
+
+		-
+			message: '#^Property NexusPay\\PaymentMadeEasy\\Models\\PaymentDispute\:\:\$casts type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Models/PaymentDispute.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Models\\PaymentRefund\:\:transaction\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Models/PaymentRefund.php
+
+		-
+			message: '#^Property NexusPay\\PaymentMadeEasy\\Models\\PaymentRefund\:\:\$casts type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Models/PaymentRefund.php
+
+		-
+			message: '#^Access to an undefined property NexusPay\\PaymentMadeEasy\\Models\\PaymentSubscription\:\:\$status\.$#'
+			identifier: property.notFound
+			count: 3
+			path: src/Models/PaymentSubscription.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Models\\PaymentSubscription\:\:scopeActive\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Models/PaymentSubscription.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Models\\PaymentSubscription\:\:scopeActive\(\) has parameter \$query with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: src/Models/PaymentSubscription.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Models\\PaymentSubscription\:\:scopeForEmail\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Models/PaymentSubscription.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Models\\PaymentSubscription\:\:scopeForEmail\(\) has parameter \$query with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: src/Models/PaymentSubscription.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Models\\PaymentSubscription\:\:scopeGateway\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Models/PaymentSubscription.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Models\\PaymentSubscription\:\:scopeGateway\(\) has parameter \$query with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: src/Models/PaymentSubscription.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Models\\PaymentSubscription\:\:subscriber\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\MorphTo does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Models/PaymentSubscription.php
+
+		-
+			message: '#^Property NexusPay\\PaymentMadeEasy\\Models\\PaymentSubscription\:\:\$casts type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Models/PaymentSubscription.php
+
+		-
+			message: '#^Access to an undefined property NexusPay\\PaymentMadeEasy\\Models\\PaymentTransaction\:\:\$gateway_reference\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Models/PaymentTransaction.php
+
+		-
+			message: '#^Access to an undefined property NexusPay\\PaymentMadeEasy\\Models\\PaymentTransaction\:\:\$status\.$#'
+			identifier: property.notFound
+			count: 6
+			path: src/Models/PaymentTransaction.php
+
+		-
+			message: '#^Deprecated in PHP 8\.4\: Parameter \#1 \$gatewayReference \(string\) is implicitly nullable via default value null\.$#'
+			identifier: parameter.implicitlyNullable
+			count: 1
+			path: src/Models/PaymentTransaction.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Models\\PaymentTransaction\:\:disputes\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\HasMany does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Models/PaymentTransaction.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Models\\PaymentTransaction\:\:payable\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\MorphTo does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Models/PaymentTransaction.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Models\\PaymentTransaction\:\:refunds\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\HasMany does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Models/PaymentTransaction.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Models\\PaymentTransaction\:\:scopeGateway\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Models/PaymentTransaction.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Models\\PaymentTransaction\:\:scopeGateway\(\) has parameter \$query with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: src/Models/PaymentTransaction.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Models\\PaymentTransaction\:\:scopePending\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Models/PaymentTransaction.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Models\\PaymentTransaction\:\:scopePending\(\) has parameter \$query with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: src/Models/PaymentTransaction.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Models\\PaymentTransaction\:\:scopeStatus\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Models/PaymentTransaction.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Models\\PaymentTransaction\:\:scopeStatus\(\) has parameter \$query with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: src/Models/PaymentTransaction.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Models\\PaymentTransaction\:\:scopeSuccessful\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Models/PaymentTransaction.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Models\\PaymentTransaction\:\:scopeSuccessful\(\) has parameter \$query with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: src/Models/PaymentTransaction.php
+
+		-
+			message: '#^Property NexusPay\\PaymentMadeEasy\\Models\\PaymentTransaction\:\:\$casts type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Models/PaymentTransaction.php
+
+		-
+			message: '#^Access to an undefined property NexusPay\\PaymentMadeEasy\\Models\\PaymentTransfer\:\:\$gateway_reference\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Models/PaymentTransfer.php
+
+		-
+			message: '#^Access to an undefined property NexusPay\\PaymentMadeEasy\\Models\\PaymentTransfer\:\:\$status\.$#'
+			identifier: property.notFound
+			count: 3
+			path: src/Models/PaymentTransfer.php
+
+		-
+			message: '#^Deprecated in PHP 8\.4\: Parameter \#1 \$gatewayReference \(string\) is implicitly nullable via default value null\.$#'
+			identifier: parameter.implicitlyNullable
+			count: 1
+			path: src/Models/PaymentTransfer.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Models\\PaymentTransfer\:\:initiator\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\MorphTo does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Models/PaymentTransfer.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Models\\PaymentTransfer\:\:scopeGateway\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Models/PaymentTransfer.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Models\\PaymentTransfer\:\:scopeGateway\(\) has parameter \$query with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: src/Models/PaymentTransfer.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Models\\PaymentTransfer\:\:scopeStatus\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Models/PaymentTransfer.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Models\\PaymentTransfer\:\:scopeStatus\(\) has parameter \$query with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: src/Models/PaymentTransfer.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Models\\PaymentTransfer\:\:scopeSuccessful\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Models/PaymentTransfer.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Models\\PaymentTransfer\:\:scopeSuccessful\(\) has parameter \$query with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: src/Models/PaymentTransfer.php
+
+		-
+			message: '#^Property NexusPay\\PaymentMadeEasy\\Models\\PaymentTransfer\:\:\$casts type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Models/PaymentTransfer.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Models\\PaymentWebhookLog\:\:scopeEventType\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Models/PaymentWebhookLog.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Models\\PaymentWebhookLog\:\:scopeEventType\(\) has parameter \$query with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: src/Models/PaymentWebhookLog.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Models\\PaymentWebhookLog\:\:scopeGateway\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Models/PaymentWebhookLog.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Models\\PaymentWebhookLog\:\:scopeGateway\(\) has parameter \$query with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: src/Models/PaymentWebhookLog.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Models\\PaymentWebhookLog\:\:scopeUnprocessed\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Models/PaymentWebhookLog.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Models\\PaymentWebhookLog\:\:scopeUnprocessed\(\) has parameter \$query with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: src/Models/PaymentWebhookLog.php
+
+		-
+			message: '#^Property NexusPay\\PaymentMadeEasy\\Models\\PaymentWebhookLog\:\:\$casts type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Models/PaymentWebhookLog.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\PaymentManager\:\:buildProvider\(\) has parameter \$config with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/PaymentManager.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\PaymentServiceProvider\:\:boot\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/PaymentServiceProvider.php
+
+		-
+			message: '#^Access to an undefined property NexusPay\\PaymentMadeEasy\\Models\\PaymentSubscription\:\:\$invoices_paid\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Services/PaymentRecorder.php
+
+		-
+			message: '#^Access to an undefined property NexusPay\\PaymentMadeEasy\\Models\\PaymentSubscription\:\:\$raw_response\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Services/PaymentRecorder.php
+
+		-
+			message: '#^Access to an undefined property NexusPay\\PaymentMadeEasy\\Models\\PaymentTransaction\:\:\$amount\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Services/PaymentRecorder.php
+
+		-
+			message: '#^Access to an undefined property NexusPay\\PaymentMadeEasy\\Models\\PaymentTransaction\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 2
+			path: src/Services/PaymentRecorder.php
+
+		-
+			message: '#^Access to an undefined property NexusPay\\PaymentMadeEasy\\Models\\PaymentTransaction\:\:\$raw_response\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Services/PaymentRecorder.php
+
+		-
+			message: '#^Access to an undefined property NexusPay\\PaymentMadeEasy\\Models\\PaymentTransaction\:\:\$status\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Services/PaymentRecorder.php
+
+		-
+			message: '#^Access to an undefined property NexusPay\\PaymentMadeEasy\\Models\\PaymentTransfer\:\:\$gateway_reference\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Services/PaymentRecorder.php
+
+		-
+			message: '#^Access to an undefined property NexusPay\\PaymentMadeEasy\\Models\\PaymentTransfer\:\:\$raw_response\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Services/PaymentRecorder.php
+
+		-
+			message: '#^Call to an undefined static method NexusPay\\PaymentMadeEasy\\Models\\PaymentDispute\:\:create\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 1
+			path: src/Services/PaymentRecorder.php
+
+		-
+			message: '#^Call to an undefined static method NexusPay\\PaymentMadeEasy\\Models\\PaymentRefund\:\:create\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 1
+			path: src/Services/PaymentRecorder.php
+
+		-
+			message: '#^Call to an undefined static method NexusPay\\PaymentMadeEasy\\Models\\PaymentSubscription\:\:create\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 1
+			path: src/Services/PaymentRecorder.php
+
+		-
+			message: '#^Call to an undefined static method NexusPay\\PaymentMadeEasy\\Models\\PaymentTransaction\:\:create\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 3
+			path: src/Services/PaymentRecorder.php
+
+		-
+			message: '#^Call to an undefined static method NexusPay\\PaymentMadeEasy\\Models\\PaymentTransaction\:\:where\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 2
+			path: src/Services/PaymentRecorder.php
+
+		-
+			message: '#^Call to an undefined static method NexusPay\\PaymentMadeEasy\\Models\\PaymentTransfer\:\:create\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 1
+			path: src/Services/PaymentRecorder.php
+
+		-
+			message: '#^Call to an undefined static method NexusPay\\PaymentMadeEasy\\Models\\PaymentWebhookLog\:\:create\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 2
+			path: src/Services/PaymentRecorder.php
+
+		-
+			message: '#^Deprecated in PHP 8\.4\: Parameter \#3 \$gatewayReference \(string\) is implicitly nullable via default value null\.$#'
+			identifier: parameter.implicitlyNullable
+			count: 1
+			path: src/Services/PaymentRecorder.php
+
+		-
+			message: '#^Deprecated in PHP 8\.4\: Parameter \#4 \$gatewayReference \(string\) is implicitly nullable via default value null\.$#'
+			identifier: parameter.implicitlyNullable
+			count: 1
+			path: src/Services/PaymentRecorder.php
+
+		-
+			message: '#^Deprecated in PHP 8\.4\: Parameter \#4 \$reference \(string\) is implicitly nullable via default value null\.$#'
+			identifier: parameter.implicitlyNullable
+			count: 1
+			path: src/Services/PaymentRecorder.php
+
+		-
+			message: '#^Deprecated in PHP 8\.4\: Parameter \#6 \$gatewayReference \(string\) is implicitly nullable via default value null\.$#'
+			identifier: parameter.implicitlyNullable
+			count: 1
+			path: src/Services/PaymentRecorder.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Services\\PaymentRecorder\:\:detectGatewayDisputeId\(\) has parameter \$disputeData with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Services/PaymentRecorder.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Services\\PaymentRecorder\:\:detectGatewayDisputeId\(\) has parameter \$rawPayload with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Services/PaymentRecorder.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Services\\PaymentRecorder\:\:detectGatewayRefundId\(\) has parameter \$rawPayload with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Services/PaymentRecorder.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Services\\PaymentRecorder\:\:handleDisputeWebhook\(\) has parameter \$disputeData with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Services/PaymentRecorder.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Services\\PaymentRecorder\:\:handleDisputeWebhook\(\) has parameter \$rawPayload with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Services/PaymentRecorder.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Services\\PaymentRecorder\:\:handleDisputeWebhook\(\) should return NexusPay\\PaymentMadeEasy\\Models\\PaymentDispute but returns Illuminate\\Database\\Eloquent\\Model\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Services/PaymentRecorder.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Services\\PaymentRecorder\:\:handleRefundWebhook\(\) has parameter \$rawPayload with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Services/PaymentRecorder.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Services\\PaymentRecorder\:\:handleSubscriptionWebhook\(\) has parameter \$rawPayload with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Services/PaymentRecorder.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Services\\PaymentRecorder\:\:handleTransactionWebhook\(\) has parameter \$rawPayload with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Services/PaymentRecorder.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Services\\PaymentRecorder\:\:handleTransferWebhook\(\) has parameter \$rawPayload with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Services/PaymentRecorder.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Services\\PaymentRecorder\:\:insertPaymentRefund\(\) has parameter \$rawPayload with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Services/PaymentRecorder.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Services\\PaymentRecorder\:\:logRawWebhook\(\) has parameter \$payload with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Services/PaymentRecorder.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Services\\PaymentRecorder\:\:recordSubscription\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Services/PaymentRecorder.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Services\\PaymentRecorder\:\:recordSubscription\(\) has parameter \$response with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Services/PaymentRecorder.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Services\\PaymentRecorder\:\:recordTransaction\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Services/PaymentRecorder.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Services\\PaymentRecorder\:\:recordTransaction\(\) has parameter \$response with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Services/PaymentRecorder.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Services\\PaymentRecorder\:\:recordTransfer\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Services/PaymentRecorder.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Services\\PaymentRecorder\:\:recordTransfer\(\) has parameter \$response with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Services/PaymentRecorder.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Services\\PaymentRecorder\:\:refundMetadataSnapshot\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Services/PaymentRecorder.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Services\\PaymentRecorder\:\:updateTransactionStatus\(\) has parameter \$rawResponse with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Services/PaymentRecorder.php
+
+		-
+			message: '#^Strict comparison using \!\=\= between float\|string and null will always evaluate to true\.$#'
+			identifier: notIdentical.alwaysTrue
+			count: 1
+			path: src/Services/PaymentRecorder.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between non\-empty\-string and false will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 1
+			path: src/WebhookManager.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Webhooks\\AbstractWebhookHandler\:\:__construct\(\) has parameter \$config with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Webhooks/AbstractWebhookHandler.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Webhooks\\AbstractWebhookHandler\:\:extractFailureReason\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Webhooks/AbstractWebhookHandler.php
+
+		-
+			message: '#^Property NexusPay\\PaymentMadeEasy\\Webhooks\\AbstractWebhookHandler\:\:\$config type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Webhooks/AbstractWebhookHandler.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Webhooks\\BudpayWebhookHandler\:\:extractData\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Webhooks/BudpayWebhookHandler.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Webhooks\\BudpayWebhookHandler\:\:extractData\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Webhooks/BudpayWebhookHandler.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Webhooks\\BudpayWebhookHandler\:\:extractFailureReason\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Webhooks/BudpayWebhookHandler.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Webhooks\\FlutterwaveWebhookHandler\:\:extractData\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Webhooks/FlutterwaveWebhookHandler.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Webhooks\\FlutterwaveWebhookHandler\:\:extractData\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Webhooks/FlutterwaveWebhookHandler.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Webhooks\\FlutterwaveWebhookHandler\:\:extractFailureReason\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Webhooks/FlutterwaveWebhookHandler.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Webhooks\\InterswitchWebhookHandler\:\:extractData\(\) has parameter \$payload with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Webhooks/InterswitchWebhookHandler.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Webhooks\\InterswitchWebhookHandler\:\:extractData\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Webhooks/InterswitchWebhookHandler.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Webhooks\\InterswitchWebhookHandler\:\:extractFailureReason\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Webhooks/InterswitchWebhookHandler.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Webhooks\\MPesaWebhookHandler\:\:extractData\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Webhooks/MPesaWebhookHandler.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Webhooks\\MPesaWebhookHandler\:\:extractData\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Webhooks/MPesaWebhookHandler.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Webhooks\\MPesaWebhookHandler\:\:normalisePayload\(\) has parameter \$payload with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Webhooks/MPesaWebhookHandler.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Webhooks\\MPesaWebhookHandler\:\:normalisePayload\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Webhooks/MPesaWebhookHandler.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Webhooks\\MPesaWebhookHandler\:\:parseCallbackMetadata\(\) has parameter \$items with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Webhooks/MPesaWebhookHandler.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Webhooks\\MPesaWebhookHandler\:\:parseCallbackMetadata\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Webhooks/MPesaWebhookHandler.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Webhooks\\MPesaWebhookHandler\:\:parseResultParameters\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Webhooks/MPesaWebhookHandler.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Webhooks\\MPesaWebhookHandler\:\:parseResultParameters\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Webhooks/MPesaWebhookHandler.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Webhooks\\MTNMoMoWebhookHandler\:\:classifyPayload\(\) has parameter \$payload with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Webhooks/MTNMoMoWebhookHandler.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Webhooks\\MTNMoMoWebhookHandler\:\:classifyPayload\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Webhooks/MTNMoMoWebhookHandler.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Webhooks\\MTNMoMoWebhookHandler\:\:extractData\(\) has parameter \$payload with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Webhooks/MTNMoMoWebhookHandler.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Webhooks\\MTNMoMoWebhookHandler\:\:extractData\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Webhooks/MTNMoMoWebhookHandler.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Webhooks\\MonnifyWebhookHandler\:\:extractData\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Webhooks/MonnifyWebhookHandler.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Webhooks\\MonnifyWebhookHandler\:\:extractData\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Webhooks/MonnifyWebhookHandler.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Webhooks\\MonnifyWebhookHandler\:\:extractFailureReason\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Webhooks/MonnifyWebhookHandler.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Webhooks\\PaddleWebhookHandler\:\:extractData\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Webhooks/PaddleWebhookHandler.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Webhooks\\PaddleWebhookHandler\:\:extractData\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Webhooks/PaddleWebhookHandler.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Webhooks\\PayPalWebhookHandler\:\:extractData\(\) has parameter \$resource with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Webhooks/PayPalWebhookHandler.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Webhooks\\PayPalWebhookHandler\:\:extractData\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Webhooks/PayPalWebhookHandler.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Webhooks\\PaystackWebhookHandler\:\:extractData\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Webhooks/PaystackWebhookHandler.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Webhooks\\PaystackWebhookHandler\:\:extractData\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Webhooks/PaystackWebhookHandler.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Webhooks\\PaystackWebhookHandler\:\:extractFailureReason\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Webhooks/PaystackWebhookHandler.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Webhooks\\RazorpayWebhookHandler\:\:extractData\(\) has parameter \$entity with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Webhooks/RazorpayWebhookHandler.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Webhooks\\RazorpayWebhookHandler\:\:extractData\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Webhooks/RazorpayWebhookHandler.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Webhooks\\RemitaWebhookHandler\:\:extractData\(\) has parameter \$payload with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Webhooks/RemitaWebhookHandler.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Webhooks\\RemitaWebhookHandler\:\:extractData\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Webhooks/RemitaWebhookHandler.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Webhooks\\RemitaWebhookHandler\:\:extractFailureReason\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Webhooks/RemitaWebhookHandler.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Webhooks\\RemitaWebhookHandler\:\:mapResponseCodeToEventType\(\) has parameter \$payload with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Webhooks/RemitaWebhookHandler.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Webhooks\\SeerbitWebhookHandler\:\:extractFailureReason\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Webhooks/SeerbitWebhookHandler.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Webhooks\\SquadWebhookHandler\:\:extractData\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Webhooks/SquadWebhookHandler.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Webhooks\\SquadWebhookHandler\:\:extractData\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Webhooks/SquadWebhookHandler.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Webhooks\\SquadWebhookHandler\:\:extractFailureReason\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Webhooks/SquadWebhookHandler.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Webhooks\\StripeWebhookHandler\:\:extractFailureReason\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Webhooks/StripeWebhookHandler.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Webhooks\\StripeWebhookHandler\:\:processStripeEventData\(\) has parameter \$eventData with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: src/Webhooks/StripeWebhookHandler.php
+
+		-
+			message: '#^Method NexusPay\\PaymentMadeEasy\\Webhooks\\StripeWebhookHandler\:\:processStripeEventData\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Webhooks/StripeWebhookHandler.php

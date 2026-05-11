@@ -11,7 +11,7 @@ class ProcessWebhookJobTest extends TestCase
 {
     public function test_job_rebuilds_request_so_signature_verifies(): void
     {
-        Event::fake();
+        Event::fake([PaymentSuccessful::class]);
 
         $secret = 'paystack_webhook_secret';
         $this->app['config']->set('payment-gateways.gateways.paystack.webhook_secret', $secret);
@@ -37,5 +37,24 @@ class ProcessWebhookJobTest extends TestCase
         $job->handle($this->app->make(\NexusPay\PaymentMadeEasy\WebhookManager::class));
 
         Event::assertDispatched(PaymentSuccessful::class);
+    }
+
+    public function test_job_does_not_rethrow_webhook_exception_on_invalid_signature(): void
+    {
+        Event::fake([PaymentSuccessful::class]);
+
+        $this->app['config']->set('payment-gateways.gateways.paystack.webhook_secret', 'correct_secret');
+
+        $payload = json_encode(['event' => 'charge.success', 'data' => ['reference' => 'X']]);
+        $this->assertNotFalse($payload);
+
+        $job = new ProcessWebhookJob('paystack', $payload, [
+            'x-paystack-signature' => 'invalid',
+            'content-type'         => 'application/json',
+        ]);
+
+        $job->handle($this->app->make(\NexusPay\PaymentMadeEasy\WebhookManager::class));
+
+        Event::assertNothingDispatched();
     }
 }

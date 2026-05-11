@@ -48,6 +48,8 @@ $slugs = GatewayCapabilities::gatewaysImplementing(SubscriptionDriverInterface::
 composer require nexuspay/payment-made-easy
 ```
 
+**PHP:** enable the **`bcmath`** extension (`ext-bcmath`); it is required by Composer for consistent amount conversion in drivers.
+
 **Stripe:** the SDK is not installed with the package by default. If you use **`Payment::driver('stripe')`** or Stripe webhooks, add:
 
 ```bash
